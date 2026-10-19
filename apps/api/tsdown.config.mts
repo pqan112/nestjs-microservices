@@ -23,6 +23,7 @@ export default defineConfig({
   dts: false,
   // Resolve the workspace type alias so the shared types lib is consumed during the build.
   alias: {
-    '@nestjs-template/types': join(here, '../../packages/types/src/index.ts'),
+    // '@nestjs-template/types': join(here, '../../packages/types/src/index.ts'),
+    '@common/constants': join(here, '../../libs/constants/src/index.ts'),
   },
 });

@@ -1,10 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
-import type { HealthResponse } from '@nestjs-template/types';
 
 @Controller('health')
 export class HealthController {
   @Get()
-  check(): HealthResponse {
+  check() {
     return {
       status: 'ok',
       timestamp: new Date().toISOString(),

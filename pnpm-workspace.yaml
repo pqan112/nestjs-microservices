@@ -1,0 +1,7 @@
+allowBuilds:
+  "@nestjs/core": false
+  unrs-resolver: false
+
+packages:
+  - "apps/*"
+  - "libs/*"

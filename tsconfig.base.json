@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@nestjs-template/types": ["./packages/types/src/index.ts"]
+      "@common/constants/*": ["./libs/constants/src/lib/*"],
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,
