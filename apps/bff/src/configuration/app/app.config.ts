@@ -6,6 +6,7 @@ export const APP_CONFIG = 'app'
 export interface AppConfig {
   port: number
   globalPrefix: string
+  isDev: boolean
 }
 
 export default registerAs(APP_CONFIG, (): AppConfig => {
@@ -13,5 +14,6 @@ export default registerAs(APP_CONFIG, (): AppConfig => {
   return {
     port: env.PORT,
     globalPrefix: env.GLOBAL_PREFIX,
+    isDev: env.IS_DEV,
   }
 })

@@ -15,7 +15,9 @@ if (!fs.existsSync(path.resolve('.env'))) {
 
 // Biến môi trường dùng chung cho mọi service
 export const baseEnvSchema = z.object({
-  NODE_ENV: z.string().min(1),
+  NODE_ENV: z
+    .enum(['development', 'production', 'test'])
+    .default('development'),
   GLOBAL_PREFIX: z.string().min(1),
 })
 

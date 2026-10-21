@@ -8,11 +8,15 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 import { APP_CONFIG, AppConfig } from './configuration/app/app.config'
 import { ConfigService } from '@nestjs/config'
+import { setupSwagger } from './bootstrap/setup-swagger'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const config = app.get(ConfigService)
   const appCfg = config.getOrThrow<AppConfig>(APP_CONFIG)
+
+  // setup swagger
+  setupSwagger(app, config)
 
   const globalPrefix = appCfg.globalPrefix
   app.setGlobalPrefix(globalPrefix)

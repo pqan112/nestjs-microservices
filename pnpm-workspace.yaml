@@ -1,7 +1,8 @@
 allowBuilds:
-  "@nestjs/core": false
+  '@nestjs/core': false
+  '@scarf/scarf': set this to true or false
   unrs-resolver: false
 
 packages:
-  - "apps/*"
-  - "libs/*"
+  - 'apps/*'
+  - 'libs/*'
