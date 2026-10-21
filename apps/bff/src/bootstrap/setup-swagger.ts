@@ -3,12 +3,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { ConfigService } from '@nestjs/config'
 import { APP_CONFIG, AppConfig } from '../configuration/app/app.config'
 
-export function setupSwagger(
-  app: INestApplication,
-  config: ConfigService
-): void {
+export function setupSwagger(app: INestApplication, config: ConfigService): void {
   const appConfig = config.getOrThrow<AppConfig>(APP_CONFIG)
-  if (appConfig.isDev) return
+  if (!appConfig.isDev) return
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Einvoice-bff')

@@ -11,20 +11,25 @@ import { ConfigService } from '@nestjs/config'
 import { setupSwagger } from './bootstrap/setup-swagger'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
-  const config = app.get(ConfigService)
-  const appCfg = config.getOrThrow<AppConfig>(APP_CONFIG)
+  try {
+    const app = await NestFactory.create(AppModule)
+    const config = app.get(ConfigService)
+    const appCfg = config.getOrThrow<AppConfig>(APP_CONFIG)
 
-  // setup swagger
-  setupSwagger(app, config)
+    // setup swagger
+    setupSwagger(app, config)
 
-  const globalPrefix = appCfg.globalPrefix
-  app.setGlobalPrefix(globalPrefix)
-  const port = appCfg.port || 3000
-  await app.listen(port)
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  )
+    const globalPrefix = appCfg.globalPrefix
+    app.setGlobalPrefix(globalPrefix)
+    const port = appCfg.port || 3000
+    await app.listen(port)
+    Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
+    Logger.log(
+      `🚀 Application Document is running on: http://localhost:${port}/${globalPrefix}/docs`
+    )
+  } catch (error) {
+    Logger.error(`❌ Application failed to start: ${error}`, '', 'Bootstrap', false)
+  }
 }
 
 bootstrap()
