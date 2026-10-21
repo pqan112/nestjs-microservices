@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "paths": {
       "@common/constants/*": ["./libs/constants/src/lib/*"],
+      "@nestjs-template/configuration/*": ["./libs/configuration/src/lib/*"]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,

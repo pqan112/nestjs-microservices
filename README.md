@@ -6,9 +6,7 @@ A production-ready NestJS REST API starter powered by Nx - built for teams who w
 
 The API builds with the oxc toolchain (tsdown, powered by rolldown + the oxc transformer), orchestrated by Nx. tsdown reads `apps/api/tsconfig.app.json`, so `experimentalDecorators` and `emitDecoratorMetadata` are honored - NestJS dependency injection and route reflection keep working with `reflect-metadata`.
 
-
 🚀 If you haven't connected to Nx Cloud yet, [complete your setup here](https://cloud.nx.app/get-started). Get faster builds with remote caching, distributed task execution, and self-healing CI. [See how your workspace can benefit](#nx-cloud).
-
 
 ## Quick Start
 
@@ -96,7 +94,7 @@ nestjs-template/
 | api     | scope:api, type:app    | scope:shared  |
 | types   | scope:shared, type:lib | scope:shared  |
 
-`@nx/enforce-module-boundaries` is configured in `eslint.config.mjs` so violations are caught at lint time, not at runtime.
+`@nx/enforce-module-boundaries` is configured in `.oxlintrc.json` so violations are caught at lint time, not at runtime.
 
 ---
 
@@ -135,7 +133,7 @@ npx nx g @nx/nest:resource --project=api --name=users
 
 ### Module Boundaries
 
-Enforce architectural rules at lint time. A `scope:api` library can never accidentally import from another app - only from `scope:shared` libs. Configure the rules in `eslint.config.mjs`.
+Enforce architectural rules at lint time. A `scope:api` library can never accidentally import from another app - only from `scope:shared` libs. Configure the rules in `.oxlintrc.json`.
 
 ### Docker
 

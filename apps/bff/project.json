@@ -64,6 +64,7 @@
       "options": {
         "passWithNoTests": true
       }
-    }
+    },
+    "lint": {}
   }
 }

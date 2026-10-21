@@ -14,5 +14,36 @@
     "network": {
       "allowedDomains": ["www.google-analytics.com"]
     }
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "deny": [
+      "Bash(rm *)",
+      "Bash(rmdir *)",
+      "Bash(unlink *)",
+      "Bash(shred *)",
+      "Bash(del *)",
+      "Bash(erase *)",
+      "Bash(rd *)",
+      "Bash(DROP *)",
+      "Bash(TRUNCATE *)",
+      "Bash(DELETE *)",
+      "Bash(ALTER DATABASE *)",
+      "Bash(ALTER TABLE *)",
+      "Bash(docker rm *)",
+      "Bash(docker rmi *)",
+      "Bash(docker volume rm *)",
+      "Bash(docker system prune *)",
+      "Bash(npx prisma migrate reset *)",
+      "Bash(npx prisma db seed *)",
+      "Bash(npx prisma db execute *)",
+      "Bash(npx knex migrate:rollback *)",
+      "Bash(npx typeorm schema:drop *)",
+      "Bash(git branch -d *)",
+      "Bash(git branch -D *)",
+      "Bash(git branch --delete *)",
+      "Bash(git push * --delete *)",
+      "Bash(git push * :*)"
+    ]
   }
 }

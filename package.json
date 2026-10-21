@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "format": "nx format:write"
+    "format": "nx format:write",
+    "lint": "oxlint"
   },
   "private": true,
   "dependencies": {
@@ -19,11 +20,9 @@
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
-    "@eslint/js": "^9.8.0",
     "@nestjs/config": "^12.0.1",
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.0",
-    "@nx/eslint": "23.2.0",
     "@nx/eslint-plugin": "23.2.0",
     "@nx/jest": "23.2.0",
     "@nx/js": "23.2.0",
@@ -35,23 +34,19 @@
     "@swc/helpers": "~0.5.18",
     "@types/jest": "~30.0.0",
     "@types/node": "^24.19.2",
-    "eslint": "^9.8.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.7",
     "husky": "^9.1.7",
     "jest": "~30.3.0",
     "jest-environment-node": "~30.3.0",
     "jest-util": "~30.3.0",
-    "jsonc-eslint-parser": "^2.1.0",
     "lint-staged": "^17.6.0",
     "nx": "23.2.0",
+    "oxlint": "^1.89.0",
     "prettier": "~3.6.2",
     "ts-jest": "^29.4.0",
     "ts-node": "10.9.1",
     "tsdown": "^0.22.3",
     "tslib": "^2.3.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "^8.40.0",
     "unrun": "^0.3.1",
     "webpack": "^5.101.3",
     "webpack-cli": "^7.0.0",
@@ -59,7 +54,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
+      "oxlint --fix",
       "prettier --write"
     ],
     "*.{md,json,yml,yaml,html}": [
