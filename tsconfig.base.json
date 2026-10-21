@@ -29,8 +29,14 @@
       "@common/utils/*": [
         "./libs/utils/src/lib/*"
       ],
-      "@common/interfaces": [
-        "./libs/interface/src/index.ts"
+      "@common/interfaces/*": [
+        "./libs/interface/src/lib/*"
+      ],
+      "@common/pipes/*": [
+        "./libs/pipes/src/lib/*"
+      ],
+      "@common/interceptors": [
+        "./libs/interceptors/src/index.ts"
       ]
     },
     "strict": false,

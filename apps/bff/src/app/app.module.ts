@@ -1,6 +1,9 @@
+import { CustomZodValidationPipe } from '@common/pipes/custom-zod-validation.pipe'
 import { LoggerMiddleware } from '@common/middlewares/logger.middleware'
 import { MiddlewareConsumer, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
+import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import { ZodSerializerInterceptor } from 'nestjs-zod'
 import { allConfigs } from '../configuration/configuration'
 import { envFile, validateEnv } from '../configuration/env.config'
 import { AppController } from './app.controller'
@@ -17,7 +20,11 @@ import { AppService } from './app.service'
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    { provide: APP_PIPE, useClass: CustomZodValidationPipe },
+    { provide: APP_INTERCEPTOR, useClass: ZodSerializerInterceptor },
+  ],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

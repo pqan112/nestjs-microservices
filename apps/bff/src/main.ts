@@ -16,11 +16,11 @@ async function bootstrap() {
     const config = app.get(ConfigService)
     const appCfg = config.getOrThrow<AppConfig>(APP_CONFIG)
 
-    // setup swagger
-    setupSwagger(app, config)
-
     const globalPrefix = appCfg.globalPrefix
     app.setGlobalPrefix(globalPrefix)
+
+    // swagger must run after setGlobalPrefix so documented paths include the prefix
+    setupSwagger(app, config)
     const port = appCfg.port || 3000
     await app.listen(port)
     Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
