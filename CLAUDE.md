@@ -25,3 +25,7 @@
 ## Terminal
 
 - DON'T USE npm or npx, USE pnpm
+
+## Mandatory Guidelines
+
+- **Code Simplification:** Always read and apply the instructions from the `code-simplifier` skill before writing, updating, or refactoring any code.

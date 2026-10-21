@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "code-simplifier",
+  "owner": "sickn33",
+  "repo": "antigravity-awesome-skills",
+  "path": "plugins/agentic-awesome-skills-claude/skills/code-simplifier",
+  "branch": "main",
+  "sha": "7e48e7da0555e6c499a9d27559561f83b4681f5e",
+  "source": "manual"
+}
