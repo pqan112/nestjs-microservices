@@ -1,10 +1,7 @@
 import z from 'zod'
-import {
-  baseEnvSchema,
-  defineEnv,
-} from '@nestjs-template/configuration/base.config'
+import { baseEnvSchema, defineEnv } from '@common/configuration/base.config'
 
-export { envFile } from '@nestjs-template/configuration/base.config'
+export { envFile } from '@common/configuration/base.config'
 
 const configSchema = baseEnvSchema.extend({
   PORT: z.coerce.number().default(8080),

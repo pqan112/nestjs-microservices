@@ -10,18 +10,39 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@common/constants/*": ["./libs/constants/src/lib/*"],
-      "@nestjs-template/configuration/*": ["./libs/configuration/src/lib/*"]
+      "@common/constants/*": [
+        "./libs/constants/src/lib/*"
+      ],
+      "@common/configuration/*": [
+        "./libs/configuration/src/lib/*"
+      ],
+      "@common/middlewares/*": [
+        "./libs/middlewares/src/lib/*"
+      ],
+      "@common/utils/*": [
+        "./libs/utils/src/lib/*"
+      ],
+      "@common/interfaces": [
+        "./libs/interface/src/index.ts"
+      ]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,
-    "types": ["*"],
+    "types": [
+      "*"
+    ],
     "esModuleInterop": false,
     "ignoreDeprecations": "6.0"
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
