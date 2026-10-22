@@ -35,8 +35,11 @@
       "@common/pipes/*": [
         "./libs/pipes/src/lib/*"
       ],
-      "@common/interceptors": [
-        "./libs/interceptors/src/index.ts"
+      "@common/interceptors/*": [
+        "./libs/interceptors/src/lib/*"
+      ],
+      "@common/filters/*": [
+        "./libs/filters/src/lib/*"
       ]
     },
     "strict": false,

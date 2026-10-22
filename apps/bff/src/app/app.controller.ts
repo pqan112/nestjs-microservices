@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common'
-import { ResponseDto } from '@common/interfaces/response.dto'
+import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { ZodResponse } from 'nestjs-zod'
 import { AppService } from './app.service'
 
