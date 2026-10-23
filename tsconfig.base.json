@@ -40,6 +40,9 @@
       ],
       "@common/filters/*": [
         "./libs/filters/src/lib/*"
+      ],
+      "@common/decorators/*": [
+        "./libs/decorators/src/lib/*"
       ]
     },
     "strict": false,
