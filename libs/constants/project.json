@@ -4,7 +4,6 @@
   "sourceRoot": "libs/constants/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project constants --web",
   "targets": {
     "lint": {}
   }

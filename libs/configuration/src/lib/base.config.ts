@@ -1,23 +1,13 @@
 import z from 'zod'
-import fs from 'fs'
-import path from 'path'
 
 export const envFile =
-  process.env['NODE_ENV'] === 'production'
-    ? ['.env.prod', '.env']
-    : ['.env.dev', '.env']
+  process.env['NODE_ENV'] === 'production' ? ['.env.prod', '.env'] : ['.env.dev', '.env']
 
-// Kiểm tra coi thử có file .env hay chưa
-if (!fs.existsSync(path.resolve('.env'))) {
-  console.log('Không tìm thấy file .env')
-  process.exit(1)
-}
-
+// File .env chỉ là tiện ích cho dev; production nhận biến từ platform. Thiếu biến
+// bắt buộc sẽ được `validateEnv` báo lỗi rõ ràng.
 // Biến môi trường dùng chung cho mọi service
 export const baseEnvSchema = z.object({
-  NODE_ENV: z
-    .enum(['development', 'production', 'test'])
-    .default('development'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   GLOBAL_PREFIX: z.string().min(1),
 })
 

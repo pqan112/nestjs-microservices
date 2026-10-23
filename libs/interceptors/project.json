@@ -4,7 +4,6 @@
   "sourceRoot": "libs/interceptors/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project interceptors --web",
   "targets": {
     "lint": {}
   }

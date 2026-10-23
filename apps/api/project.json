@@ -8,15 +8,15 @@
     "build": {
       "executor": "nx:run-commands",
       "cache": true,
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "typecheck"],
       "inputs": ["production", "^production"],
       "outputs": ["{workspaceRoot}/dist/apps/api"],
       "options": {
-        "command": "tsdown",
+        "command": "tsdown -c apps/api/tsdown.config.mts",
         "env": {
           "NODE_ENV": "production"
         },
-        "cwd": "apps/api"
+        "cwd": "{workspaceRoot}"
       },
       "configurations": {
         "development": {
@@ -57,10 +57,10 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "cwd": "apps/api",
+        "cwd": "{workspaceRoot}",
         "commands": [
-          "tsdown --watch --no-clean",
-          "node --watch ../../dist/apps/api/main.cjs"
+          "tsdown -c apps/api/tsdown.config.mts --watch --no-clean",
+          "node --watch dist/apps/api/main.cjs"
         ],
         "env": {
           "NODE_ENV": "development"
@@ -77,6 +77,15 @@
             "NODE_ENV": "production"
           }
         }
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["production", "^production"],
+      "options": {
+        "command": "tsc --noEmit -p apps/api/tsconfig.app.json",
+        "cwd": "{workspaceRoot}"
       }
     },
     "test": {

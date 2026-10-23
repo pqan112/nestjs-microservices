@@ -4,3 +4,4 @@ dist
 .nx/cache
 tmp
 *.log
+.env*
