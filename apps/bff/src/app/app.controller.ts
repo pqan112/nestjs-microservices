@@ -2,15 +2,15 @@ import { Controller, Get, Inject } from '@nestjs/common'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { ZodResponse } from 'nestjs-zod'
 import { AppService } from './app.service'
-import { ClientProxy } from '@nestjs/microservices'
 import { TCP_SERVICES } from '@common/configuration/tcp.config'
-import { firstValueFrom } from 'rxjs'
+import { map } from 'rxjs'
+import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
 
 @Controller('app')
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    @Inject(TCP_SERVICES.INVOICE_SERVICE) private readonly invoiceClient: ClientProxy
+    @Inject(TCP_SERVICES.INVOICE_SERVICE) private readonly invoiceClient: TcpClient
   ) {}
 
   @Get()
@@ -21,10 +21,11 @@ export class AppController {
 
   @Get('invoice')
   async getInvoice() {
-    const result = await firstValueFrom(this.invoiceClient.send<string, number>('get_invoice', 1))
-
-    return ResponseDto.create({
-      data: result,
-    })
+    return this.invoiceClient
+      .send<string, number>('get_invoice', {
+        data: 1,
+        processId: 'aaa',
+      })
+      .pipe(map((res) => ResponseDto.create({ data: res.data })))
   }
 }

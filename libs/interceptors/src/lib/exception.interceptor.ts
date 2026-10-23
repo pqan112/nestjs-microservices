@@ -16,7 +16,7 @@ export class ExceptionInterceptor implements NestInterceptor {
       [MetadataKeys.START_TIME]: number
     } = ctx.getRequest()
 
-    const processID = request[MetadataKeys.PROCESS_ID]
+    const processId = request[MetadataKeys.PROCESS_ID]
     const startTime = request[MetadataKeys.START_TIME]
 
     return next.handle().pipe(
@@ -27,7 +27,7 @@ export class ExceptionInterceptor implements NestInterceptor {
           data !== null && typeof data === 'object'
             ? (data as ResponseDto)
             : { message: HTTP_MESSAGE.OK, statusCode: HttpStatus.OK, data }
-        body.processID = processID
+        body.processId = processId
         body.duration = `${durationMs} ms`
 
         return body

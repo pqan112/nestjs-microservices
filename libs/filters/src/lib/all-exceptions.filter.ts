@@ -41,7 +41,7 @@ export class AllExceptionFilter implements ExceptionFilter {
       message,
       statusCode,
       duration: `${Date.now() - request[MetadataKeys.START_TIME]} ms`,
-      processID: request[MetadataKeys.PROCESS_ID],
+      processId: request[MetadataKeys.PROCESS_ID],
     }
     response.status(statusCode).json(body)
   }
