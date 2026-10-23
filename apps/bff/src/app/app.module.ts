@@ -10,7 +10,8 @@ import { allConfigs } from '../configuration/configuration'
 import { envFile, validateEnv } from '../configuration/env.config'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { ClientsModule, Transport } from '@nestjs/microservices'
+import { ClientsModule } from '@nestjs/microservices'
+import { TCP_SERVICES, TcpProvider } from '@common/configuration/tcp.config'
 
 @Module({
   imports: [
@@ -21,13 +22,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices'
       envFilePath: envFile,
       load: allConfigs,
     }),
-    ClientsModule.register([
-      {
-        name: 'TCP_INVOICE_SERVICE',
-        transport: Transport.TCP,
-        options: { host: 'localhost', port: 3301 },
-      },
-    ]),
+    ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.INVOICE_SERVICE)]),
   ],
   controllers: [AppController],
   providers: [

@@ -3,13 +3,14 @@ import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { ZodResponse } from 'nestjs-zod'
 import { AppService } from './app.service'
 import { ClientProxy } from '@nestjs/microservices'
+import { TCP_SERVICES } from '@common/configuration/tcp.config'
 import { firstValueFrom } from 'rxjs'
 
 @Controller('app')
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    @Inject('TCP_INVOICE_SERVICE') private readonly invoiceClient: ClientProxy
+    @Inject(TCP_SERVICES.INVOICE_SERVICE) private readonly invoiceClient: ClientProxy
   ) {}
 
   @Get()
