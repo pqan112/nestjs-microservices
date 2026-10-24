@@ -58,6 +58,7 @@
       "dependsOn": ["build"],
       "options": {
         "cwd": "{workspaceRoot}",
+        "forwardAllArgs": false,
         "commands": [
           "tsdown -c apps/api/tsdown.config.mts --watch --no-clean",
           "node --watch dist/apps/api/main.cjs"

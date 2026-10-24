@@ -43,6 +43,9 @@
       ],
       "@common/decorators/*": [
         "./libs/decorators/src/lib/*"
+      ],
+      "@common/schemas/*": [
+        "./libs/schemas/src/lib/*"
       ]
     },
     "strict": false,

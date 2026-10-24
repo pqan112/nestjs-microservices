@@ -6,6 +6,7 @@ import { TCP_SERVICES } from '@common/configuration/tcp.config'
 import { map } from 'rxjs'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
 import { ProcessId } from '@common/decorators/processId.decorator'
+import { INVOICE_PATTERNS } from '@common/constants/tcp-pattern.constant'
 
 @Controller('app')
 export class AppController {
@@ -23,7 +24,7 @@ export class AppController {
   @Get('invoice')
   async getInvoice(@ProcessId() processId: string) {
     return this.invoiceClient
-      .send<string, { invoiceId: number }>('get_invoice', {
+      .send<string, { invoiceId: number }>(INVOICE_PATTERNS.GET_INVOICE, {
         data: { invoiceId: 1 },
         processId,
       })

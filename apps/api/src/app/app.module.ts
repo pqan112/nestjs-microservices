@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-import { HealthController } from './health.controller'
-import { TodosController } from './todos.controller'
-import { TodosService } from './todos.service'
 import { ConfigModule } from '@nestjs/config'
 import { envFile, validateEnv } from '../configuration/env.config'
 import { allConfigs } from '../configuration/configuration'
+import { MongoModule } from '@common/configuration/mongo.config'
+import { InvoiceModule } from './modules/invoice/invoice.module'
 
 @Module({
   imports: [
@@ -17,8 +14,10 @@ import { allConfigs } from '../configuration/configuration'
       envFilePath: envFile,
       load: allConfigs,
     }),
+    MongoModule,
+    InvoiceModule,
   ],
-  controllers: [AppController, HealthController, TodosController],
-  providers: [AppService, TodosService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

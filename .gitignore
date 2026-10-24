@@ -52,3 +52,6 @@ Thumbs.db
 .env.test.local
 .env.production.local
 .env.local
+
+# Docker data
+docker/**/docker_data

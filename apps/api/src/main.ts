@@ -26,13 +26,13 @@ async function bootstrap() {
       port: config.getOrThrow<number>(`${TCP_SERVICES.INVOICE_SERVICE}_PORT`),
     },
   })
-
-  const globalPrefix = 'api'
+  const globalPrefix = appCfg.globalPrefix
   app.setGlobalPrefix(globalPrefix)
   const port = appCfg.port || 3001
   await app.startAllMicroservices()
   await app.listen(port)
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
+  app.enableShutdownHooks()
 }
 
 bootstrap()

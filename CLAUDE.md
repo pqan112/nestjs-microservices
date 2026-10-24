@@ -1,31 +1,52 @@
-<!-- nx configuration start-->
-<!-- Leave the start & end comments to automatically receive updates. -->
+# CLAUDE.md
 
-# General Guidelines for working with Nx
+## Project Overview
 
-- For navigating/exploring the workspace, invoke the `nx-workspace` skill first - it has patterns for querying projects, targets, and dependencies
-- When running tasks (for example build, lint, test, e2e, etc.), always prefer running the task through `nx` (i.e. `nx run`, `nx run-many`, `nx affected`) instead of using the underlying tooling directly
-- Prefix nx commands with the workspace's package manager (e.g., `pnpm nx build`, `npm exec nx test`) - avoids using globally installed CLI
-- You have access to the Nx MCP server and its tools, use them to help the user
-- For Nx plugin best practices, check `node_modules/@nx/<plugin>/PLUGIN.md`. Not all plugins have this file - proceed without it if unavailable.
-- NEVER guess CLI flags - always check nx_docs or `--help` first when unsure
+**eInvoice** is an electronic invoice management system built with NestJS and Nx monorepo architecture.
 
-## Scaffolding & Generators
+### Core Features
 
-- For scaffolding tasks (creating apps, libs, project structure, setup), ALWAYS invoke the `nx-generate` skill FIRST before exploring or calling MCP tools
+1. **Invoice Management:** Create and manage invoices in MongoDB with lifecycle `CREATED → SENT → PAID`.
+2. **PDF Generation:** Generate invoice PDFs using EJS and Puppeteer, with Base64 output support.
+3. **Cloud Storage:** Upload PDFs to Cloudinary and store the `fileUrl` in MongoDB.
+4. **Online Payment:** Create Stripe Checkout Sessions for each invoice.
+5. **Async Email:** Use Kafka to send emails containing PDF attachments and payment links.
+6. **Payment Webhook:** Verify Stripe webhook signatures, retrieve invoice IDs from metadata, and update invoice status to `PAID`.
 
-## When to use nx_docs
+## Tech Stack
 
-- USE for: advanced config options, unfamiliar flags, migration guides, plugin configuration, edge cases
-- DON'T USE for: basic generator syntax (`nx g @nx/react:app`), standard commands, things you already know
-- The `nx-generate` skill handles generator discovery internally - don't call nx_docs just to look up generator syntax
+- **Monorepo:** Nx
+- **Package Manager:** pnpm
+- **Backend:** NestJS, TypeScript
+- **Validation:** Zod, nestjs-zod
+- **Database:** MongoDB, TypeORM
 
-<!-- nx configuration end-->
+## Development Guidelines
 
-## Terminal
+### 1. Terminal
 
-- DON'T USE npm or npx, USE pnpm
+- DON'T use `npm` or `npx`. ALWAYS use `pnpm`.
+- Use Nx commands to manage and run projects.
+- Use `pnpm exec` for locally installed CLI tools.
 
-## Mandatory Guidelines
+### 2. Code Quality
 
-- **Code Simplification:** Always read and apply the instructions from the `code-simplifier` skill before writing, updating, or refactoring any code.
+- Always read and apply the instructions from the `code-simplifier` skill before writing, updating, or refactoring code.
+- Follow existing project structure, coding conventions, and architecture.
+- Prefer simple, maintainable solutions over unnecessary abstractions.
+- Use TypeScript strict typing; avoid `any` whenever possible.
+- Avoid duplicated code and unnecessary dependencies.
+
+### 3. NestJS & Validation
+
+- Follow NestJS module-based architecture and dependency injection.
+- Use Zod and nestjs-zod for input validation.
+- Reuse schemas and infer TypeScript types with `z.infer` where appropriate.
+- Use appropriate NestJS exceptions for error handling.
+
+### 4. Database
+
+- Follow existing TypeORM and MongoDB conventions.
+- Handle ObjectId and document operations correctly.
+- Consider concurrent updates, data consistency, and database performance.
+- Do not assume relational database features are supported by MongoDB.
