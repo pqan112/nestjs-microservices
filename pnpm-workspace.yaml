@@ -3,6 +3,7 @@ allowBuilds:
   '@scarf/scarf': true
   nx: false
   unrs-resolver: false
+  '@parcel/watcher': false
 
 packages:
   - 'apps/*'

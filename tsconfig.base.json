@@ -46,6 +46,9 @@
       ],
       "@common/schemas/*": [
         "./libs/schemas/src/lib/*"
+      ],
+      "@common/entities": [
+        "./libs/entities/src/index.ts"
       ]
     },
     "strict": false,
