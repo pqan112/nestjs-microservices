@@ -1,5 +1,5 @@
-import { ExceptionInterceptor } from '@common/interceptors/exception.interceptor'
 import { AllExceptionFilter } from '@common/filters/all-exceptions.filter'
+import { ExceptionInterceptor } from '@common/interceptors/exception.interceptor'
 import { LoggerMiddleware } from '@common/middlewares/logger.middleware'
 import { CustomZodValidationPipe } from '@common/pipes/custom-zod-validation.pipe'
 import { MiddlewareConsumer, Module } from '@nestjs/common'
@@ -8,10 +8,7 @@ import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { ZodSerializerInterceptor } from 'nestjs-zod'
 import { allConfigs } from '../configuration/configuration'
 import { envFile, validateEnv } from '../configuration/env.config'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-import { ClientsModule } from '@nestjs/microservices'
-import { TCP_SERVICES, TcpProvider } from '@common/configuration/tcp.config'
+import { InvoiceModule } from './modules/invoice/invoice.module'
 
 @Module({
   imports: [
@@ -22,15 +19,14 @@ import { TCP_SERVICES, TcpProvider } from '@common/configuration/tcp.config'
       envFilePath: envFile,
       load: allConfigs,
     }),
-    ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.INVOICE_SERVICE)]),
+    InvoiceModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    AppService,
     { provide: APP_PIPE, useClass: CustomZodValidationPipe },
-    { provide: APP_FILTER, useClass: AllExceptionFilter },
     { provide: APP_INTERCEPTOR, useClass: ExceptionInterceptor },
     { provide: APP_INTERCEPTOR, useClass: ZodSerializerInterceptor },
+    { provide: APP_FILTER, useClass: AllExceptionFilter },
   ],
 })
 export class AppModule {

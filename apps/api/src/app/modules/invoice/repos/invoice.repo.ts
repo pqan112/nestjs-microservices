@@ -3,7 +3,7 @@ import { Collection, Db, ObjectId } from 'mongodb'
 import { MONGO_DB } from '@common/configuration/mongo.config'
 import { COLLECTIONS } from '@common/constants/common.constant'
 import { newDocument, touch } from '@common/schemas/base.schema'
-import { CreateInvoiceDto, Invoice, UpdateInvoiceDto } from '@common/schemas/invoice.schema'
+import { CreateInvoice, Invoice, UpdateInvoice } from '@common/schemas/invoice.schema'
 import { INVOICE_STATUS } from '@common/constants/invoice.enum'
 
 @Injectable()
@@ -14,7 +14,7 @@ export class InvoiceRepo {
     this.invoices = db.collection<Invoice>(COLLECTIONS.INVOICE)
   }
 
-  async create(data: CreateInvoiceDto): Promise<Invoice> {
+  async create(data: Omit<CreateInvoice, 'status'>): Promise<Invoice> {
     const invoice = newDocument({ ...data, status: INVOICE_STATUS.CREATED })
     await this.invoices.insertOne(invoice)
     return invoice
@@ -24,7 +24,7 @@ export class InvoiceRepo {
     return this.invoices.findOne({ _id: new ObjectId(id) })
   }
 
-  update(_id: ObjectId, dto: UpdateInvoiceDto): Promise<Invoice | null> {
+  update(_id: ObjectId, dto: UpdateInvoice): Promise<Invoice | null> {
     return this.invoices.findOneAndUpdate(
       { _id },
       { $set: touch(dto) },

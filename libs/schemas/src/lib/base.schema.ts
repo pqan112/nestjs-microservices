@@ -8,9 +8,6 @@ export const baseSchema = z.object({
   updatedAt: z.date(),
 })
 
-// Dùng cho schema input (DTO): `invoiceSchema.omit(omitBase)` bỏ các field server tự sinh.
-export const omitBase = { _id: true, createdAt: true, updatedAt: true } as const
-
 // Thay cho `timestamps: true` của mongoose: driver không tự set, nên gọi khi insert.
 export function newDocument<T extends object>(data: T) {
   const now = new Date()

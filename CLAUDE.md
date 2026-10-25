@@ -41,6 +41,7 @@
 
 - Follow NestJS module-based architecture and dependency injection.
 - Use Zod and nestjs-zod for input validation.
+- DO NOT extend redundant field
 - Reuse schemas and infer TypeScript types with `z.infer` where appropriate.
 - Use appropriate NestJS exceptions for error handling.
 
