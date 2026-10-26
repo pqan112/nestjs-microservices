@@ -27,7 +27,6 @@
 
 - DON'T use `npm` or `npx`. ALWAYS use `pnpm`.
 - Use Nx commands to manage and run projects.
-- Use `pnpm exec` for locally installed CLI tools.
 
 ### 2. Code Quality
 

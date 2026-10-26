@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { Collection, Db, ObjectId, WithId } from 'mongodb'
 import { MONGO_DB } from '@common/configuration/mongo.config'
-import { COLLECTIONS } from '@common/constants/common.constant'
+import { COLLECTIONS } from '@common/constants/enum/mongo-collection.enum'
 import { newDocument, touch } from '@common/schemas/base.schema'
 import { CreateInvoice, Invoice, UpdateInvoice } from '@common/schemas/invoice.schema'
 import { INVOICE_STATUS } from '@common/constants/enum/invoice.enum'
