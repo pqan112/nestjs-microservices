@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { envFile, validateEnv } from '../configuration/env.config'
 import { allConfigs } from '../configuration/configuration'
-import { TypeOrmProvider } from '@common/configuration/typeorm.config'
+import { ProductModule } from './modules/product/product.module'
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { TypeOrmProvider } from '@common/configuration/typeorm.config'
       envFilePath: envFile,
       load: allConfigs,
     }),
-    TypeOrmProvider,
+    ProductModule,
   ],
   controllers: [],
   providers: [],

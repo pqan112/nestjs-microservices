@@ -1,6 +1,7 @@
 import { createZodDto } from 'nestjs-zod'
 import z from 'zod'
-import { INVOICE_STATUS } from '@common/constants/invoice.enum'
+import { INVOICE_STATUS } from '@common/constants/enum/invoice.enum'
+import { baseEntityResponseSchema } from '../common/base-entity-response.dto'
 
 const clientResponseSchema = z.object({
   name: z.string(),
@@ -18,7 +19,7 @@ const itemResponseSchema = z.object({
 })
 
 // Khớp output của `toResponse` (`_id` -> `id`).
-export const invoiceResponseSchema = z.object({
+export const invoiceResponseSchema = baseEntityResponseSchema.extend({
   id: z.string(),
   client: clientResponseSchema,
   items: z.array(itemResponseSchema),

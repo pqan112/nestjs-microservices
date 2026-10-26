@@ -11,7 +11,7 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 import { MicroserviceOptions, Transport } from '@nestjs/microservices'
 import { ConfigService } from '@nestjs/config'
-import { TCP_SERVICES } from '@common/configuration/tcp.config'
+import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { APP_CONFIG, AppConfig } from './configuration/app/app.config'
 
 async function bootstrap() {
@@ -22,8 +22,8 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.TCP,
     options: {
-      host: config.getOrThrow<string>(`${TCP_SERVICES.INVOICE_SERVICE}_HOST`),
-      port: config.getOrThrow<number>(`${TCP_SERVICES.INVOICE_SERVICE}_PORT`),
+      host: config.getOrThrow<string>(`${TCP_SERVICES.PRODUCT_SERVICE}_HOST`),
+      port: config.getOrThrow<number>(`${TCP_SERVICES.PRODUCT_SERVICE}_PORT`),
     },
   })
   const globalPrefix = appCfg.globalPrefix

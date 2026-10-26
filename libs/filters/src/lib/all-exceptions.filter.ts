@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common'
 import { Request, Response } from 'express'
 import { MetadataKeys } from '@common/constants/common.constant'
-import { HTTP_MESSAGE } from '@common/constants/http-message.enum'
+import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 
 @Catch()

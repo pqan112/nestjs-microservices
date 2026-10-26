@@ -35,8 +35,8 @@ export const TypeOrmProvider = TypeOrmModule.forRootAsync({
       idleTimeoutMillis: config.get('TYPEORM_POOL_IDLE_TIMEOUT_MS', { infer: true }),
     },
     autoLoadEntities: true,
-    // dùng migration thay vì tự động sync schema
-    synchronize: false,
+    // TODO: tạm bật để test, đổi lại false khi đã có migration
+    synchronize: true,
     logging:
       config.get('NODE_ENV', { infer: true }) === 'development'
         ? ['error', 'warn', 'query']

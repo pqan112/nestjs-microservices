@@ -1,5 +1,5 @@
 import z from 'zod'
-import { INVOICE_STATUS } from '@common/constants/invoice.enum'
+import { INVOICE_STATUS } from '@common/constants/enum/invoice.enum'
 import { baseSchema } from './base.schema'
 
 export const clientSchema = z.object({

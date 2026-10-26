@@ -1,9 +1,6 @@
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { ClientsProviderAsyncOptions, Transport } from '@nestjs/microservices'
-
-export enum TCP_SERVICES {
-  INVOICE_SERVICE = 'TCP_INVOICE_SERVICE',
-}
+import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 
 export function TcpProvider(serviceName: TCP_SERVICES): ClientsProviderAsyncOptions {
   return {

@@ -9,6 +9,7 @@ import { ZodSerializerInterceptor } from 'nestjs-zod'
 import { allConfigs } from '../configuration/configuration'
 import { envFile, validateEnv } from '../configuration/env.config'
 import { InvoiceModule } from './modules/invoice/invoice.module'
+import { ProductModule } from './modules/product/product.module'
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { InvoiceModule } from './modules/invoice/invoice.module'
       load: allConfigs,
     }),
     InvoiceModule,
+    ProductModule,
   ],
   controllers: [],
   providers: [

@@ -4,7 +4,7 @@ import { MONGO_DB } from '@common/configuration/mongo.config'
 import { COLLECTIONS } from '@common/constants/common.constant'
 import { newDocument, touch } from '@common/schemas/base.schema'
 import { CreateInvoice, Invoice, UpdateInvoice } from '@common/schemas/invoice.schema'
-import { INVOICE_STATUS } from '@common/constants/invoice.enum'
+import { INVOICE_STATUS } from '@common/constants/enum/invoice.enum'
 
 @Injectable()
 export class InvoiceRepo {

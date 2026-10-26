@@ -3,7 +3,7 @@ import { map, Observable } from 'rxjs'
 import { Request } from 'express'
 import { MetadataKeys } from '@common/constants/common.constant'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
-import { HTTP_MESSAGE } from '@common/constants/http-message.enum'
+import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
 
 export class ExceptionInterceptor implements NestInterceptor {
   intercept(

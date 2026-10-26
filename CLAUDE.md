@@ -19,7 +19,7 @@
 - **Package Manager:** pnpm
 - **Backend:** NestJS, TypeScript
 - **Validation:** Zod, nestjs-zod
-- **Database:** MongoDB, TypeORM
+- **Database:** MongoDB (native `mongodb` driver) for invoices in `apps/api`; PostgreSQL via TypeORM for products in `apps/product`
 
 ## Development Guidelines
 
@@ -41,7 +41,7 @@
 
 - Follow NestJS module-based architecture and dependency injection.
 - Use Zod and nestjs-zod for input validation.
-- DO NOT extend redundant field
+- Don't re-declare fields a base schema already provides; extend schemas only with new fields and don't reuse base schemas for dto
 - Reuse schemas and infer TypeScript types with `z.infer` where appropriate.
 - Use appropriate NestJS exceptions for error handling.
 
@@ -51,3 +51,19 @@
 - Handle ObjectId and document operations correctly.
 - Consider concurrent updates, data consistency, and database performance.
 - Do not assume relational database features are supported by MongoDB.
+
+### 5. Testing
+
+- Run tests and fix detected issues in a maximum of 3 iterations.
+- Group errors by category (e.g., TypeScript, build errors and system errors) to identify root causes and fix them efficiently.
+- If issues remain after 3 iterations, report unresolved errors and their possible causes.
+
+### 6. Refactoring
+
+- Prioritize readability, simplicity, and maintainability over clever or overly concise code.
+- Always read and apply the `code-simplifier` skill before refactoring.
+- Understand existing code, project conventions, dependencies, and usages before making changes.
+- Preserve existing behavior, APIs, and business logic.
+- Follow KISS, DRY, and YAGNI principles; avoid unnecessary abstractions and over-engineering.
+- Use clear, meaningful naming and keep functions focused on a single responsibility.
+- Keep refactoring changes small and focused; avoid unrelated modifications and ensure no errors.

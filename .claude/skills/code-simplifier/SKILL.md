@@ -1,6 +1,6 @@
 ---
 name: code-simplifier
-description: Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to "simplify code", "clean up code", "refactor for clarity", "improve readability", or review recently modified code for elegance. Focuses on project-specific best practices.
+description: Continuously simplifies and refines code across the entire application for clarity, consistency, and maintainability while preserving all existing functionality. Always apply project-specific best practices, coding conventions, and established architecture when writing, updating, reviewing, or refactoring code. Proactively identify and improve unnecessary complexity, duplication, and readability issues without introducing unrelated changes or over-engineering.
 ---
 
 <!--
@@ -61,55 +61,6 @@ Only refine code that has been recently modified or touched in the current sessi
 5. **Verify** the refined code is simpler and more maintainable
 6. **Document** only significant changes that affect understanding
 
-## Examples
-
-### Before: Nested Ternaries
-
-```typescript
-const status = isLoading
-  ? 'loading'
-  : hasError
-    ? 'error'
-    : isComplete
-      ? 'complete'
-      : 'idle'
-```
-
-### After: Clear if/else Statement
-
-```typescript
-function getStatus(
-  isLoading: boolean,
-  hasError: boolean,
-  isComplete: boolean
-): string {
-  if (isLoading) return 'loading'
-  if (hasError) return 'error'
-  if (isComplete) return 'complete'
-  return 'idle'
-}
-```
-
-### Before: Redundant Abstraction
-
-```typescript
-function isNotEmpty(arr: unknown[]): boolean {
-  return arr.length > 0
-}
-
-if (isNotEmpty(items)) {
-  // ...
-}
-```
-
-### After: Direct Check
-
-```typescript
-if (items.length > 0) {
-  // ...
-}
-```
-
 ## Limitations
 
-Stop and ask for clarification if input details or success criteria are missing or vague. Always require the user to choose or confirm the tech stack (tools, libraries, frameworks) if not already provided
+Ask for clarification only if the simplification goal is unclear. The tech stack is defined in CLAUDE.md.

@@ -47,12 +47,13 @@
       "@common/schemas/*": [
         "./libs/schemas/src/lib/*"
       ],
-      "@common/entities": [
-        "./libs/entities/src/index.ts"
+      "@common/entities/*": [
+        "./libs/entities/src/lib/*"
       ]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,
+    "strictPropertyInitialization": false,
     "types": [
       "*"
     ],

@@ -1,5 +1,5 @@
 import { createZodDto } from 'nestjs-zod'
-import { HTTP_MESSAGE } from '@common/constants/http-message.enum'
+import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
 import z from 'zod'
 import { HttpStatus } from '@nestjs/common'
 
