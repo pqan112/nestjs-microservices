@@ -1,5 +1,3 @@
-export const PORT = 3000
-
 export enum COLLECTIONS {
   INVOICE = 'invoice',
 }

@@ -64,6 +64,8 @@
       "options": {
         "passWithNoTests": true
       }
-    }
+    },
+    "typecheck": {},
+    "lint": {}
   }
 }

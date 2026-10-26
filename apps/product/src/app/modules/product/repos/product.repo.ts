@@ -30,9 +30,7 @@ export class ProductRepo {
   }
 
   async exists(sku: string, name: string): Promise<boolean> {
-    const result = await this.repo.findOne({
-      where: [{ sku }, { name }],
-    })
-    return !!result
+    const product = await this.repo.findOne({ where: [{ sku }, { name }] })
+    return !!product
   }
 }

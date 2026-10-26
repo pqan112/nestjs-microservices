@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { Collection, Db, ObjectId } from 'mongodb'
+import { Collection, Db, ObjectId, WithId } from 'mongodb'
 import { MONGO_DB } from '@common/configuration/mongo.config'
 import { COLLECTIONS } from '@common/constants/common.constant'
 import { newDocument, touch } from '@common/schemas/base.schema'
@@ -14,19 +14,23 @@ export class InvoiceRepo {
     this.invoices = db.collection<Invoice>(COLLECTIONS.INVOICE)
   }
 
-  async create(data: Omit<CreateInvoice, 'status'>): Promise<Invoice> {
+  async create(data: Omit<CreateInvoice, 'status'>): Promise<WithId<Invoice>> {
     const invoice = newDocument({ ...data, status: INVOICE_STATUS.CREATED })
-    await this.invoices.insertOne(invoice)
-    return invoice
+    const { insertedId } = await this.invoices.insertOne(invoice)
+    return { _id: insertedId, ...invoice }
   }
 
-  findById(id: string): Promise<Invoice | null> {
+  findAll(): Promise<WithId<Invoice>[]> {
+    return this.invoices.find().toArray()
+  }
+
+  findById(id: string): Promise<WithId<Invoice> | null> {
     return this.invoices.findOne({ _id: new ObjectId(id) })
   }
 
-  update(_id: ObjectId, dto: UpdateInvoice): Promise<Invoice | null> {
+  update(id: string, dto: UpdateInvoice): Promise<WithId<Invoice> | null> {
     return this.invoices.findOneAndUpdate(
-      { _id },
+      { _id: new ObjectId(id) },
       { $set: touch(dto) },
       { returnDocument: 'after' }
     )

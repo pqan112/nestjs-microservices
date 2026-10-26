@@ -1,2 +1,2 @@
 pnpx lint-staged
-nx run-many -t lint
+nx run-many -t typecheck lint

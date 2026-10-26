@@ -1,10 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
-// reflect-metadata must load before any decorated class so Nest can read
-// the metadata emitted by emitDecoratorMetadata (DI + route reflection).
 import 'reflect-metadata'
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'

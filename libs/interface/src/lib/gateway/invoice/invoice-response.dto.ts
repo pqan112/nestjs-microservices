@@ -18,9 +18,7 @@ const itemResponseSchema = z.object({
   total: z.number(),
 })
 
-// Khớp output của `toResponse` (`_id` -> `id`).
 export const invoiceResponseSchema = baseEntityResponseSchema.extend({
-  id: z.string(),
   client: clientResponseSchema,
   items: z.array(itemResponseSchema),
   totalAmount: z.number(),
@@ -28,8 +26,6 @@ export const invoiceResponseSchema = baseEntityResponseSchema.extend({
   status: z.enum(INVOICE_STATUS),
   supervisorId: z.string().optional(),
   fileUrl: z.string().optional(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
 })
 
 export type InvoiceResponse = z.infer<typeof invoiceResponseSchema>

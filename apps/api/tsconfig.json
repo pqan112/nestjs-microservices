@@ -11,8 +11,6 @@
     }
   ],
   "compilerOptions": {
-    "esModuleInterop": true,
-    "ignoreDeprecations": "6.0",
-    "isolatedModules": true
+    "esModuleInterop": true
   }
 }

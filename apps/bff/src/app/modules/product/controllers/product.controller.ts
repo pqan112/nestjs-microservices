@@ -1,4 +1,4 @@
-import { TCP_REQUEST_MESSSAGE } from '@common/constants/enum/tcp-request-message.enum'
+import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { ProcessId } from '@common/decorators/processId.decorator'
 import { CreateProductRequestDto, ProductResponseDto } from '@common/interfaces/gateway/product'
@@ -23,7 +23,7 @@ export class ProductController {
   async create(@Body() body: CreateProductRequestDto, @ProcessId() processId: string) {
     const result = await firstValueFrom(
       this.productClient.send<ProductTcpResponse, CreateProductTcpRequest>(
-        TCP_REQUEST_MESSSAGE.PRODUCT.CREATE,
+        TCP_REQUEST_MESSAGE.PRODUCT.CREATE,
         {
           data: body,
           processId,
@@ -38,7 +38,7 @@ export class ProductController {
   @ApiOperation({ summary: 'Get list products' })
   async getList(@ProcessId() processId: string) {
     const result = await firstValueFrom(
-      this.productClient.send<ProductTcpResponse[]>(TCP_REQUEST_MESSSAGE.PRODUCT.GET_LIST, {
+      this.productClient.send<ProductTcpResponse[]>(TCP_REQUEST_MESSAGE.PRODUCT.GET_LIST, {
         processId,
       })
     )

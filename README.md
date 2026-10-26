@@ -4,44 +4,17 @@
 
 A production-ready NestJS REST API starter powered by Nx - built for teams who want a solid monorepo foundation with shared types, module boundaries, and Docker support from day one.
 
-The API builds with the oxc toolchain (tsdown, powered by rolldown + the oxc transformer), orchestrated by Nx. tsdown reads `apps/api/tsconfig.app.json`, so `experimentalDecorators` and `emitDecoratorMetadata` are honored - NestJS dependency injection and route reflection keep working with `reflect-metadata`.
-
-🚀 If you haven't connected to Nx Cloud yet, [complete your setup here](https://cloud.nx.app/get-started). Get faster builds with remote caching, distributed task execution, and self-healing CI. [See how your workspace can benefit](#nx-cloud).
-
-## Quick Start
-
-Clone this template into a new workspace:
-
-```sh
-npx create-nx-workspace@latest my-workspace --template nrwl/nestjs-template
-cd my-workspace
-```
-
 ### Dev server (hot reload)
 
 ```sh
 npx nx run api:serve
 ```
 
-The API starts at `http://localhost:3000/api`.
-
-Endpoints available out of the box:
-
-- `GET /api` - hello message
-- `GET /api/health` - health check with uptime + timestamp
-- `GET /api/todos` - list todos
-- `POST /api/todos` - create a todo `{ "title": "..." }`
-- `GET /api/todos/:id` - get one todo
-- `PATCH /api/todos/:id` - update a todo
-- `DELETE /api/todos/:id` - delete a todo
-
 ### Build for production
 
 ```sh
 npx nx run api:build
 ```
-
-This runs tsdown (the oxc toolchain) via Nx and emits `dist/apps/api/main.cjs`. Run it directly with `node dist/apps/api/main.cjs`.
 
 ### Run all builds
 
@@ -66,39 +39,6 @@ npx nx run-many -t lint
 ```sh
 npx nx graph
 ```
-
----
-
-## What's Inside
-
-```
-nestjs-template/
-|- apps/
-|  |- api/                 # NestJS application (oxc/tsdown build orchestrated by Nx)
-|     |- tsdown.config.mts # oxc toolchain build config (decorators + metadata)
-|     |- src/app/
-|        |- app.module.ts  # Root module wiring controllers + providers
-|        |- health.controller.ts  # GET /api/health
-|        |- todos.controller.ts   # CRUD /api/todos
-|        |- todos.service.ts      # In-memory todos store (replace with DB)
-|     |- Dockerfile         # Multi-stage Docker build
-|- packages/
-   |- types/               # Shared DTOs and interfaces (scope:shared tag)
-      |- src/lib/types.ts  # HealthResponse, Todo, CreateTodoDto, UpdateTodoDto
-```
-
-### Module Boundary Tags
-
-| Project | Tags                   | May depend on |
-| ------- | ---------------------- | ------------- |
-| api     | scope:api, type:app    | scope:shared  |
-| types   | scope:shared, type:lib | scope:shared  |
-
-`@nx/enforce-module-boundaries` is configured in `.oxlintrc.json` so violations are caught at lint time, not at runtime.
-
----
-
-## Featured Nx Capabilities
 
 ### Smart Computation Caching
 
@@ -134,18 +74,6 @@ npx nx g @nx/nest:resource --project=api --name=users
 ### Module Boundaries
 
 Enforce architectural rules at lint time. A `scope:api` library can never accidentally import from another app - only from `scope:shared` libs. Configure the rules in `.oxlintrc.json`.
-
-### Docker
-
-The `apps/api/Dockerfile` uses a multi-stage build:
-
-1. **builder** - installs all deps, builds with `nx run api:prune` (the oxc/tsdown build plus a pruned lockfile and workspace modules)
-2. **runner** - minimal Node 22 Alpine image with only production deps
-
-```sh
-docker build -f apps/api/Dockerfile -t nestjs-api .
-docker run -p 3000:3000 nestjs-api
-```
 
 ---
 

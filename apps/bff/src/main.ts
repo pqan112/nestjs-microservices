@@ -1,8 +1,4 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
+import 'reflect-metadata'
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
@@ -21,7 +17,7 @@ async function bootstrap() {
 
     // swagger must run after setGlobalPrefix so documented paths include the prefix
     setupSwagger(app, config)
-    const port = appCfg.port || 3000
+    const port = appCfg.port
     await app.listen(port)
     Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
     Logger.log(

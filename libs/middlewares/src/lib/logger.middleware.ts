@@ -9,13 +9,12 @@ export class LoggerMiddleware implements NestMiddleware {
     const startTime = Date.now()
     const { method, originalUrl, body } = req
     const processId = getProcessId()
-    const now = Date.now()
 
     ;(req as any)[MetadataKeys.PROCESS_ID] = processId
     ;(req as any)[MetadataKeys.START_TIME] = startTime
 
     Logger.log(
-      `HTTP >> Start process '${processId}' >> path: '${originalUrl}' >> method: '${method}' at '${now}' >> input: ${JSON.stringify(
+      `HTTP >> Start process '${processId}' >> path: '${originalUrl}' >> method: '${method}' at '${startTime}' >> input: ${JSON.stringify(
         body
       )}`
     )
@@ -23,7 +22,8 @@ export class LoggerMiddleware implements NestMiddleware {
     const originalSend = res.send.bind(res)
 
     res.send = (body) => {
-      const durationMs = Date.now() - startTime
+      const now = Date.now()
+      const durationMs = now - startTime
       Logger.log(
         `HTTP >> End process '${processId}' >> path: '${originalUrl}' >> method: '${method}' at '${now}' >> duration: ${durationMs} ms`
       )

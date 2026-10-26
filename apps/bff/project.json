@@ -65,6 +65,7 @@
         "passWithNoTests": true
       }
     },
+    "typecheck": {},
     "lint": {}
   }
 }

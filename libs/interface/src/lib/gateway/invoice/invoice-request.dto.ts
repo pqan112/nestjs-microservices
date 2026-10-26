@@ -1,5 +1,6 @@
 import { createZodDto } from 'nestjs-zod'
 import z from 'zod'
+import { INVOICE_STATUS } from '@common/constants/enum/invoice.enum'
 
 export const clientRequestSchema = z.object({
   name: z.string().min(1),
@@ -21,12 +22,20 @@ export const createInvoiceRequestSchema = z.object({
   items: z.array(itemRequestSchema).min(1),
 })
 
+export const updateInvoiceRequestSchema = z.object({
+  client: clientRequestSchema.optional(),
+  status: z.enum(INVOICE_STATUS).optional(),
+})
+
 export type ClientRequest = z.infer<typeof clientRequestSchema>
 export type ItemRequest = z.infer<typeof itemRequestSchema>
 export type CreateInvoiceRequest = z.infer<typeof createInvoiceRequestSchema>
+export type UpdateInvoiceRequest = z.infer<typeof updateInvoiceRequestSchema>
 
 export class ClientRequestDto extends createZodDto(clientRequestSchema) {}
 
 export class ItemRequestDto extends createZodDto(itemRequestSchema) {}
 
 export class CreateInvoiceRequestDto extends createZodDto(createInvoiceRequestSchema) {}
+
+export class UpdateInvoiceRequestDto extends createZodDto(updateInvoiceRequestSchema) {}

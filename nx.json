@@ -45,6 +45,15 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
+    "typecheck": {
+      "cache": true,
+      "inputs": ["production", "^production"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit -p {projectRoot}/tsconfig.app.json",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "lint": {
       "cache": true,
       "inputs": ["default", "{workspaceRoot}/.oxlintrc.json"],

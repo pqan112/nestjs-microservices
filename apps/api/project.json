@@ -5,34 +5,25 @@
   "projectType": "application",
   "tags": ["scope:api", "type:app"],
   "targets": {
-    "build": {
-      "executor": "nx:run-commands",
-      "cache": true,
-      "dependsOn": ["^build", "typecheck"],
-      "inputs": ["production", "^production"],
-      "outputs": ["{workspaceRoot}/dist/apps/api"],
-      "options": {
-        "command": "tsdown -c apps/api/tsdown.config.mts",
-        "env": {
-          "NODE_ENV": "production"
-        },
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "development": {
-          "env": {
-            "NODE_ENV": "development"
-          }
-        }
-      }
-    },
     "prune-lockfile": {
       "dependsOn": ["build"],
       "cache": true,
       "executor": "@nx/js:prune-lockfile",
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/pnpm-workspace.yaml",
+        "{workspaceRoot}/package.json",
+        {
+          "runtime": "node -e \"try{console.log('pnpm major '+require('child_process').execSync('pnpm --version',{stdio:['ignore','pipe','ignore']}).toString().trim().split('.')[0])}catch{console.log('pnpm major unavailable')}\""
+        }
+      ],
       "outputs": [
         "{workspaceRoot}/dist/apps/api/package.json",
-        "{workspaceRoot}/dist/apps/api/package-lock.json"
+        "{workspaceRoot}/dist/apps/api/pnpm-lock.yaml",
+        "{workspaceRoot}/dist/apps/api/pnpm-workspace.yaml",
+        "{workspaceRoot}/dist/apps/api/patches",
+        "{workspaceRoot}/dist/apps/api/local_path_modules"
       ],
       "options": {
         "buildTarget": "build"
@@ -53,40 +44,20 @@
     },
     "serve": {
       "continuous": true,
-      "executor": "nx:run-commands",
+      "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "cwd": "{workspaceRoot}",
-        "forwardAllArgs": false,
-        "commands": [
-          "tsdown -c apps/api/tsdown.config.mts --watch --no-clean",
-          "node --watch dist/apps/api/main.cjs"
-        ],
-        "env": {
-          "NODE_ENV": "development"
-        }
+        "buildTarget": "api:build",
+        "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "env": {
-            "NODE_ENV": "development"
-          }
+          "buildTarget": "api:build:development"
         },
         "production": {
-          "env": {
-            "NODE_ENV": "production"
-          }
+          "buildTarget": "api:build:production"
         }
-      }
-    },
-    "typecheck": {
-      "executor": "nx:run-commands",
-      "cache": true,
-      "inputs": ["production", "^production"],
-      "options": {
-        "command": "tsc --noEmit -p apps/api/tsconfig.app.json",
-        "cwd": "{workspaceRoot}"
       }
     },
     "test": {
@@ -94,6 +65,7 @@
         "passWithNoTests": true
       }
     },
+    "typecheck": {},
     "lint": {}
   }
 }

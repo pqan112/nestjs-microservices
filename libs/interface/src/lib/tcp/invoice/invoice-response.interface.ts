@@ -1,6 +1,3 @@
-import { Invoice } from '@common/schemas/invoice.schema'
+import { InvoiceResponse } from '@common/interfaces/gateway/invoice'
 
-// we can add field to send via tcp
-// ex: & { id: string }
-
-export type InvoiceTcpResponse = Invoice
+export type InvoiceTcpResponse = InvoiceResponse

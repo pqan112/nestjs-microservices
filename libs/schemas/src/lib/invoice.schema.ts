@@ -31,6 +31,5 @@ export type Client = z.infer<typeof clientSchema>
 export type Item = z.infer<typeof itemSchema>
 export type Invoice = z.infer<typeof invoiceSchema>
 
-// Input của repo: bỏ các field server tự sinh.
-export type CreateInvoice = Omit<Invoice, '_id' | 'createdAt' | 'updatedAt'>
+export type CreateInvoice = Omit<Invoice, 'createdAt' | 'updatedAt'>
 export type UpdateInvoice = Partial<CreateInvoice>
