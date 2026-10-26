@@ -10,6 +10,7 @@ import { allConfigs } from '../configuration/configuration'
 import { envFile, validateEnv } from '../configuration/env.config'
 import { InvoiceModule } from './modules/invoice/invoice.module'
 import { ProductModule } from './modules/product/product.module'
+import { UserModule } from './modules/user/user.module'
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ProductModule } from './modules/product/product.module'
     }),
     InvoiceModule,
     ProductModule,
+    UserModule,
   ],
   controllers: [],
   providers: [

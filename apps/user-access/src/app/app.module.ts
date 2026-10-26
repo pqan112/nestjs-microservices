@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { envFile, validateEnv } from '../config/env.config'
 import { allConfigs } from '../config/config'
 import { RoleModule } from './modules/role/role.module'
+import { UserModule } from './modules/user/user.module'
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { RoleModule } from './modules/role/role.module'
       load: allConfigs,
     }),
     RoleModule,
+    UserModule,
   ],
 })
 export class AppModule {}
