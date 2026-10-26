@@ -16,8 +16,6 @@ export class AllExceptionFilter implements ExceptionFilter {
   private readonly logger = new Logger(AllExceptionFilter.name)
 
   catch(exception: unknown, host: ArgumentsHost) {
-    if (host.getType() !== 'http') return
-
     const ctx = host.switchToHttp()
     const request: Request & {
       [MetadataKeys.PROCESS_ID]: string
@@ -29,7 +27,7 @@ export class AllExceptionFilter implements ExceptionFilter {
 
     if (statusCode >= HttpStatus.INTERNAL_SERVER_ERROR) {
       this.logger.error(
-        { path: request.url, message },
+        { path: request.url, message, exception: JSON.stringify(exception) },
         exception instanceof Error ? exception.stack : undefined
       )
     } else {
@@ -46,12 +44,29 @@ export class AllExceptionFilter implements ExceptionFilter {
     response.status(statusCode).json(body)
   }
 
+  private isRpcError(exception: unknown): exception is { code: number; message: string } {
+    const { code, message } = (exception ?? {}) as { code?: unknown; message?: unknown }
+    return (
+      typeof code === 'number' &&
+      code >= HttpStatus.BAD_REQUEST &&
+      code < 600 &&
+      typeof message === 'string'
+    )
+  }
+
   private parse(exception: unknown): {
     statusCode: number
     message: string
     data: unknown
   } {
-    // not an HttpException (TypeError, DB driver error...): never leak internals to the client
+    // error from a TCP microservice: TcpLoggingInterceptor rethrows it as
+    // RpcException({ code, message }), which reaches the gateway as a plain object.
+    // `code` is only trusted when it is an HTTP error status (a DB driver code is not).
+    if (this.isRpcError(exception)) {
+      return { statusCode: exception.code, message: exception.message, data: null }
+    }
+
+    // TypeError, DB driver error...: never leak internals to the client
     if (!(exception instanceof HttpException)) {
       return {
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
@@ -61,28 +76,13 @@ export class AllExceptionFilter implements ExceptionFilter {
     }
 
     const statusCode = exception.getStatus()
-    const body = exception.getResponse()
+    const body = exception.getResponse() as { message?: unknown; error?: string }
 
-    // string: exception built with a plain message, e.g. `new HttpException('Forbidden', 403)`
-    // or `new ForbiddenException()` with no argument. Nothing else to extract.
-    if (typeof body === 'string') {
-      return { statusCode, message: body, data: null }
+    // CustomZodValidationPipe passes the zod issues as an array. ResponseDto.message must be a
+    // string, so keep the issues as `data` and use the short `error` label as the message.
+    if (Array.isArray(body.message)) {
+      return { statusCode, message: body.error ?? exception.message, data: body.message }
     }
-
-    // object: Nest's built-in exceptions (BadRequestException('x'), NotFoundException...)
-    // wrap their argument as `{ statusCode, message, error }`. `message` is a string for a
-    // plain message, but an array when the argument was a list, which is what
-    // CustomZodValidationPipe passes (the zod issues). ResponseDto.message must be a string,
-    // so keep the issues as `data` and use the short `error` label ("Unprocessable Entity")
-    // as the message.
-    const { message, error } = body as { message?: unknown; error?: string }
-    if (Array.isArray(message)) {
-      return { statusCode, message: error ?? exception.message, data: message }
-    }
-    return {
-      statusCode,
-      message: typeof message === 'string' ? message : exception.message,
-      data: null,
-    }
+    return { statusCode, message: exception.message, data: null }
   }
 }
