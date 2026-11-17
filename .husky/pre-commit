@@ -1,2 +1,13 @@
-pnpx lint-staged
-nx run-many -t typecheck lint
+pnpm lint-staged
+pnpm nx affected -t typecheck lint
+
+echo "Updating Graphify knowledge graph..."
+
+graphify update .
+
+if [ $? -ne 0 ]; then
+  echo "Graphify update failed. Commit aborted."
+  exit 1
+fi
+
+git add graphify-out/

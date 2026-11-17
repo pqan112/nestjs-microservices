@@ -55,3 +55,7 @@ Thumbs.db
 
 # Docker data
 docker/**/docker_data
+
+# graphify
+graphify-out/cost.json
+graphify-out/cache/

@@ -1,4 +1,4 @@
-import { Controller, Get, UseInterceptors } from '@nestjs/common'
+import { Controller, UseInterceptors } from '@nestjs/common'
 import { RequestParams } from '@common/decorators/request-param.decorator'
 import { TcpLoggingInterceptor } from '@common/interceptors/tcpLogging.interceptor'
 import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
@@ -14,12 +14,6 @@ import { InvoiceService } from '../services/invoice.service'
 @Controller()
 export class InvoiceController {
   constructor(private readonly invoiceService: InvoiceService) {}
-
-  @Get()
-  test() {
-    return { message: 'test' }
-  }
-
   @UseInterceptors(TcpLoggingInterceptor)
   @MessagePattern(TCP_REQUEST_MESSAGE.INVOICE.CREATE)
   async create(

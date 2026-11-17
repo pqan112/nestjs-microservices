@@ -7,6 +7,7 @@ import { CreateUserTcpRequest } from '@common/interfaces/tcp/user'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
 import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
+import { ProcessId } from '@common/decorators/processId.decorator'
 
 @Controller()
 @UseInterceptors(TcpLoggingInterceptor)
@@ -14,8 +15,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @MessagePattern(TCP_REQUEST_MESSAGE.USER.CREATE)
-  async create(@RequestParams() data: CreateUserTcpRequest) {
-    await this.userService.create(data)
+  async create(@RequestParams() data: CreateUserTcpRequest, @ProcessId() processId: string) {
+    await this.userService.create(data, processId)
     return TCPResponseDto.success<string>(HTTP_MESSAGE.CREATED)
   }
 }

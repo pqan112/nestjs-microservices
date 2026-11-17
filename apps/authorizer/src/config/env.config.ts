@@ -1,0 +1,18 @@
+import z from 'zod'
+import { baseEnvSchema, defineEnv } from '@common/configuration/base.config'
+
+export { envFile } from '@common/configuration/base.config'
+
+const configSchema = baseEnvSchema.extend({
+  AUTHORIZER_PORT: z.coerce.number().default(3004),
+  TCP_AUTHORIZER_SERVICE_HOST: z.string().default('localhost'),
+  TCP_AUTHORIZER_SERVICE_PORT: z.coerce.number().default(3204),
+  KEYCLOAK_HOST: z.string().min(1),
+  KEYCLOAK_REALM: z.string().min(1),
+  KEYCLOAK_CLIENT_ID: z.string().min(1),
+  KEYCLOAK_CLIENT_SECRET: z.string().min(1),
+})
+
+export type Env = z.infer<typeof configSchema>
+
+export const { validateEnv, getEnv } = defineEnv(configSchema)
