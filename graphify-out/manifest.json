@@ -876,9 +876,9 @@
     "semantic_hash": ""
   },
   "libs/interface/src/lib/gateway/product/product-response.dto.ts": {
-    "mtime": 1792991359.5847418,
-    "seen": 1794903789.2821236,
-    "ast_hash": "529b47546ff929dbcbf258ffe1e728b5",
+    "mtime": 1795088852.2122695,
+    "seen": 1795095273.59551,
+    "ast_hash": "3ee3868020640c4cf0b00e2b26919ce2",
     "semantic_hash": ""
   },
   "libs/interface/src/lib/gateway/response.dto.ts": {
@@ -1383,6 +1383,96 @@
     "mtime": 1794934176.9014504,
     "seen": 1794934441.0185661,
     "ast_hash": "4293de170500cf0feeee23786b0a9351",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/.oxlintrc.json": {
+    "mtime": 1795088829.9641528,
+    "seen": 1795095273.5949848,
+    "ast_hash": "a8c326af0e3a9430a73bac13cbd3be02",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/jest.config.cts": {
+    "mtime": 1795088838.8797357,
+    "seen": 1795095273.5949914,
+    "ast_hash": "f9447215fc45c7ea4274233b7e4c3019",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/project.json": {
+    "mtime": 1795088838.8640993,
+    "seen": 1795095273.5949957,
+    "ast_hash": "cc475cefe8daf0f31558d7a48ab53d6a",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/app/app.module.ts": {
+    "mtime": 1795088839.0015202,
+    "seen": 1795095273.5950003,
+    "ast_hash": "5f0e765b7838c330aac01cff3e3f7767",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/app/modules/product/controllers/product.controller.ts": {
+    "mtime": 1795088906.612874,
+    "seen": 1795095273.5950043,
+    "ast_hash": "5ed045ef3f63c287388fa21a11b9169e",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/app/modules/product/product.module.ts": {
+    "mtime": 1795088838.802278,
+    "seen": 1795095273.5950072,
+    "ast_hash": "331112690815e81b53fc26585977bb14",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/bootstrap/setup-swagger.ts": {
+    "mtime": 1795088838.923462,
+    "seen": 1795095273.5950103,
+    "ast_hash": "0ea5f78509e2ea2241d14f335414872b",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/configuration/app/app.config.ts": {
+    "mtime": 1795088838.7619977,
+    "seen": 1795095273.5950139,
+    "ast_hash": "6c110bb80c8dd5a502896132c4980ade",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/configuration/configuration.ts": {
+    "mtime": 1795088838.7268262,
+    "seen": 1795095273.5950172,
+    "ast_hash": "7b66641769d479e94e42aefdb62bdb91",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/configuration/env.config.ts": {
+    "mtime": 1795088852.1642413,
+    "seen": 1795095273.5950203,
+    "ast_hash": "6fecd94dd81b58339b60756b51100230",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/src/main.ts": {
+    "mtime": 1795088838.6802056,
+    "seen": 1795095273.5950234,
+    "ast_hash": "9a41edefc2221c1b68db9556567e2f9b",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/tsconfig.app.json": {
+    "mtime": 1795088830.0127785,
+    "seen": 1795095273.595027,
+    "ast_hash": "0bb57e6c4d207b34c53b4fef1dcacbb7",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/tsconfig.json": {
+    "mtime": 1795088830.0262349,
+    "seen": 1795095273.5950308,
+    "ast_hash": "0338c11fbe27fd5e8183239cbb07bf07",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/tsconfig.spec.json": {
+    "mtime": 1795088830.0371373,
+    "seen": 1795095273.5950336,
+    "ast_hash": "e6c8bedf764ffda28b48e88da66ae7e1",
+    "semantic_hash": ""
+  },
+  "apps/bff-mobile/webpack.config.js": {
+    "mtime": 1795095219.027105,
+    "seen": 1795095273.5950367,
+    "ast_hash": "84ab8aee000c01f9eed0abd8dd88bef9",
     "semantic_hash": ""
   },
   "pnpm-lock.yaml": {

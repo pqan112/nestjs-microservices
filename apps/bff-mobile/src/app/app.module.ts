@@ -1,0 +1,36 @@
+import { AllExceptionFilter } from '@common/filters/all-exceptions.filter'
+import { ExceptionInterceptor } from '@common/interceptors/exception.interceptor'
+import { LoggerMiddleware } from '@common/middlewares/logger.middleware'
+import { CustomZodValidationPipe } from '@common/pipes/custom-zod-validation.pipe'
+import { MiddlewareConsumer, Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import { ZodSerializerInterceptor } from 'nestjs-zod'
+import { allConfigs } from '../configuration/configuration'
+import { envFile, validateEnv } from '../configuration/env.config'
+import { ProductModule } from './modules/product/product.module'
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      validate: validateEnv,
+      envFilePath: envFile,
+      load: allConfigs,
+    }),
+    ProductModule,
+  ],
+  controllers: [],
+  providers: [
+    { provide: APP_PIPE, useClass: CustomZodValidationPipe },
+    { provide: APP_INTERCEPTOR, useClass: ExceptionInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: ZodSerializerInterceptor },
+    { provide: APP_FILTER, useClass: AllExceptionFilter },
+  ],
+})
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*')
+  }
+}

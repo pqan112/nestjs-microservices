@@ -1,0 +1,31 @@
+import 'reflect-metadata'
+import { Logger } from '@nestjs/common'
+import { NestFactory } from '@nestjs/core'
+import { AppModule } from './app/app.module'
+import { APP_CONFIG, AppConfig } from './configuration/app/app.config'
+import { ConfigService } from '@nestjs/config'
+import { setupSwagger } from './bootstrap/setup-swagger'
+
+async function bootstrap() {
+  try {
+    const app = await NestFactory.create(AppModule)
+    const config = app.get(ConfigService)
+    const appCfg = config.getOrThrow<AppConfig>(APP_CONFIG)
+
+    const globalPrefix = appCfg.globalPrefix
+    app.setGlobalPrefix(globalPrefix)
+
+    // swagger must run after setGlobalPrefix so documented paths include the prefix
+    setupSwagger(app, config)
+    const port = appCfg.port
+    await app.listen(port)
+    Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
+    Logger.log(
+      `🚀 Application Document is running on: http://localhost:${port}/${globalPrefix}/docs`
+    )
+  } catch (error) {
+    Logger.error(`❌ Application failed to start: ${error}`, '', 'Bootstrap', false)
+  }
+}
+
+bootstrap()

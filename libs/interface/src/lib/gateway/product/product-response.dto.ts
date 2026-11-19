@@ -14,3 +14,8 @@ export const productResponseSchema = baseEntityResponseSchema.extend({
 export type ProductResponse = z.infer<typeof productResponseSchema>
 
 export class ProductResponseDto extends createZodDto(productResponseSchema) {}
+
+// Mobile list view does not need the long free-text description.
+export const mobileProductResponseSchema = productResponseSchema.omit({ description: true })
+
+export class MobileProductResponseDto extends createZodDto(mobileProductResponseSchema) {}
