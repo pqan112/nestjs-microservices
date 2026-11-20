@@ -1,5 +1,6 @@
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
+import { Public } from '@common/decorators/authorizer.decorator'
 import { ProcessId } from '@common/decorators/process-id.decorator'
 import { LoginRequestDto, LoginResponseDto } from '@common/interfaces/gateway/authorizer'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
@@ -24,6 +25,7 @@ export class AuthorizerController {
   @ApiOperation({
     summary: 'Login with username and password',
   })
+  @Public()
   async login(@Body() body: LoginRequestDto, @ProcessId() processId: string) {
     return sendTcpRequest<LoginResponseDto, LoginRequestDto>(
       this.authorizerClient,

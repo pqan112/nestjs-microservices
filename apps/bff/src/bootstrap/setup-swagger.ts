@@ -18,6 +18,7 @@ export function setupSwagger(app: INestApplication, config: ConfigService): void
       bearerFormat: 'JWT',
       name: 'Authorization',
     })
+    .addSecurityRequirements('bearer')
     .build()
 
   const document = SwaggerModule.createDocument(app, swaggerConfig)

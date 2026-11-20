@@ -30,7 +30,7 @@
         "./libs/utils/src/lib/*"
       ],
       "@common/interfaces/*": [
-        "./libs/interface/src/lib/*"
+        "./libs/interfaces/src/lib/*"
       ],
       "@common/pipes/*": [
         "./libs/pipes/src/lib/*"
@@ -49,6 +49,9 @@
       ],
       "@common/entities/*": [
         "./libs/entities/src/lib/*"
+      ],
+      "@common/guards/*": [
+        "./libs/guards/src/lib/*"
       ]
     },
     "strict": false,

@@ -1,13 +1,13 @@
-import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
-import { Body, Controller, HttpStatus, Inject, Post } from '@nestjs/common'
-import { ApiOperation, ApiTags } from '@nestjs/swagger'
+import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
+import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { ProcessId } from '@common/decorators/process-id.decorator'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
 import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
-import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
+import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
+import { Body, Controller, HttpStatus, Inject, Post } from '@nestjs/common'
+import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
-import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 
 @ApiTags('User')
 @Controller('user')
