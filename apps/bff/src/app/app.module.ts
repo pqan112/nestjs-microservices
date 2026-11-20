@@ -8,6 +8,7 @@ import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { ZodSerializerInterceptor } from 'nestjs-zod'
 import { allConfigs } from '../configuration/configuration'
 import { envFile, validateEnv } from '../configuration/env.config'
+import { AuthorizerModule } from './modules/authorizer/authorizer.module'
 import { InvoiceModule } from './modules/invoice/invoice.module'
 import { ProductModule } from './modules/product/product.module'
 import { UserModule } from './modules/user/user.module'
@@ -21,6 +22,7 @@ import { UserModule } from './modules/user/user.module'
       envFilePath: envFile,
       load: allConfigs,
     }),
+    AuthorizerModule,
     InvoiceModule,
     ProductModule,
     UserModule,

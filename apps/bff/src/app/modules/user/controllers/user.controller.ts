@@ -1,12 +1,11 @@
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
 import { Body, Controller, HttpStatus, Inject, Post } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
-import { ProcessId } from '@common/decorators/processId.decorator'
+import { ProcessId } from '@common/decorators/process-id.decorator'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
-import { CreateUserTcpRequest } from '@common/interfaces/tcp/user'
+import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
-import { firstValueFrom } from 'rxjs'
 import { ZodResponse } from 'nestjs-zod'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 
@@ -23,13 +22,11 @@ export class UserController {
     summary: 'Create a new user',
   })
   async create(@Body() body: CreateUserRequestDto, @ProcessId() processId: string) {
-    const result = await firstValueFrom(
-      this.userAccessClient.send<string, CreateUserTcpRequest>(TCP_REQUEST_MESSAGE.USER.CREATE, {
-        data: body,
-        processId,
-      })
+    return sendTcpRequest<string, CreateUserRequestDto>(
+      this.userAccessClient,
+      TCP_REQUEST_MESSAGE.USER.CREATE,
+      processId,
+      body
     )
-
-    return ResponseDto.create(result)
   }
 }

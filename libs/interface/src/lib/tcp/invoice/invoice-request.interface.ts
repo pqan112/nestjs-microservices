@@ -1,8 +1,3 @@
-import {
-  CreateInvoiceRequestDto,
-  UpdateInvoiceRequestDto,
-} from '@common/interfaces/gateway/invoice'
-
-export type CreateInvoiceTcpRequest = CreateInvoiceRequestDto
+import { UpdateInvoiceRequestDto } from '@common/interfaces/gateway/invoice'
 
 export type UpdateInvoiceTcpRequest = UpdateInvoiceRequestDto & { id: string }

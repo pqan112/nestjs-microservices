@@ -1,14 +1,13 @@
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
-import { ProcessId } from '@common/decorators/processId.decorator'
-import { MobileProductResponseDto } from '@common/interfaces/gateway/product'
+import { ProcessId } from '@common/decorators/process-id.decorator'
+import { MobileProductResponseDto, ProductResponseDto } from '@common/interfaces/gateway/product'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
+import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
-import { ProductTcpResponse } from '@common/interfaces/tcp/product'
 import { Controller, Get, Inject } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
-import { firstValueFrom } from 'rxjs'
 
 @ApiTags('Product')
 @Controller('product')
@@ -19,15 +18,16 @@ export class ProductController {
   @ZodResponse({ type: ResponseDto<MobileProductResponseDto[]> })
   @ApiOperation({ summary: 'Get list products (mobile: without description)' })
   async getList(@ProcessId() processId: string) {
-    const result = await firstValueFrom(
-      this.productClient.send<ProductTcpResponse[]>(TCP_REQUEST_MESSAGE.PRODUCT.GET_LIST, {
-        processId,
-      })
+    const response = await sendTcpRequest<ProductResponseDto[]>(
+      this.productClient,
+      TCP_REQUEST_MESSAGE.PRODUCT.GET_LIST,
+      processId
     )
+
     // ResponseDto.data is z.any(), so the field must be dropped explicitly here.
     return ResponseDto.create({
-      ...result,
-      data: result.data.map(({ description: _description, ...product }) => product),
+      ...response,
+      data: response.data.map(({ description: _description, ...product }) => product),
     })
   }
 }

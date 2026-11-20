@@ -1,22 +1,18 @@
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
-import { ProcessId } from '@common/decorators/processId.decorator'
+import { ProcessId } from '@common/decorators/process-id.decorator'
 import {
   CreateInvoiceRequestDto,
   InvoiceResponseDto,
   UpdateInvoiceRequestDto,
 } from '@common/interfaces/gateway/invoice'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
+import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
-import {
-  CreateInvoiceTcpRequest,
-  InvoiceTcpResponse,
-  UpdateInvoiceTcpRequest,
-} from '@common/interfaces/tcp/invoice'
+import { UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
 import { Body, Controller, Get, HttpStatus, Inject, Param, Patch, Post } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
-import { firstValueFrom } from 'rxjs'
 
 @ApiTags('Invoice')
 @Controller('invoice')
@@ -29,28 +25,23 @@ export class InvoiceController {
     summary: 'Create a new invoice',
   })
   async create(@Body() body: CreateInvoiceRequestDto, @ProcessId() processId: string) {
-    const result = await firstValueFrom(
-      this.invoiceClient.send<InvoiceTcpResponse, CreateInvoiceTcpRequest>(
-        TCP_REQUEST_MESSAGE.INVOICE.CREATE,
-        {
-          data: body,
-          processId,
-        }
-      )
+    return sendTcpRequest<InvoiceResponseDto, CreateInvoiceRequestDto>(
+      this.invoiceClient,
+      TCP_REQUEST_MESSAGE.INVOICE.CREATE,
+      processId,
+      body
     )
-    return ResponseDto.create(result)
   }
 
   @Get()
   @ZodResponse({ type: ResponseDto<InvoiceResponseDto[]> })
   @ApiOperation({ summary: 'Get list invoices' })
   async getList(@ProcessId() processId: string) {
-    const result = await firstValueFrom(
-      this.invoiceClient.send<InvoiceTcpResponse[]>(TCP_REQUEST_MESSAGE.INVOICE.GET_LIST, {
-        processId,
-      })
+    return sendTcpRequest<InvoiceResponseDto[]>(
+      this.invoiceClient,
+      TCP_REQUEST_MESSAGE.INVOICE.GET_LIST,
+      processId
     )
-    return ResponseDto.create(result)
   }
 
   @Patch(':id')
@@ -61,15 +52,11 @@ export class InvoiceController {
     @Body() body: UpdateInvoiceRequestDto,
     @ProcessId() processId: string
   ) {
-    const result = await firstValueFrom(
-      this.invoiceClient.send<InvoiceTcpResponse, UpdateInvoiceTcpRequest>(
-        TCP_REQUEST_MESSAGE.INVOICE.UPDATE,
-        {
-          data: { id, ...body },
-          processId,
-        }
-      )
+    return sendTcpRequest<InvoiceResponseDto, UpdateInvoiceTcpRequest>(
+      this.invoiceClient,
+      TCP_REQUEST_MESSAGE.INVOICE.UPDATE,
+      processId,
+      { id, ...body }
     )
-    return ResponseDto.create(result)
   }
 }

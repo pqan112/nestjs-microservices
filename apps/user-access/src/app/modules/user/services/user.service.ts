@@ -1,7 +1,7 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common'
 import { UserRepo } from '../repos/user.repo'
 import { createUserRequestMapping } from '../mappers'
-import { CreateUserTcpRequest } from '@common/interfaces/tcp/user'
+import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
 import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
@@ -16,7 +16,7 @@ export class UserService {
     @Inject(TCP_SERVICES.AUTHORIZER_SERVICE) private readonly authorizerClient: TcpClient
   ) {}
 
-  async create(params: CreateUserTcpRequest, processId: string) {
+  async create(params: CreateUserRequestDto, processId: string) {
     const isExists = await this.userRepo.exists(params.email)
 
     if (isExists) {

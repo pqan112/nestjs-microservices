@@ -10,6 +10,7 @@ import { catchError, Observable, tap } from 'rxjs'
 import { RpcException } from '@nestjs/microservices'
 import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
 import { MetadataKeys } from '@common/constants/common.constant'
+import { stringifyForLog } from '@common/utils/log.util'
 
 @Injectable()
 export class TcpLoggingInterceptor implements NestInterceptor {
@@ -26,7 +27,7 @@ export class TcpLoggingInterceptor implements NestInterceptor {
     const processId = param[MetadataKeys.PROCESS_ID]
 
     Logger.log(
-      `TCP >> Start process '${processId}' >> method: '${handlerName}' at '${startTime}' >> param: ${JSON.stringify(param)}`
+      `TCP >> Start process '${processId}' >> method: '${handlerName}' at '${startTime}' >> param: ${stringifyForLog(param)}`
     )
 
     return next.handle().pipe(
@@ -38,7 +39,7 @@ export class TcpLoggingInterceptor implements NestInterceptor {
       catchError((error) => {
         const duration = Date.now() - startTime
         Logger.error(
-          `TCP » Error process '${processId}': ${error.message} >> data: ${JSON.stringify(
+          `TCP » Error process '${processId}': ${error.message} >> data: ${stringifyForLog(
             error
           )}, after: '${duration}ms'`
         )

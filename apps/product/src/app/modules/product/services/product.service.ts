@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
-import { CreateProductTcpRequest } from '@common/interfaces/tcp/product'
+import { CreateProductRequestDto } from '@common/interfaces/gateway/product'
 import { ProductRepo } from '../repos/product.repo'
 import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 
@@ -7,7 +7,7 @@ import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 export class ProductService {
   constructor(private readonly productRepo: ProductRepo) {}
 
-  async create(data: CreateProductTcpRequest) {
+  async create(data: CreateProductRequestDto) {
     const { sku, name } = data
 
     const exists = await this.productRepo.exists(sku, name)

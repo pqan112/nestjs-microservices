@@ -1,8 +1,8 @@
-import { CreateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
+import { CreateInvoiceRequestDto } from '@common/interfaces/gateway/invoice'
 import { CreateInvoice } from '@common/schemas/invoice.schema'
 
 export const invoiceRequestMapping = (
-  data: CreateInvoiceTcpRequest
+  data: CreateInvoiceRequestDto
 ): Omit<CreateInvoice, 'status'> => ({
   ...data,
   totalAmount: data.items.reduce((total, item) => total + item.total, 0),

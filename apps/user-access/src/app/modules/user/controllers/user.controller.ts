@@ -1,13 +1,13 @@
 import { Controller, UseInterceptors } from '@nestjs/common'
-import { TcpLoggingInterceptor } from '@common/interceptors/tcpLogging.interceptor'
+import { TcpLoggingInterceptor } from '@common/interceptors/tcp-logging.interceptor'
 import { UserService } from '../services/user.service'
 import { MessagePattern } from '@nestjs/microservices'
 import { RequestParams } from '@common/decorators/request-param.decorator'
-import { CreateUserTcpRequest } from '@common/interfaces/tcp/user'
+import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
 import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
-import { ProcessId } from '@common/decorators/processId.decorator'
+import { ProcessId } from '@common/decorators/process-id.decorator'
 
 @Controller()
 @UseInterceptors(TcpLoggingInterceptor)
@@ -15,7 +15,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @MessagePattern(TCP_REQUEST_MESSAGE.USER.CREATE)
-  async create(@RequestParams() data: CreateUserTcpRequest, @ProcessId() processId: string) {
+  async create(@RequestParams() data: CreateUserRequestDto, @ProcessId() processId: string) {
     await this.userService.create(data, processId)
     return TCPResponseDto.success<string>(HTTP_MESSAGE.CREATED)
   }

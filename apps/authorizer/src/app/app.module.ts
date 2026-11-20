@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { envFile, validateEnv } from '../config/env.config'
 import { allConfigs } from '../config/config'
 import { KeycloakModule } from './modules/keycloak/keycloak.module'
+import { AuthorizerModule } from './modules/authorizer/authorizer.module'
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { KeycloakModule } from './modules/keycloak/keycloak.module'
       load: allConfigs,
     }),
     KeycloakModule,
+    AuthorizerModule,
   ],
   controllers: [],
   providers: [],

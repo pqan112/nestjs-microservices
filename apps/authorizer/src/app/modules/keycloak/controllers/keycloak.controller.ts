@@ -5,8 +5,11 @@ import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.
 import { RequestParams } from '@common/decorators/request-param.decorator'
 import { CreateKeycloakUserTcpReq } from '@common/interfaces/tcp/authorizer'
 import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
+import { TcpLoggingInterceptor } from '@common/interceptors/tcp-logging.interceptor'
+import { UseInterceptors } from '@nestjs/common'
 
 @Controller()
+@UseInterceptors(TcpLoggingInterceptor)
 export class KeycloakController {
   constructor(private readonly keycloakHttpService: KeycloakHttpService) {}
 

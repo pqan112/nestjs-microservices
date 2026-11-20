@@ -1,14 +1,13 @@
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
-import { ProcessId } from '@common/decorators/processId.decorator'
+import { ProcessId } from '@common/decorators/process-id.decorator'
 import { CreateProductRequestDto, ProductResponseDto } from '@common/interfaces/gateway/product'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
+import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
-import { CreateProductTcpRequest, ProductTcpResponse } from '@common/interfaces/tcp/product'
 import { Body, Controller, Get, HttpStatus, Inject, Post } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
-import { firstValueFrom } from 'rxjs'
 
 @ApiTags('Product')
 @Controller('product')
@@ -21,27 +20,22 @@ export class ProductController {
     summary: 'Create a new product',
   })
   async create(@Body() body: CreateProductRequestDto, @ProcessId() processId: string) {
-    const result = await firstValueFrom(
-      this.productClient.send<ProductTcpResponse, CreateProductTcpRequest>(
-        TCP_REQUEST_MESSAGE.PRODUCT.CREATE,
-        {
-          data: body,
-          processId,
-        }
-      )
+    return sendTcpRequest<ProductResponseDto, CreateProductRequestDto>(
+      this.productClient,
+      TCP_REQUEST_MESSAGE.PRODUCT.CREATE,
+      processId,
+      body
     )
-    return ResponseDto.create(result)
   }
 
   @Get()
   @ZodResponse({ type: ResponseDto<ProductResponseDto[]> })
   @ApiOperation({ summary: 'Get list products' })
   async getList(@ProcessId() processId: string) {
-    const result = await firstValueFrom(
-      this.productClient.send<ProductTcpResponse[]>(TCP_REQUEST_MESSAGE.PRODUCT.GET_LIST, {
-        processId,
-      })
+    return sendTcpRequest<ProductResponseDto[]>(
+      this.productClient,
+      TCP_REQUEST_MESSAGE.PRODUCT.GET_LIST,
+      processId
     )
-    return ResponseDto.create(result)
   }
 }

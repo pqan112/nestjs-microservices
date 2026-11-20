@@ -9,6 +9,7 @@ import {
 import { Request, Response } from 'express'
 import { MetadataKeys } from '@common/constants/common.constant'
 import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
+import { stringifyForLog } from '@common/utils/log.util'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 
 @Catch()
@@ -27,7 +28,7 @@ export class AllExceptionFilter implements ExceptionFilter {
 
     if (statusCode >= HttpStatus.INTERNAL_SERVER_ERROR) {
       this.logger.error(
-        { path: request.url, message, exception: JSON.stringify(exception) },
+        { path: request.url, message, exception: stringifyForLog(exception) },
         exception instanceof Error ? exception.stack : undefined
       )
     } else {

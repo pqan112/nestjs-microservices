@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InvoiceRepo } from '../repos/invoice.repo'
-import { CreateInvoiceTcpRequest, UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
+import { UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
+import { CreateInvoiceRequestDto } from '@common/interfaces/gateway/invoice'
 import { toResponse } from '@common/schemas/mongo.mapper'
 import { invoiceRequestMapping } from '../mappers'
 
@@ -8,7 +9,7 @@ import { invoiceRequestMapping } from '../mappers'
 export class InvoiceService {
   constructor(private readonly invoiceRepo: InvoiceRepo) {}
 
-  async create(params: CreateInvoiceTcpRequest) {
+  async create(params: CreateInvoiceRequestDto) {
     const data = invoiceRequestMapping(params)
     return toResponse(await this.invoiceRepo.create(data))
   }

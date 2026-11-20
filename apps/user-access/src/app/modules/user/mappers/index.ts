@@ -1,10 +1,10 @@
 import { ObjectId } from 'mongodb'
-import { CreateUserTcpRequest } from '@common/interfaces/tcp/user'
+import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
 import { CreateUser } from '@common/schemas/user.schema'
 
 // `password` bị loại ra để không lưu thẳng vào document.
 export const createUserRequestMapping = (
-  data: CreateUserTcpRequest,
+  data: CreateUserRequestDto,
   userId: string
 ): CreateUser => {
   const { password: _password, ...rest } = data
