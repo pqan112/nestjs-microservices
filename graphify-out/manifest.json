@@ -264,15 +264,15 @@
     "semantic_hash": ""
   },
   "apps/bff/src/app/app.module.ts": {
-    "mtime": 1795196053.5350008,
-    "seen": 1795196227.9755096,
-    "ast_hash": "3fb010f7fe2fbc7133cd90735705fc44",
+    "mtime": 1795347961.023212,
+    "seen": 1795348063.1125126,
+    "ast_hash": "86dd035ce65ad79f78d9441d53aacbde",
     "semantic_hash": ""
   },
   "apps/bff/src/app/modules/invoice/controllers/invoice.controller.ts": {
-    "mtime": 1795336778.5177982,
-    "seen": 1795340124.4591749,
-    "ast_hash": "c17c692a9d9e466a9bd27a26981a852b",
+    "mtime": 1795348021.0603697,
+    "seen": 1795348063.1125193,
+    "ast_hash": "cb436fe63aa9f8968797c8fa93add432",
     "semantic_hash": ""
   },
   "apps/bff/src/app/modules/invoice/invoice.module.ts": {
@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/error-code.enum.ts": {
-    "mtime": 1795340410.0169194,
-    "seen": 1795340415.1198041,
-    "ast_hash": "5ef6a678d8ea724660f3b31e2835f180",
+    "mtime": 1795348275.3084493,
+    "seen": 1795348280.0510879,
+    "ast_hash": "3846e1ea68d34a366d147895423291a1",
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/http-message.enum.ts": {
@@ -912,9 +912,9 @@
     "semantic_hash": ""
   },
   "libs/utils/src/lib/string.util.ts": {
-    "mtime": 1795197599.1901362,
-    "seen": 1795197603.0567186,
-    "ast_hash": "236c06a6fc820162578d12373c729950",
+    "mtime": 1795348302.4492333,
+    "seen": 1795348308.176878,
+    "ast_hash": "4369e235480400906669cc2ce9360c62",
     "semantic_hash": ""
   },
   "libs/utils/tsconfig.json": {
@@ -1380,9 +1380,9 @@
     "semantic_hash": ""
   },
   "libs/guards/src/lib/user.guard.ts": {
-    "mtime": 1795336259.058548,
-    "seen": 1795340124.4594967,
-    "ast_hash": "080b64b192f06c0ca4c3bf097fce01f4",
+    "mtime": 1795348286.5492883,
+    "seen": 1795348291.6719854,
+    "ast_hash": "8698e0097c8926f2935e63547910b81b",
     "semantic_hash": ""
   },
   "libs/guards/tsconfig.json": {
@@ -1593,6 +1593,18 @@
     "mtime": 1795336477.9170952,
     "seen": 1795340124.4594374,
     "ast_hash": "06b2c888f7ea94077eba1e5538b2b479",
+    "semantic_hash": ""
+  },
+  "libs/decorators/src/lib/permission.decorator.ts": {
+    "mtime": 1795347801.5049171,
+    "seen": 1795348063.1126666,
+    "ast_hash": "f8ea3bb4f05490848e06c262353436e7",
+    "semantic_hash": ""
+  },
+  "libs/guards/src/lib/permission.guard.ts": {
+    "mtime": 1795347888.9321532,
+    "seen": 1795348063.112702,
+    "ast_hash": "d7d691cc578d6470fb55831bf30f6d05",
     "semantic_hash": ""
   },
   "pnpm-lock.yaml": {

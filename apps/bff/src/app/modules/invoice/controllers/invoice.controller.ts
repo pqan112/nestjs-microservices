@@ -25,6 +25,8 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
 import { UserData } from '@common/decorators/user-data.decorator'
 import { AuthorizedMetadataDto } from '@common/interfaces/tcp/authorizer'
+import { Permissions } from '@common/decorators/permission.decorator'
+import { PERMISSION } from '@common/constants/enum/role.enum'
 
 @ApiTags('Invoice')
 @Controller('invoice')
@@ -38,7 +40,8 @@ export class InvoiceController {
   @ApiOperation({
     summary: 'Create a new invoice',
   })
-  async create(
+  @Permissions([PERMISSION.INVOICE_CREATE, PERMISSION.INVOICE_GET_BY_ID])
+  create(
     @Body() body: CreateInvoiceRequestDto,
     @ProcessId() processId: string,
     @UserData() userData: AuthorizedMetadataDto

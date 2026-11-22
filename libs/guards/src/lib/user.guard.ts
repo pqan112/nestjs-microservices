@@ -1,4 +1,5 @@
 import { AUTH_TYPE_KEY, AuthTypeType } from '@common/constants/auth.constant'
+import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
 import {
@@ -44,7 +45,7 @@ export class UserGuard implements CanActivate {
 
       const result = await this.verifyUserToken(token, processId)
       if (!result?.valid) {
-        throw new UnauthorizedException('Token is invalid')
+        throw new UnauthorizedException(ERROR_CODE.AUTH_INVALID_TOKEN)
       }
 
       setUserData(req, result)
@@ -52,7 +53,7 @@ export class UserGuard implements CanActivate {
       return true
     } catch (error) {
       this.logger.error({ error })
-      throw new UnauthorizedException('Token is invalid')
+      throw new UnauthorizedException(ERROR_CODE.AUTH_INVALID_TOKEN)
     }
   }
 

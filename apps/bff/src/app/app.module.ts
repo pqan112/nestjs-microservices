@@ -16,6 +16,7 @@ import { UserGuard } from '@common/guards/user.guard'
 import { ClientsModule } from '@nestjs/microservices'
 import { TcpProvider } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
+import { PermissionGuard } from '@common/guards/permission.guard'
 
 @Module({
   imports: [
@@ -40,6 +41,10 @@ import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
     { provide: APP_INTERCEPTOR, useClass: ExceptionInterceptor },
     { provide: APP_INTERCEPTOR, useClass: ZodSerializerInterceptor },
     { provide: APP_FILTER, useClass: AllExceptionFilter },
+    {
+      provide: APP_GUARD,
+      useClass: PermissionGuard,
+    },
   ],
 })
 export class AppModule {
