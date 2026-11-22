@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
+import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import axios, { AxiosInstance, isAxiosError } from 'axios'
 import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../config/keycloak/keycloak.config'
 import {
@@ -79,7 +80,7 @@ export class KeycloakHttpService {
     const userId = headers['location']?.split('/')?.pop()
 
     if (!userId) {
-      throw new InternalServerErrorException('Could not create keycloak user')
+      throw new InternalServerErrorException(ERROR_CODE.KEYCLOAK_CREATE_USER_FAILED)
     }
 
     this.logger.log('Created user with id: ', userId)
@@ -115,7 +116,7 @@ export class KeycloakHttpService {
       // Keycloak answers 401 (or 400 invalid_grant for a disabled account) when the user
       // credentials are rejected. Anything else is an infrastructure error: let it bubble up.
       if (isAxiosError(error) && [400, 401].includes(error.response?.status ?? 0)) {
-        throw new UnauthorizedException('Invalid username or password')
+        throw new UnauthorizedException(ERROR_CODE.AUTH_INVALID_CREDENTIALS)
       }
       throw error
     }

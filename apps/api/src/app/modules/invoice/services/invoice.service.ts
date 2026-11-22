@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
+import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import { InvoiceRepo } from '../repos/invoice.repo'
 import { UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
 import { CreateInvoiceRequestDto } from '@common/interfaces/gateway/invoice'
@@ -22,7 +23,7 @@ export class InvoiceService {
   async update({ id, ...dto }: UpdateInvoiceTcpRequest) {
     const invoice = await this.invoiceRepo.update(id, dto)
     if (!invoice) {
-      throw new NotFoundException(`Invoice ${id} not found`)
+      throw new NotFoundException(ERROR_CODE.INVOICE_NOT_FOUND)
     }
     return toResponse(invoice)
   }

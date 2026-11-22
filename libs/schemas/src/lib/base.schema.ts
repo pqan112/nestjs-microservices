@@ -1,8 +1,9 @@
 import z from 'zod'
 
 export const baseSchema = z.object({
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  // coerce: Date thành chuỗi ISO khi đi qua TCP/JSON, parse lại về Date ở phía nhận.
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 })
 
 // Thay cho `timestamps: true` của mongoose: driver không tự set, nên gọi khi insert.

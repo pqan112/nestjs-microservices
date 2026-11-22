@@ -4,6 +4,7 @@ paths:
   - 'apps/**/*.repo.ts'
   - 'apps/product/**'
   - 'libs/entities/**'
+  - 'libs/schemas/**'
   - 'libs/configuration/**'
 ---
 

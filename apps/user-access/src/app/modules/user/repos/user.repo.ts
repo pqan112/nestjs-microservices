@@ -4,6 +4,7 @@ import { MONGO_DB } from '@common/configuration/mongo.config'
 import { COLLECTIONS } from '@common/constants/enum/mongo-collection.enum'
 import { newDocument } from '@common/schemas/base.schema'
 import { CreateUser, User } from '@common/schemas/user.schema'
+import { UserTcpResponse } from '@common/interfaces/tcp/user'
 
 @Injectable()
 export class UserRepo {
@@ -21,6 +22,23 @@ export class UserRepo {
 
   findById(id: string): Promise<WithId<User> | null> {
     return this.users.findOne({ _id: new ObjectId(id) })
+  }
+
+  async findByUserIdWithRoles(userId: string): Promise<UserTcpResponse | null> {
+    const [user] = await this.users
+      .aggregate<UserTcpResponse>([
+        { $match: { userId } },
+        {
+          $lookup: {
+            from: COLLECTIONS.ROLE,
+            localField: 'roles',
+            foreignField: '_id',
+            as: 'roles',
+          },
+        },
+      ])
+      .toArray()
+    return user ?? null
   }
 
   findByUserId(userId: string): Promise<WithId<User> | null> {

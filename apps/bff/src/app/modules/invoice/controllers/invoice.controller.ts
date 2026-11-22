@@ -10,13 +10,27 @@ import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
 import { UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
-import { Body, Controller, Get, HttpStatus, Inject, Param, Patch, Post } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  HttpStatus,
+  Inject,
+  Logger,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
+import { UserData } from '@common/decorators/user-data.decorator'
+import { AuthorizedMetadataDto } from '@common/interfaces/tcp/authorizer'
 
 @ApiTags('Invoice')
 @Controller('invoice')
 export class InvoiceController {
+  private readonly logger = new Logger(InvoiceController.name)
+
   constructor(@Inject(TCP_SERVICES.INVOICE_SERVICE) private readonly invoiceClient: TcpClient) {}
 
   @Post()
@@ -24,7 +38,12 @@ export class InvoiceController {
   @ApiOperation({
     summary: 'Create a new invoice',
   })
-  async create(@Body() body: CreateInvoiceRequestDto, @ProcessId() processId: string) {
+  async create(
+    @Body() body: CreateInvoiceRequestDto,
+    @ProcessId() processId: string,
+    @UserData() userData: AuthorizedMetadataDto
+  ) {
+    this.logger.debug('User data: ', userData)
     return sendTcpRequest<InvoiceResponseDto, CreateInvoiceRequestDto>(
       this.invoiceClient,
       TCP_REQUEST_MESSAGE.INVOICE.CREATE,

@@ -7,6 +7,7 @@ import { LoginRequestDto, LoginResponseDto } from '@common/interfaces/gateway/au
 import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
 import { AuthorizerService } from '../services/authorizer.service'
 import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
+import { ProcessId } from '@common/decorators/process-id.decorator'
 
 @Controller()
 @UseInterceptors(TcpLoggingInterceptor)
@@ -20,8 +21,8 @@ export class AuthorizerController {
   }
 
   @MessagePattern(TCP_REQUEST_MESSAGE.AUTHORIZER.VERIFY_USER_TOKEN)
-  async verifyUserToken(@RequestParams() token: string) {
-    const result = await this.authorizerService.verifyUserToken(token)
+  async verifyUserToken(@RequestParams() token: string, @ProcessId() processId: string) {
+    const result = await this.authorizerService.verifyUserToken(token, processId)
     return TCPResponseDto.success<AuthorizeResponseDto>(result)
   }
 }

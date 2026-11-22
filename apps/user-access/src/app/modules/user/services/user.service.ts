@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common'
+import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common'
 import { UserRepo } from '../repos/user.repo'
 import { createUserRequestMapping } from '../mappers'
 import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
@@ -47,5 +47,15 @@ export class UserService {
         })
         .pipe(map((res) => res.data))
     )
+  }
+
+  async getUserByUserId(userId: string) {
+    const user = await this.userRepo.findByUserIdWithRoles(userId)
+
+    if (!user) {
+      throw new NotFoundException(ERROR_CODE.USER_NOT_FOUND)
+    }
+
+    return user
   }
 }

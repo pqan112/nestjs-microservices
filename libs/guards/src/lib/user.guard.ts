@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { firstValueFrom, Observable } from 'rxjs'
-import { getAccessToken } from '@common/utils/request.util'
+import { getAccessToken, setUserData } from '@common/utils/request.util'
 import { MetadataKeys } from '@common/constants/common.constant'
 import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer/authorizer-response.interface'
 import { map } from 'rxjs/operators'
@@ -46,6 +46,8 @@ export class UserGuard implements CanActivate {
       if (!result?.valid) {
         throw new UnauthorizedException('Token is invalid')
       }
+
+      setUserData(req, result)
 
       return true
     } catch (error) {

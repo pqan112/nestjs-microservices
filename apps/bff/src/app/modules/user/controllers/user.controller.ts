@@ -1,6 +1,7 @@
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { ProcessId } from '@common/decorators/process-id.decorator'
+import { Public } from '@common/decorators/authorizer.decorator'
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
 import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
@@ -17,6 +18,7 @@ export class UserController {
   ) {}
 
   @Post()
+  @Public()
   @ZodResponse({ type: ResponseDto<string>, status: HttpStatus.CREATED })
   @ApiOperation({
     summary: 'Create a new user',
