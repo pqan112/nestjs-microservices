@@ -7,7 +7,7 @@ import {
 import { ConfigService } from '@nestjs/config'
 import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import axios, { AxiosInstance, isAxiosError } from 'axios'
-import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../config/keycloak/keycloak.config'
+import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../configuration/keycloak/keycloak.config'
 import {
   CreateKeyCloakUserRequest,
   ExchangeClientTokenResponse,

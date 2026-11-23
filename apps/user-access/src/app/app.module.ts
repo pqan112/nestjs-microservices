@@ -1,21 +1,11 @@
+import { createConfigModule } from '@common/configuration/base.config'
 import { Module } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
-import { envFile, validateEnv } from '../config/env.config'
-import { allConfigs } from '../config/config'
+import { validateEnv } from '../configuration/env.config'
+import { allConfigs } from '../configuration/configuration'
 import { RoleModule } from './modules/role/role.module'
 import { UserModule } from './modules/user/user.module'
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      cache: true,
-      validate: validateEnv,
-      envFilePath: envFile,
-      load: allConfigs,
-    }),
-    RoleModule,
-    UserModule,
-  ],
+  imports: [createConfigModule(validateEnv, allConfigs), RoleModule, UserModule],
 })
 export class AppModule {}

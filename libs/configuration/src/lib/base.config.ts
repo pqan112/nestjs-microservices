@@ -1,3 +1,4 @@
+import { ConfigFactory, ConfigModule } from '@nestjs/config'
 import z from 'zod'
 
 export const envFile =
@@ -44,4 +45,12 @@ export function defineEnv<S extends z.ZodType<BaseEnv>>(schema: S) {
   }
 
   return { validateEnv, getEnv }
+}
+
+// Cấu hình ConfigModule dùng chung cho mọi service: `createConfigModule(validateEnv, allConfigs)`.
+export function createConfigModule(
+  validate: (config: Record<string, unknown>) => Record<string, unknown>,
+  load: ConfigFactory[]
+) {
+  return ConfigModule.forRoot({ isGlobal: true, cache: true, validate, envFilePath: envFile, load })
 }

@@ -39,7 +39,7 @@
 
 ### 3. Topic rules and skills
 
-- Rules in `.claude/rules/` load when matching files are touched: `nestjs-validation.md`, `database.md`.
+- Rules in `.claude/rules/` load when matching files are touched: `nestjs-validation.md`, `database.md`, `migrations.md`.
 - Use the `run-tests` skill to run or fix tests, and the `refactor` skill to refactor code.
 
 ### 4. Limitations

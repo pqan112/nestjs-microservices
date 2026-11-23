@@ -66,6 +66,36 @@
       }
     },
     "typecheck": {},
-    "lint": {}
+    "lint": {},
+    "migration-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node -r ts-node/register -r tsconfig-paths/register node_modules/typeorm/cli.js -d apps/product/src/data-source.ts migration:generate apps/product/src/migrations/{args.name}",
+        "env": {
+          "TS_NODE_PROJECT": "apps/product/tsconfig.app.json",
+          "TS_NODE_BASEURL": "../.."
+        }
+      }
+    },
+    "migration-run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node -r ts-node/register -r tsconfig-paths/register node_modules/typeorm/cli.js -d apps/product/src/data-source.ts migration:run",
+        "env": {
+          "TS_NODE_PROJECT": "apps/product/tsconfig.app.json",
+          "TS_NODE_BASEURL": "../.."
+        }
+      }
+    },
+    "migration-revert": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node -r ts-node/register -r tsconfig-paths/register node_modules/typeorm/cli.js -d apps/product/src/data-source.ts migration:revert",
+        "env": {
+          "TS_NODE_PROJECT": "apps/product/tsconfig.app.json",
+          "TS_NODE_BASEURL": "../.."
+        }
+      }
+    }
   }
 }

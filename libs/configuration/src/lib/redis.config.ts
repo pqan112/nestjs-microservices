@@ -33,6 +33,9 @@ export const RedisProvider = CacheModule.registerAsync({
   inject: [ConfigService],
   useFactory: (config: ConfigService) => {
     const { host, port, ttl } = config.getOrThrow<RedisConfig>(REDIS_CONFIG)
-    return { stores: [createKeyv(`redis://${host}:${port}`)], ttl }
+    return {
+      stores: [createKeyv(`redis://${host}:${port}`)],
+      ttl,
+    }
   },
 })

@@ -1,14 +1,15 @@
 import { INestApplication } from '@nestjs/common'
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { ConfigService } from '@nestjs/config'
-import { APP_CONFIG, AppConfig } from '../configuration/app/app.config'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { APP_CONFIG, AppConfig } from './app.config'
 
-export function setupSwagger(app: INestApplication, config: ConfigService): void {
-  const appConfig = config.getOrThrow<AppConfig>(APP_CONFIG)
+// Chỉ bật Swagger ở môi trường dev. Gọi sau `app.setGlobalPrefix` để đường dẫn có prefix.
+export function setupSwagger(app: INestApplication, title: string): void {
+  const appConfig = app.get(ConfigService).getOrThrow<AppConfig>(APP_CONFIG)
   if (!appConfig.isDev) return
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Einvoice-bff')
+    .setTitle(title)
     .setVersion('1.0')
     .addBearerAuth({
       description: 'Default JWT Authorization',

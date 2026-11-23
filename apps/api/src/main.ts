@@ -4,8 +4,9 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 import { MicroserviceOptions, Transport } from '@nestjs/microservices'
 import { ConfigService } from '@nestjs/config'
+import { getTcpConfig } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
-import { APP_CONFIG, AppConfig } from './configuration/app/app.config'
+import { APP_CONFIG, AppConfig } from '@common/configuration/app.config'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -14,18 +15,16 @@ async function bootstrap() {
 
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.TCP,
-    options: {
-      host: config.getOrThrow<string>(`${TCP_SERVICES.INVOICE_SERVICE}_HOST`),
-      port: config.getOrThrow<number>(`${TCP_SERVICES.INVOICE_SERVICE}_PORT`),
-    },
+    options: getTcpConfig(config, TCP_SERVICES.INVOICE_SERVICE),
   })
   const globalPrefix = appCfg.globalPrefix
   app.setGlobalPrefix(globalPrefix)
-  const port = appCfg.port || 3001
+  // close connections cleanly when the process receives a stop signal
+  app.enableShutdownHooks()
+  const port = appCfg.port
   await app.startAllMicroservices()
   await app.listen(port)
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
-  app.enableShutdownHooks()
 }
 
 bootstrap()

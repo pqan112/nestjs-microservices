@@ -1,13 +1,13 @@
+import { createConfigModule } from '@common/configuration/base.config'
 import { AllExceptionFilter } from '@common/filters/all-exceptions.filter'
 import { ExceptionInterceptor } from '@common/interceptors/exception.interceptor'
 import { LoggerMiddleware } from '@common/middlewares/logger.middleware'
 import { CustomZodValidationPipe } from '@common/pipes/custom-zod-validation.pipe'
 import { MiddlewareConsumer, Module } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { ZodSerializerInterceptor } from 'nestjs-zod'
 import { allConfigs } from '../configuration/configuration'
-import { envFile, validateEnv } from '../configuration/env.config'
+import { validateEnv } from '../configuration/env.config'
 import { AuthorizerModule } from './modules/authorizer/authorizer.module'
 import { InvoiceModule } from './modules/invoice/invoice.module'
 import { ProductModule } from './modules/product/product.module'
@@ -21,13 +21,7 @@ import { PermissionGuard } from '@common/guards/permission.guard'
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      cache: true,
-      validate: validateEnv,
-      envFilePath: envFile,
-      load: allConfigs,
-    }),
+    createConfigModule(validateEnv, allConfigs),
     AuthorizerModule,
     InvoiceModule,
     ProductModule,

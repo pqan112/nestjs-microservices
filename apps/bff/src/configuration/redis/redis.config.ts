@@ -1,6 +1,6 @@
 import { REDIS_CONFIG, RedisConfig } from '@common/configuration/redis.config'
 import { registerAs } from '@nestjs/config'
-import { getEnv } from '../env.config.js'
+import { getEnv } from '../env.config'
 
 export default registerAs(REDIS_CONFIG, (): RedisConfig => {
   const env = getEnv()

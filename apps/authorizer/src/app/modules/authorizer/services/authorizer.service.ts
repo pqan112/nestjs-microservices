@@ -4,7 +4,7 @@ import { KeycloakHttpService } from '../../keycloak/services/keycloak-http.servi
 import jwt, { Jwt, JwtPayload } from 'jsonwebtoken'
 import jwksRsa, { JwksClient } from 'jwks-rsa'
 import { ConfigService } from '@nestjs/config'
-import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../config/keycloak/keycloak.config'
+import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../configuration/keycloak/keycloak.config'
 import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
 import { firstValueFrom, map } from 'rxjs'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
