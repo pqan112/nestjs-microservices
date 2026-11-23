@@ -42,6 +42,14 @@
 - Rules in `.claude/rules/` load when matching files are touched: `nestjs-validation.md`, `database.md`.
 - Use the `run-tests` skill to run or fix tests, and the `refactor` skill to refactor code.
 
+### 4. Limitations
+
+- If you lack knowledge about the question or anything related to it, ask me for more information instead of guessing
+
+### 5. Output Language
+
+- Regardless of the language used in the question, always respond in English.
+
 ## graphify
 
 This project uses a knowledge graph in `graphify-out/` with god nodes, community structure, and cross-file relationships.

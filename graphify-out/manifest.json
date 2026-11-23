@@ -264,8 +264,8 @@
     "semantic_hash": ""
   },
   "apps/bff/src/app/app.module.ts": {
-    "mtime": 1795347961.023212,
-    "seen": 1795348063.1125126,
+    "mtime": 1795348951.4641314,
+    "seen": 1795430859.5368173,
     "ast_hash": "86dd035ce65ad79f78d9441d53aacbde",
     "semantic_hash": ""
   },
@@ -1104,9 +1104,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795102004.6346276,
-    "seen": 1795140680.3462963,
-    "ast_hash": "996a1724a7e948de4ee4e52d51fea260",
+    "mtime": 1795405380.8417976,
+    "seen": 1795430859.537167,
+    "ast_hash": "093c63f20953aa2fb3d73c5315c1d3a7",
     "semantic_hash": ""
   },
   "README.md": {

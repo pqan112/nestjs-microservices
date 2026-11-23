@@ -1,1 +1,6 @@
-graphify-out/** linguist-generated
+# Bỏ qua toàn bộ thư mục output của Graphify
+graphify-out/** linguist-generated=true
+graphify-out/** linguist-vendored=true
+
+# Hoặc chặn riêng file graph.html ở mọi thư mục
+**/graph.html linguist-generated=true
