@@ -14,6 +14,7 @@ import { ProductModule } from './modules/product/product.module'
 import { UserModule } from './modules/user/user.module'
 import { UserGuard } from '@common/guards/user.guard'
 import { ClientsModule } from '@nestjs/microservices'
+import { RedisProvider } from '@common/configuration/redis.config'
 import { TcpProvider } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { PermissionGuard } from '@common/guards/permission.guard'
@@ -33,6 +34,7 @@ import { PermissionGuard } from '@common/guards/permission.guard'
     UserModule,
     // UserGuard requires TCP connection to Authorizer service
     ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.AUTHORIZER_SERVICE)]),
+    RedisProvider,
   ],
   controllers: [],
   providers: [
