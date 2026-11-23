@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "apps/bff/src/app/app.module.ts": {
-    "mtime": 1795440940.805038,
-    "seen": 1795440993.5028353,
-    "ast_hash": "72718ce37e53452f749c623bb43d2e97",
+    "mtime": 1795450881.6499999,
+    "seen": 1795451376.4489563,
+    "ast_hash": "ba63369f371713cb4c43341b70fd758d",
     "semantic_hash": ""
   },
   "apps/bff/src/app/modules/invoice/controllers/invoice.controller.ts": {
@@ -276,15 +276,15 @@
     "semantic_hash": ""
   },
   "apps/bff/src/configuration/configuration.ts": {
-    "mtime": 1795441339.2636013,
-    "seen": 1795444947.9083016,
-    "ast_hash": "e734d65be37491dc80ba6c908886bdaf",
+    "mtime": 1795449929.4930768,
+    "seen": 1795451376.4490206,
+    "ast_hash": "070861ee00ccc6c491fec4b9b036c953",
     "semantic_hash": ""
   },
   "apps/bff/src/configuration/env.config.ts": {
-    "mtime": 1795440940.8060184,
-    "seen": 1795440993.5029082,
-    "ast_hash": "83836baa27cd24ce63aaac69f23b277b",
+    "mtime": 1795449977.9074242,
+    "seen": 1795451376.4490268,
+    "ast_hash": "e48c49bdbeec7df6172d9817d3d1f106",
     "semantic_hash": ""
   },
   "apps/bff/src/main.ts": {
@@ -876,9 +876,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1795441980.924464,
-    "seen": 1795444947.9086065,
-    "ast_hash": "b90aaf1e800f1d9ea3d3e1a7f359cada",
+    "mtime": 1795449889.8923817,
+    "seen": 1795449913.4124694,
+    "ast_hash": "de1e000bb9b1a7074f56c506474cc18d",
     "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
@@ -1601,10 +1601,22 @@
     "ast_hash": "f3a49425f2c89e7e64f1d1b21bb831ed",
     "semantic_hash": ""
   },
+  "libs/configuration/src/lib/throttler.config.ts": {
+    "mtime": 1795449902.7861137,
+    "seen": 1795449913.4121478,
+    "ast_hash": "d8b598c0676b9dc8497073183ccf0e44",
+    "semantic_hash": ""
+  },
+  "apps/bff/src/configuration/throttler/throttler.config.ts": {
+    "mtime": 1795449915.3445046,
+    "seen": 1795449926.3197417,
+    "ast_hash": "392e83e3ec99bf9d61fcdc486b1dbf81",
+    "semantic_hash": ""
+  },
   "pnpm-lock.yaml": {
-    "mtime": 1795446758.9422488,
-    "seen": 1795446857.8235548,
-    "ast_hash": "ad5a5523bbc1d9dd24a59d9d553dfc9c",
+    "mtime": 1795451273.72279,
+    "seen": 1795451376.450447,
+    "ast_hash": "a9894ee9e8f39ba7c20e700b28000f69",
     "semantic_hash": ""
   }
 }

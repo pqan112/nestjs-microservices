@@ -5,6 +5,7 @@ import { LoggerMiddleware } from '@common/middlewares/logger.middleware'
 import { CustomZodValidationPipe } from '@common/pipes/custom-zod-validation.pipe'
 import { MiddlewareConsumer, Module } from '@nestjs/common'
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import { ThrottlerGuard } from '@nestjs/throttler'
 import { ZodSerializerInterceptor } from 'nestjs-zod'
 import { allConfigs } from '../configuration/configuration'
 import { validateEnv } from '../configuration/env.config'
@@ -15,6 +16,7 @@ import { UserModule } from './modules/user/user.module'
 import { UserGuard } from '@common/guards/user.guard'
 import { ClientsModule } from '@nestjs/microservices'
 import { RedisProvider } from '@common/configuration/redis.config'
+import { ThrottlerProvider } from '@common/configuration/throttler.config'
 import { TcpProvider } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { PermissionGuard } from '@common/guards/permission.guard'
@@ -29,18 +31,18 @@ import { PermissionGuard } from '@common/guards/permission.guard'
     // UserGuard requires TCP connection to Authorizer service
     ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.AUTHORIZER_SERVICE)]),
     RedisProvider,
+    ThrottlerProvider,
   ],
   controllers: [],
   providers: [
+    // Guards chạy theo thứ tự khai báo: giới hạn request trước khi gọi authorizer xác thực
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
     { provide: APP_GUARD, useClass: UserGuard },
+    { provide: APP_GUARD, useClass: PermissionGuard },
     { provide: APP_PIPE, useClass: CustomZodValidationPipe },
     { provide: APP_INTERCEPTOR, useClass: ExceptionInterceptor },
     { provide: APP_INTERCEPTOR, useClass: ZodSerializerInterceptor },
     { provide: APP_FILTER, useClass: AllExceptionFilter },
-    {
-      provide: APP_GUARD,
-      useClass: PermissionGuard,
-    },
   ],
 })
 export class AppModule {
