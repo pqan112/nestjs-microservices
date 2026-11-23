@@ -59,3 +59,4 @@ docker/**/docker_data
 # graphify
 graphify-out/cost.json
 graphify-out/cache/
+graphify-out/manifest.json
