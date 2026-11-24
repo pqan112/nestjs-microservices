@@ -5,7 +5,7 @@ import { TcpLoggingInterceptor } from '@common/interceptors/tcp-logging.intercep
 import { RequestParams } from '@common/decorators/request-param.decorator'
 import { ProductTcpResponse } from '@common/interfaces/tcp/product'
 import { CreateProductRequestDto } from '@common/interfaces/gateway/product'
-import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
+import { TcpResponse, TcpSuccess } from '@common/interfaces/tcp/common/tcp-response.interface'
 import { ProductService } from '../services/product.service'
 
 @Controller()
@@ -16,14 +16,14 @@ export class ProductController {
   @MessagePattern(TCP_REQUEST_MESSAGE.PRODUCT.CREATE)
   async create(
     @RequestParams() body: CreateProductRequestDto
-  ): Promise<TCPResponseDto<ProductTcpResponse>> {
+  ): Promise<TcpResponse<ProductTcpResponse>> {
     const result = await this.productService.create(body)
-    return TCPResponseDto.success<ProductTcpResponse>(result)
+    return TcpSuccess(result)
   }
 
   @MessagePattern(TCP_REQUEST_MESSAGE.PRODUCT.GET_LIST)
-  async getList(): Promise<TCPResponseDto<ProductTcpResponse[]>> {
+  async getList(): Promise<TcpResponse<ProductTcpResponse[]>> {
     const result = await this.productService.getList()
-    return TCPResponseDto.success<ProductTcpResponse[]>(result)
+    return TcpSuccess(result)
   }
 }

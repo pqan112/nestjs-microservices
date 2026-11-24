@@ -1,14 +1,14 @@
 import { Observable } from 'rxjs'
 import { TCPRequestDto } from './request.dto'
-import { TCPResponseDto } from './response.dto'
+import { TcpResponse } from './tcp-response.interface'
 
 export interface TcpClient {
   send<TResult = any, TInput = any>(
     pattern: any,
     data: TCPRequestDto<TInput>
-  ): Observable<TCPResponseDto<TResult>>
+  ): Observable<TcpResponse<TResult>>
   emit<TResult = any, TInput = any>(
     pattern: any,
     data: TCPRequestDto<TInput>
-  ): Observable<TCPResponseDto<TResult>>
+  ): Observable<TcpResponse<TResult>>
 }

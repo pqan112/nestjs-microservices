@@ -1,7 +1,7 @@
 import { Controller, UseInterceptors } from '@nestjs/common'
 import { RequestParams } from '@common/decorators/request-param.decorator'
 import { TcpLoggingInterceptor } from '@common/interceptors/tcp-logging.interceptor'
-import { TCPResponseDto } from '@common/interfaces/tcp/common/response.dto'
+import { TcpResponse, TcpSuccess } from '@common/interfaces/tcp/common/tcp-response.interface'
 import { MessagePattern } from '@nestjs/microservices'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import type {
@@ -18,24 +18,24 @@ export class InvoiceController {
   @MessagePattern(TCP_REQUEST_MESSAGE.INVOICE.CREATE)
   async create(
     @RequestParams() params: CreateInvoiceRequestDto
-  ): Promise<TCPResponseDto<InvoiceResponseDto>> {
+  ): Promise<TcpResponse<InvoiceResponseDto>> {
     const result = await this.invoiceService.create(params)
-    return TCPResponseDto.success<InvoiceResponseDto>(result)
+    return TcpSuccess(result)
   }
 
   @UseInterceptors(TcpLoggingInterceptor)
   @MessagePattern(TCP_REQUEST_MESSAGE.INVOICE.GET_LIST)
-  async findAll(): Promise<TCPResponseDto<InvoiceResponseDto[]>> {
+  async findAll(): Promise<TcpResponse<InvoiceResponseDto[]>> {
     const result = await this.invoiceService.findAll()
-    return TCPResponseDto.success<InvoiceResponseDto[]>(result)
+    return TcpSuccess(result)
   }
 
   @UseInterceptors(TcpLoggingInterceptor)
   @MessagePattern(TCP_REQUEST_MESSAGE.INVOICE.UPDATE)
   async update(
     @RequestParams() params: UpdateInvoiceTcpRequest
-  ): Promise<TCPResponseDto<InvoiceResponseDto>> {
+  ): Promise<TcpResponse<InvoiceResponseDto>> {
     const result = await this.invoiceService.update(params)
-    return TCPResponseDto.success<InvoiceResponseDto>(result)
+    return TcpSuccess(result)
   }
 }

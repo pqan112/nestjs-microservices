@@ -78,9 +78,9 @@
     "semantic_hash": ""
   },
   "apps/api/src/app/modules/invoice/controllers/invoice.controller.ts": {
-    "mtime": 1795190145.0842974,
-    "seen": 1795194580.3294172,
-    "ast_hash": "8c235470955ca945c4d2b20b7ea7aa08",
+    "mtime": 1795531826.281939,
+    "seen": 1795534992.659505,
+    "ast_hash": "a831b17a701e5134db5fe811bb2bf05c",
     "semantic_hash": ""
   },
   "apps/api/src/app/modules/invoice/invoice.module.ts": {
@@ -342,9 +342,9 @@
     "semantic_hash": ""
   },
   "apps/product/src/app/modules/product/controllers/product.controller.ts": {
-    "mtime": 1795170770.6495085,
-    "seen": 1795174479.9465246,
-    "ast_hash": "66bc533f91b50f15a6c79411bf2a5df9",
+    "mtime": 1795531826.3221602,
+    "seen": 1795534992.6596694,
+    "ast_hash": "baf72f07b702a7d36b9f0bdf4cf44fb8",
     "semantic_hash": ""
   },
   "apps/product/src/app/modules/product/product.module.ts": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "apps/user-access/src/app/modules/user/controllers/user.controller.ts": {
-    "mtime": 1795340274.3327112,
-    "seen": 1795340278.8165567,
-    "ast_hash": "7f59d419ac5a1e940f5b22967b3767fb",
+    "mtime": 1795531826.3359635,
+    "seen": 1795534992.6597073,
+    "ast_hash": "4b447a6ea317b5c4611655e6951fb78e",
     "semantic_hash": ""
   },
   "apps/user-access/src/app/modules/user/mappers/index.ts": {
@@ -1116,9 +1116,9 @@
     "semantic_hash": ""
   },
   "apps/authorizer/src/app/modules/keycloak/controllers/keycloak.controller.ts": {
-    "mtime": 1795170770.4643595,
-    "seen": 1795174479.9460921,
-    "ast_hash": "6fc8ac656b31ae875f06fb837f91c008",
+    "mtime": 1795534935.067524,
+    "seen": 1795534992.6595473,
+    "ast_hash": "8e81a4af6de42cefd449ce7d66005005",
     "semantic_hash": ""
   },
   "apps/bff-mobile/.oxlintrc.json": {
@@ -1224,15 +1224,15 @@
     "semantic_hash": ""
   },
   "apps/authorizer/src/app/modules/authorizer/authorizer.module.ts": {
-    "mtime": 1795334864.6585715,
-    "seen": 1795335414.9143853,
-    "ast_hash": "90b1780b6bc1c8252876d994512b0c19",
+    "mtime": 1795533505.9986022,
+    "seen": 1795534992.6595387,
+    "ast_hash": "1f01bbf37ec2c353a3f859781898eeb2",
     "semantic_hash": ""
   },
   "apps/authorizer/src/app/modules/authorizer/controllers/authorizer.controller.ts": {
-    "mtime": 1795262826.3923216,
-    "seen": 1795335414.914388,
-    "ast_hash": "7e21ae3839482bdf89cada37610a16dc",
+    "mtime": 1795533389.917723,
+    "seen": 1795534992.659543,
+    "ast_hash": "4866156677c9791b9284ebe550029be2",
     "semantic_hash": ""
   },
   "apps/authorizer/src/app/modules/authorizer/services/authorizer.service.ts": {
@@ -1302,9 +1302,9 @@
     "semantic_hash": ""
   },
   "libs/guards/src/lib/user.guard.ts": {
-    "mtime": 1795448473.961139,
-    "seen": 1795449126.12942,
-    "ast_hash": "dfc934f44059d97135e8753a29a7b50f",
+    "mtime": 1795532915.0558193,
+    "seen": 1795534992.6598582,
+    "ast_hash": "26dc16157d1392d137daf451616de168",
     "semantic_hash": ""
   },
   "libs/guards/tsconfig.json": {
@@ -1439,22 +1439,16 @@
     "ast_hash": "6711a185afc5f0f2bc4d809119b06b98",
     "semantic_hash": ""
   },
-  "libs/interfaces/src/lib/tcp/common/response.dto.ts": {
-    "mtime": 1792994825.7320328,
-    "seen": 1795196227.9757392,
-    "ast_hash": "6b5773124cc3be0e466ca59d860d63cc",
-    "semantic_hash": ""
-  },
   "libs/interfaces/src/lib/tcp/common/send-tcp-request.ts": {
-    "mtime": 1795167381.918064,
-    "seen": 1795196227.9757407,
+    "mtime": 1795531534.5479457,
+    "seen": 1795534992.6599176,
     "ast_hash": "ad5a0c087a2e27e09a54258be86f9603",
     "semantic_hash": ""
   },
   "libs/interfaces/src/lib/tcp/common/tcp-client.interface.ts": {
-    "mtime": 1792750038.6137786,
-    "seen": 1795196227.975743,
-    "ast_hash": "c48ece0072f80c370f2657cf372e6502",
+    "mtime": 1795531489.2207868,
+    "seen": 1795534992.659919,
+    "ast_hash": "80fdaa84c4c9f5f0e424b18a55c659f5",
     "semantic_hash": ""
   },
   "libs/interfaces/src/lib/tcp/invoice/index.ts": {
@@ -1629,6 +1623,36 @@
     "mtime": 1795509374.1032784,
     "seen": 1795511461.031123,
     "ast_hash": "94ea9616885465fc81f0d2d8d034b57f",
+    "semantic_hash": ""
+  },
+  "apps/authorizer/src/app/modules/authorizer/controllers/authorizer-grpc.controller.ts": {
+    "mtime": 1795531988.2459211,
+    "seen": 1795534992.6595411,
+    "ast_hash": "242cb37c3e69ae9d2de7f14369b3e7cc",
+    "semantic_hash": ""
+  },
+  "libs/interfaces/src/lib/grpc/authorizer/authorizer.interface.ts": {
+    "mtime": 1795529430.6461802,
+    "seen": 1795530444.2013924,
+    "ast_hash": "b22f7d644d73b9290f0e52a1edb5238f",
+    "semantic_hash": ""
+  },
+  "libs/interfaces/src/lib/grpc/common/grpc-response.interface.ts": {
+    "mtime": 1795531301.9851716,
+    "seen": 1795534992.6599069,
+    "ast_hash": "84c7c604f2510d0a8061bf7033cdb398",
+    "semantic_hash": ""
+  },
+  "libs/interfaces/src/lib/grpc/authorizer/index.ts": {
+    "mtime": 1795532348.3730323,
+    "seen": 1795534992.659904,
+    "ast_hash": "10eb926747ca9d8801bb2d38fe8eec2e",
+    "semantic_hash": ""
+  },
+  "libs/interfaces/src/lib/tcp/common/tcp-response.interface.ts": {
+    "mtime": 1795531301.9461696,
+    "seen": 1795534992.6599207,
+    "ast_hash": "996bb213132f2632ec33338d2ad6d84e",
     "semantic_hash": ""
   },
   "pnpm-lock.yaml": {
