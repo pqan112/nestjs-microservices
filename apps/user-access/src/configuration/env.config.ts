@@ -10,6 +10,9 @@ const configSchema = baseEnvSchema.extend(mongoEnvSchema.shape).extend({
   // Service này gọi authorizer qua TCP
   TCP_AUTHORIZER_SERVICE_HOST: z.string().default('localhost'),
   TCP_AUTHORIZER_SERVICE_PORT: z.coerce.number(),
+  // Service này lắng nghe gRPC
+  GRPC_USER_ACCESS_SERVICE_HOST: z.string().default('localhost'),
+  GRPC_USER_ACCESS_SERVICE_PORT: z.coerce.number().default(5101),
 })
 
 export type Env = z.infer<typeof configSchema>

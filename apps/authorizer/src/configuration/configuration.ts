@@ -9,6 +9,6 @@ import keycloakConfig from './keycloak/keycloak.config'
 export const allConfigs = [
   createAppConfig(getEnv, (env) => env.AUTHORIZER_PORT),
   createTcpConfig(getEnv, [TCP_SERVICES.AUTHORIZER_SERVICE, TCP_SERVICES.USER_ACCESS_SERVICE]),
-  createGrpcConfig(getEnv, [GRPC_SERVICES.AUTHORIZER_SERVICE]),
+  createGrpcConfig(getEnv, [GRPC_SERVICES.AUTHORIZER_SERVICE, GRPC_SERVICES.USER_ACCESS_SERVICE]),
   keycloakConfig,
 ]

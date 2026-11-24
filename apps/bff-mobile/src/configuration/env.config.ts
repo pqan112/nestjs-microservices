@@ -6,8 +6,9 @@ const configSchema = baseEnvSchema.extend({
   // Các service mà bff-mobile gọi qua TCP
   TCP_PRODUCT_SERVICE_HOST: z.string().default('localhost'),
   TCP_PRODUCT_SERVICE_PORT: z.coerce.number(),
-  TCP_AUTHORIZER_SERVICE_HOST: z.string().default('localhost'),
-  TCP_AUTHORIZER_SERVICE_PORT: z.coerce.number(),
+  // Các service mà bff-mobile gọi qua gRPC
+  GRPC_AUTHORIZER_SERVICE_HOST: z.string().default('localhost'),
+  GRPC_AUTHORIZER_SERVICE_PORT: z.coerce.number().default(5100),
 })
 
 export type Env = z.infer<typeof configSchema>

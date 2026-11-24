@@ -7,6 +7,8 @@ import { ConfigService } from '@nestjs/config'
 import { getTcpConfig } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { APP_CONFIG, AppConfig } from '@common/configuration/app.config'
+import { getGrpcOptions } from '@common/configuration/grpc.config'
+import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -17,6 +19,10 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: getTcpConfig(config, TCP_SERVICES.USER_ACCESS_SERVICE),
   })
+
+  app.connectMicroservice<MicroserviceOptions>(
+    getGrpcOptions(config, GRPC_SERVICES.USER_ACCESS_SERVICE)
+  )
   const globalPrefix = appCfg.globalPrefix
   app.setGlobalPrefix(globalPrefix)
   // close connections cleanly when the process receives a stop signal

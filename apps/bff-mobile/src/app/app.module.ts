@@ -1,6 +1,6 @@
 import { createConfigModule } from '@common/configuration/base.config'
-import { TcpProvider } from '@common/configuration/tcp.config'
-import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
+import { GrpcProvider } from '@common/configuration/grpc.config'
+import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 import { AllExceptionFilter } from '@common/filters/all-exceptions.filter'
 import { UserGuard } from '@common/guards/user.guard'
 import { ExceptionInterceptor } from '@common/interceptors/exception.interceptor'
@@ -18,8 +18,8 @@ import { ProductModule } from './modules/product/product.module'
   imports: [
     createConfigModule(validateEnv, allConfigs),
     ProductModule,
-    // UserGuard requires TCP connection to Authorizer service
-    ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.AUTHORIZER_SERVICE)]),
+    // UserGuard requires gRPC connection to Authorizer service
+    ClientsModule.registerAsync([GrpcProvider(GRPC_SERVICES.AUTHORIZER_SERVICE)]),
   ],
   controllers: [],
   providers: [

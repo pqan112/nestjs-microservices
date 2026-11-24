@@ -1,26 +1,28 @@
+import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
+import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
+import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { LoginRequestDto, LoginResponseDto } from '@common/interfaces/gateway/authorizer'
-import { Inject, Injectable, Logger, UnauthorizedException } from '@nestjs/common'
-import { KeycloakHttpService } from '../../keycloak/services/keycloak-http.service'
+import { UserAccessService } from '@common/interfaces/grpc/user-access'
+import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
+import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
+import { Inject, Injectable, Logger, OnModuleInit, UnauthorizedException } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { ClientGrpc } from '@nestjs/microservices'
 import jwt, { Jwt, JwtPayload } from 'jsonwebtoken'
 import jwksRsa, { JwksClient } from 'jwks-rsa'
-import { ConfigService } from '@nestjs/config'
-import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../configuration/keycloak/keycloak.config'
-import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
 import { firstValueFrom, map } from 'rxjs'
-import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
-import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
-import { UserTcpResponse } from '@common/interfaces/tcp/user'
-import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
-import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
+import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../configuration/keycloak/keycloak.config'
+import { KeycloakHttpService } from '../../keycloak/services/keycloak-http.service'
 
 @Injectable()
-export class AuthorizerService {
+export class AuthorizerService implements OnModuleInit {
+  private userAccessService: UserAccessService
   private readonly logger = new Logger(AuthorizerService.name)
   private jwksClient: JwksClient
   constructor(
     private readonly keycloakHttpService: KeycloakHttpService,
     private readonly configService: ConfigService,
-    @Inject(TCP_SERVICES.USER_ACCESS_SERVICE) private readonly userAccessClient: TcpClient
+    @Inject(GRPC_SERVICES.USER_ACCESS_SERVICE) private readonly grpcUserAccessClient: ClientGrpc
   ) {
     const keycloakConfig = this.configService.getOrThrow<KeycloakConfig>(KEYCLOAK_CONFIG)
     const host = keycloakConfig.host
@@ -31,6 +33,11 @@ export class AuthorizerService {
       cache: true,
       rateLimit: true,
     })
+  }
+
+  onModuleInit() {
+    this.userAccessService =
+      this.grpcUserAccessClient.getService<UserAccessService>('UserAccessService')
   }
 
   async login(params: LoginRequestDto): Promise<LoginResponseDto> {
@@ -74,22 +81,13 @@ export class AuthorizerService {
     }
   }
 
-  private validateUser(token: string, processId: string) {
-    const user = this.getUserByUserId(token, processId)
+  private async validateUser(token: string, processId: string) {
+    const user = await firstValueFrom(
+      this.userAccessService.getByUserId({ processId, userId: token }).pipe(map((res) => res.data))
+    )
     if (!user) {
       throw new UnauthorizedException(ERROR_CODE.USER_NOT_FOUND)
     }
     return user
-  }
-
-  private getUserByUserId(userId: string, processId: string) {
-    return firstValueFrom(
-      this.userAccessClient
-        .send<UserTcpResponse, string>(TCP_REQUEST_MESSAGE.USER.GET_BY_USER_ID, {
-          data: userId,
-          processId,
-        })
-        .pipe(map((data) => data.data))
-    )
   }
 }

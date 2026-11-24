@@ -1,10 +1,7 @@
 import { Controller } from '@nestjs/common'
 import { GrpcMethod } from '@nestjs/microservices'
 import { AuthorizerService } from '../services/authorizer.service'
-import {
-  VerifyUserTokenRequest,
-  VerifyUserTokenResponse,
-} from '@common/interfaces/grpc/authorizer/authorizer.interface'
+import { VerifyUserTokenRequest, VerifyUserTokenResponse } from '@common/interfaces/grpc/authorizer'
 import { GrpcSuccess } from '@common/interfaces/grpc/common/grpc-response.interface'
 
 @Controller()

@@ -12,10 +12,17 @@ const configSchema = baseEnvSchema.extend({
   // Service này lắng nghe gRPC
   GRPC_AUTHORIZER_SERVICE_HOST: z.string().default('localhost'),
   GRPC_AUTHORIZER_SERVICE_PORT: z.coerce.number().default(5100),
+  // Service này gọi user-access qua gRPC
+  GRPC_USER_ACCESS_SERVICE_HOST: z.string().default('localhost'),
+  GRPC_USER_ACCESS_SERVICE_PORT: z.coerce.number().default(5101),
   KEYCLOAK_HOST: z.string().min(1),
   KEYCLOAK_REALM: z.string().min(1),
   KEYCLOAK_CLIENT_ID: z.string().min(1),
   KEYCLOAK_CLIENT_SECRET: z.string().min(1),
+
+  // Các service mà bff gọi qua gRPC
+  USER_ACCESS_SERVICE_HOST: z.string().default('localhost'),
+  USER_ACCESS_SERVICE_PORT: z.coerce.number().default(5101),
 })
 
 export type Env = z.infer<typeof configSchema>

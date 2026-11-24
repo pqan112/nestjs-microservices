@@ -13,6 +13,10 @@ const GRPC_PROTOS: Record<GRPC_SERVICES, { package: string; protoPath: string | 
     package: GRPC_SERVICES.AUTHORIZER_SERVICE,
     protoPath: 'authorizer.proto',
   },
+  [GRPC_SERVICES.USER_ACCESS_SERVICE]: {
+    package: GRPC_SERVICES.USER_ACCESS_SERVICE,
+    protoPath: 'user-access.proto',
+  },
 }
 
 // Dùng: createGrpcConfig(getEnv, [GRPC_SERVICES.AUTHORIZER_SERVICE])

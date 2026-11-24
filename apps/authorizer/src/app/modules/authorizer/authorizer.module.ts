@@ -6,11 +6,16 @@ import { AuthorizerService } from './services/authorizer.service'
 import { ClientsModule } from '@nestjs/microservices'
 import { TcpProvider } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
+import { GrpcProvider } from '@common/configuration/grpc.config'
+import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 
 @Module({
   imports: [
     KeycloakModule,
-    ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.USER_ACCESS_SERVICE)]),
+    ClientsModule.registerAsync([
+      TcpProvider(TCP_SERVICES.USER_ACCESS_SERVICE),
+      GrpcProvider(GRPC_SERVICES.USER_ACCESS_SERVICE),
+    ]),
   ],
   controllers: [AuthorizerController, AuthorizerGrpcController],
   providers: [AuthorizerService],

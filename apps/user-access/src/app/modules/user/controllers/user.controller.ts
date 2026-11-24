@@ -1,14 +1,13 @@
-import { Controller, UseInterceptors } from '@nestjs/common'
-import { TcpLoggingInterceptor } from '@common/interceptors/tcp-logging.interceptor'
-import { UserService } from '../services/user.service'
-import { MessagePattern } from '@nestjs/microservices'
-import { RequestParams } from '@common/decorators/request-param.decorator'
-import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
-import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { HTTP_MESSAGE } from '@common/constants/enum/http-message.enum'
-import { TcpResponse, TcpSuccess } from '@common/interfaces/tcp/common/tcp-response.interface'
+import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { ProcessId } from '@common/decorators/process-id.decorator'
-import { UserTcpResponse } from '@common/interfaces/tcp/user'
+import { RequestParams } from '@common/decorators/request-param.decorator'
+import { TcpLoggingInterceptor } from '@common/interceptors/tcp-logging.interceptor'
+import { CreateUserRequestDto } from '@common/interfaces/gateway/user'
+import { TcpSuccess } from '@common/interfaces/tcp/common/tcp-response.interface'
+import { Controller, UseInterceptors } from '@nestjs/common'
+import { MessagePattern } from '@nestjs/microservices'
+import { UserService } from '../services/user.service'
 
 @Controller()
 @UseInterceptors(TcpLoggingInterceptor)

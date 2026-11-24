@@ -1,17 +1,17 @@
 # Graph Report - einvoice  (2026-11-24)
 
 ## Corpus Check
-- 276 files · ~39,681 words
+- 278 files · ~40,206 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 18 file(s) not represented in the graph (top: (none) 15, .graphify-bak 1, .log 1)
+- Unclassified: 19 file(s) not represented in the graph (top: (none) 15, .proto 2, .graphify-bak 1)
 
 ## Summary
-- 2411 nodes · 3395 edges · 224 communities (146 shown, 78 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 32 edges (avg confidence: 0.85)
+- 2426 nodes · 3446 edges · 214 communities (152 shown, 62 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `244ba145`
+- Built from commit: `5e5fb3a0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -25,7 +25,7 @@
 - compilerOptions
 - HTTP_MESSAGE
 - Common Issues
-- lib/throttler.config.ts
+- bff/src/configuration/env.config.ts
 - ci-poll-decide.mjs
 - InvoiceController
 - Next.js
@@ -34,28 +34,28 @@
 - Monitor CI Command
 - targets
 - nx.json
-- devDependencies
-- MongoModule
+- package.json
+- mongo.config.ts
 - base.config.ts
 - role.repo.ts
 - zod
-- user.guard.ts
+- @nestjs/common
 - steps
 - dependencies
-- bff/src/app/modules/invoice/controllers/invoice.controller.ts
+- product/src/app/app.module.ts
 - Nx Workspace Exploration
 - compilerOptions
-- authorizer.dto.ts
-- ERROR_CODE
+- user-access/src/app/app.module.ts
+- authorizer.service.ts
 - Status Handling by Code
 - Jest
 - Refactor
 - Examples
 - Examples
 - PERMISSION
-- authorizer-grpc.controller.ts
+- user-access/index.ts
 - compilerOptions
-- package.json
+- lint-staged
 - Nx NestJS API Template
 - compilerOptions
 - migrate-oxlint/SKILL.md
@@ -64,7 +64,7 @@
 - compilerOptions
 - compilerOptions
 - compilerOptions
-- bff-mobile/src/app/app.module.ts
+- AppModule
 - compilerOptions
 - compilerOptions
 - compilerOptions
@@ -83,10 +83,10 @@
 - bff/src/app/modules/authorizer/controllers/authorizer.controller.ts
 - Steps
 - compilerOptions
-- product/src/app/modules/product/controllers/product.controller.ts
+- TcpSuccess
 - compilerOptions
 - compilerOptions
-- husky@^9.1.7
+- bff/src/app/modules/invoice/controllers/invoice.controller.ts
 - compilerOptions
 - Development Guidelines
 - compilerOptions
@@ -104,10 +104,11 @@
 - compilerOptions
 - api/tsconfig.json
 - authorizer/tsconfig.json
-- authorizer.service.ts
+- bff/src/app/modules/user/controllers/user.controller.ts
 - bff/tsconfig.json
 - product/tsconfig.json
 - interfaces/project.json
+- lib/throttler.config.ts
 - user-access/tsconfig.json
 - Commands
 - ci-state-update.mjs
@@ -137,7 +138,7 @@
 - nx-run-tasks/SKILL.md
 - @nx/jest
 - scripts
-- bff/src/app/app.module.ts
+- @nestjs/common
 - React Router 7 (Vite-Based)
 - pipes
 - General Guidelines for working with Nx
@@ -148,7 +149,7 @@
 - env
 - Redundant npm Scripts After Import
 - constants
-- AllExceptionFilter
+- api/src/configuration/env.config.ts
 - GRADLE.md
 - nx-plugins/SKILL.md
 - configuration/README.md
@@ -156,7 +157,7 @@
 - entities/README.md
 - filters/README.md
 - interceptors/README.md
-- authorizer-response.interface.ts
+- UserGuard
 - middlewares/README.md
 - schemas/README.md
 - utils/README.md
@@ -169,49 +170,43 @@
 - targets
 - Run Tests
 - interfaces/README.md
-- bff/src/configuration/configuration.ts
+- TCP_SERVICES
 - @nestjs/common
 - guards
 - invoice.dto.ts
 - authorizer/src/app/modules/authorizer/authorizer.module.ts
 - verify-typecheck.md
-- tcp-logging.interceptor.ts
+- INVOICE
 - redis
 - redis-insight
-- .login
-- user-access/src/app/modules/user/controllers/user.controller.ts
-- UserRepo
+- AuthorizerService
+- USER
+- Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP
 - ProductController
 - @nx/workspace@23.3.0
 - copy-workspace-modules
-- oxlint@^1.89.0
-- AuthorizerService
-- @types/jest@~30.0.0
-- lint-staged@^17.6.0
-- .create
-- ProductService
-- product/project.json
+- AUTHORIZER
+- PRODUCT
+- @commitlint/config-conventional@^21.2.4
 - jest-environment-node@~30.5.2
-- @nx/oxlint@23.3.0
-- UserController
 - @nestjs/testing@^12.2.0
-- @nx/eslint-plugin@23.3.0
+- @nx/js@23.3.0
+- product/project.json
 - @nx/web@23.3.0
-- @types/express@^5.0.6
 - @types/jsonwebtoken@^9.0.10
-- @types/node@^26.6.5
+- webpack-dev-server@^6.1.0
 - prune-lockfile
 - ProductController
-- unrun@^0.3.1
-- AuthorizerController
-- InvoiceRepo
+- authorizer-grpc.controller.ts
+- AppModule
+- invoice.repo.ts
 
 ## God Nodes (most connected - your core abstractions)
-1. `@nestjs/common` - 64 edges
-2. `TCP_SERVICES` - 32 edges
+1. `@nestjs/common` - 65 edges
+2. `TCP_SERVICES` - 30 edges
 3. `PERMISSION` - 27 edges
-4. `zod` - 26 edges
-5. `@nestjs/microservices` - 25 edges
+4. `@nestjs/microservices` - 27 edges
+5. `zod` - 26 edges
 6. `@nestjs/config` - 22 edges
 7. `HTTP_MESSAGE` - 21 edges
 8. `compilerOptions` - 20 edges
@@ -219,21 +214,21 @@
 10. `ProcessId` - 19 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `AuthorizerController` --references--> `ThrottleGroup()`  [EXTRACTED]
-  apps/bff/src/app/modules/authorizer/controllers/authorizer.controller.ts → libs/configuration/src/lib/throttler.config.ts
+- `Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP` --references--> `UserGuard`  [INFERRED]
+  TODO.md → libs/guards/src/lib/user.guard.ts
+- `Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP` --references--> `GrpcUserResponse`  [INFERRED]
+  TODO.md → libs/interfaces/src/lib/grpc/user-access/index.ts
+- `Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP` --references--> `UserTcpResponse`  [INFERRED]
+  TODO.md → libs/interfaces/src/lib/tcp/user/user-response.interface.ts
+- `Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP` --references--> `GrpcSuccess()`  [INFERRED]
+  TODO.md → libs/interfaces/src/lib/grpc/common/grpc-response.interface.ts
 - `InvoiceController` --references--> `ThrottleGroup()`  [EXTRACTED]
   apps/bff/src/app/modules/invoice/controllers/invoice.controller.ts → libs/configuration/src/lib/throttler.config.ts
-- `ProductController` --references--> `ThrottleGroup()`  [EXTRACTED]
-  apps/bff/src/app/modules/product/controllers/product.controller.ts → libs/configuration/src/lib/throttler.config.ts
-- `UserController` --references--> `ThrottleGroup()`  [EXTRACTED]
-  apps/bff/src/app/modules/user/controllers/user.controller.ts → libs/configuration/src/lib/throttler.config.ts
-- `bootstrap()` --calls--> `getTcpConfig()`  [EXTRACTED]
-  apps/api/src/main.ts → libs/configuration/src/lib/tcp.config.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (224 total, 78 thin omitted)
+## Communities (214 total, 62 thin omitted)
 
 ### Community 0 - "targets"
 Cohesion: 0.05
@@ -256,8 +251,8 @@ Cohesion: 0.05
 Nodes (38): development, production, cache, dependsOn, executor, options, outputs, buildTarget (+30 more)
 
 ### Community 5 - "product/src/app/modules/product/product.module.ts"
-Cohesion: 0.05
-Nodes (21): ProductModule, ProductRepo, ProductService, configSchema, Env, getEnv, validateEnv, env (+13 more)
+Cohesion: 0.06
+Nodes (12): ProductController, ProductModule, ProductRepo, ProductService, env, CreateProductTable1795442104441, Migrations (TypeORM / PostgreSQL), BaseEntity (+4 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.06
@@ -271,13 +266,17 @@ Nodes (14): HTTP_MESSAGE, BAD_REQUEST, CREATED, DELETED, FAILED, FORBIDDEN, INTE
 Cohesion: 0.07
 Nodes (29): Application vs Library Detection, Common Issues, Dependency Version Conflicts, Directory Conventions, ESLint Config Handling, ESLint Version Pinning (Critical), Explicit Executor Path Fixups, Frontend tsconfig Base Settings (Critical) (+21 more)
 
-### Community 9 - "lib/throttler.config.ts"
-Cohesion: 0.12
-Nodes (23): configSchema, Env, getEnv, optionalPositiveInt, validateEnv, REDIS_CONFIG, RedisConfig, RedisEnv (+15 more)
+### Community 9 - "bff/src/configuration/env.config.ts"
+Cohesion: 0.15
+Nodes (14): configSchema, Env, optionalPositiveInt, validateEnv, REDIS_CONFIG, RedisConfig, RedisEnv, redisEnvSchema (+6 more)
 
 ### Community 10 - "ci-poll-decide.mjs"
 Cohesion: 0.10
 Nodes (25): args, backoff(), buildOutput(), categorizeTasks(), classify(), envRerunCount, expectedSha, formatMessage() (+17 more)
+
+### Community 11 - "InvoiceController"
+Cohesion: 0.14
+Nodes (3): InvoiceController, ProcessId, @nestjs/swagger
 
 ### Community 12 - "Next.js"
 Cohesion: 0.07
@@ -303,33 +302,41 @@ Nodes (40): development, production, cache, dependsOn, executor, options, output
 Cohesion: 0.09
 Nodes (24): analytics, cache, executor, inputs, options, namedInputs, default, production (+16 more)
 
-### Community 18 - "devDependencies"
-Cohesion: 0.07
-Nodes (27): devDependencies, @commitlint/cli@^21.2.4, @commitlint/config-conventional@^21.2.4, @nestjs/config@^12.0.1, @nestjs/schematics@^12.0.10, @nestjs/swagger@^12.0.2, @nx/js@23.3.0, @nx/nest@23.3.0 (+19 more)
+### Community 18 - "package.json"
+Cohesion: 0.05
+Nodes (55): devDependencies, @commitlint/cli@^21.2.4, husky@^9.1.7, jest-util@~30.5.1, lint-staged@^17.6.0, @nestjs/config@^12.0.1, @nestjs/schematics@^12.0.10, @nestjs/swagger@^12.0.2 (+47 more)
+
+### Community 19 - "mongo.config.ts"
+Cohesion: 0.22
+Nodes (4): logger, MONGO_CLIENT, MongoEnv, MongoModule
 
 ### Community 20 - "base.config.ts"
-Cohesion: 0.09
-Nodes (22): AppModule, allConfigs, configSchema, Env, getEnv, validateEnv, AppModule, allConfigs (+14 more)
+Cohesion: 0.12
+Nodes (18): configSchema, Env, configSchema, Env, getEnv, validateEnv, configSchema, Env (+10 more)
 
 ### Community 21 - "role.repo.ts"
-Cohesion: 0.14
-Nodes (8): RoleRepo, RoleModule, RoleService, ROLE, ACCOUNTANT, ADMINISTRATOR, toResponse(), Role
+Cohesion: 0.12
+Nodes (12): RoleRepo, RoleService, MONGO_DB, COLLECTIONS, INVOICE, ROLE, USER, ROLE (+4 more)
 
 ### Community 22 - "zod"
-Cohesion: 0.16
-Nodes (12): baseEntityResponseSchema, CreateProductRequestDto, createProductRequestSchema, MobileProductResponseDto, mobileProductResponseSchema, ProductResponseDto, productResponseSchema, CreateUserRequestDto (+4 more)
+Cohesion: 0.12
+Nodes (16): LoginRequestDto, loginRequestSchema, LoginResponseDto, loginResponseSchema, baseEntityResponseSchema, CreateProductRequestDto, createProductRequestSchema, MobileProductResponseDto (+8 more)
 
-### Community 23 - "user.guard.ts"
-Cohesion: 0.17
-Nodes (8): AUTH_TYPE_KEY, AuthType, AuthTypeType, UserGuard, AuthorizerService, getAccessToken(), setUserData(), parseToken()
+### Community 23 - "@nestjs/common"
+Cohesion: 0.15
+Nodes (15): AUTH_TYPE_KEY, AuthType, AuthTypeType, MetadataKeys, PROCESS_ID, START_TIME, USER_DATA, stringifyForLog() (+7 more)
 
 ### Community 24 - "steps"
 Cohesion: 0.10
 Nodes (20): jobs, main, runs-on, steps, name, on, pull_request, push (+12 more)
 
 ### Community 25 - "dependencies"
-Cohesion: 0.05
-Nodes (38): dependencies, cache-manager@^7.2.9, express@^5.3.0, @grpc/grpc-js@^1.14.7, @grpc/proto-loader@^0.8.1, ioredis@^6.0.0, jsonwebtoken@^9.0.3, jwks-rsa@^4.1.0 (+30 more)
+Cohesion: 0.06
+Nodes (33): dependencies, cache-manager@^7.2.9, express@^5.3.0, @grpc/grpc-js@^1.14.7, @grpc/proto-loader@^0.8.1, ioredis@^6.0.0, jwks-rsa@^4.1.0, mongodb@^7.7.0 (+25 more)
+
+### Community 26 - "product/src/app/app.module.ts"
+Cohesion: 0.33
+Nodes (4): AppModule, allConfigs, validateEnv, createConfigModule()
 
 ### Community 27 - "Nx Workspace Exploration"
 Cohesion: 0.10
@@ -339,13 +346,13 @@ Nodes (18): Affected Projects, Affected Projects, "Cannot find configuration for
 Cohesion: 0.12
 Nodes (16): compilerOptions, declaration, emitDecoratorMetadata, experimentalDecorators, forceConsistentCasingInFileNames, noFallthroughCasesInSwitch, noImplicitAny, outDir (+8 more)
 
-### Community 29 - "authorizer.dto.ts"
-Cohesion: 0.40
-Nodes (4): LoginRequestDto, loginRequestSchema, LoginResponseDto, loginResponseSchema
+### Community 29 - "user-access/src/app/app.module.ts"
+Cohesion: 0.15
+Nodes (9): AppModule, RoleModule, UserModule, allConfigs, configSchema, Env, getEnv, validateEnv (+1 more)
 
-### Community 30 - "ERROR_CODE"
-Cohesion: 0.17
-Nodes (12): ERROR_CODE, AUTH_INVALID_CREDENTIALS, AUTH_INVALID_TOKEN, AUTH_INVALID_TOKEN_STRUCTURE, AUTH_PERMISSION_DENIED, AUTH_TOKEN_INVALID_FORMAT, AUTH_TOKEN_REQUIRED, INVOICE_NOT_FOUND (+4 more)
+### Community 30 - "authorizer.service.ts"
+Cohesion: 0.08
+Nodes (20): getEnv, KEYCLOAK_CONFIG, KeycloakConfig, ERROR_CODE, AUTH_INVALID_CREDENTIALS, AUTH_INVALID_TOKEN, AUTH_INVALID_TOKEN_STRUCTURE, AUTH_PERMISSION_DENIED (+12 more)
 
 ### Community 31 - "Status Handling by Code"
 Cohesion: 0.11
@@ -368,20 +375,20 @@ Cohesion: 0.11
 Nodes (17): 1. Preserve Functionality, 2. Apply Project Standards, 3. Enhance Clarity, 4. Maintain Balance, 5. Focus Scope, After: Clear Steps, After: Clear Switch Statement, After: Direct Check (+9 more)
 
 ### Community 36 - "PERMISSION"
-Cohesion: 0.08
-Nodes (24): PERMISSION, INVOICE_CREATE, INVOICE_DELETE, INVOICE_GET_ALL, INVOICE_GET_BY_ID, INVOICE_SEND, INVOICE_UPDATE, PRODUCT_CREATE (+16 more)
+Cohesion: 0.06
+Nodes (33): PERMISSION, INVOICE_CREATE, INVOICE_DELETE, INVOICE_GET_ALL, INVOICE_GET_BY_ID, INVOICE_SEND, INVOICE_UPDATE, PRODUCT_CREATE (+25 more)
 
-### Community 37 - "authorizer-grpc.controller.ts"
-Cohesion: 0.26
-Nodes (5): AuthorizerGrpcController, VerifyUserTokenRequest, VerifyUserTokenResponse, GrpcResponse, GrpcSuccess()
+### Community 37 - "user-access/index.ts"
+Cohesion: 0.32
+Nodes (5): UserGrpcController, GrpcResponse, GrpcSuccess(), GrpcUserResponse, UserById
 
 ### Community 38 - "compilerOptions"
 Cohesion: 0.12
 Nodes (16): compilerOptions, declaration, emitDecoratorMetadata, experimentalDecorators, forceConsistentCasingInFileNames, noFallthroughCasesInSwitch, noImplicitAny, outDir (+8 more)
 
-### Community 39 - "package.json"
-Cohesion: 0.10
-Nodes (19): jest-util@~30.5.1, nx@23.3.0, @nx/node@23.3.0, prettier@~3.9.10, @swc/helpers@~0.5.23, webpack-dev-server@^6.1.0, license, lint-staged (+11 more)
+### Community 39 - "lint-staged"
+Cohesion: 0.67
+Nodes (3): lint-staged, *.{js,jsx,ts,tsx}, *.{md,json,yml,yaml,html}
 
 ### Community 40 - "Nx NestJS API Template"
 Cohesion: 0.12
@@ -414,10 +421,6 @@ Nodes (15): compilerOptions, declaration, emitDecoratorMetadata, experimentalDec
 ### Community 47 - "compilerOptions"
 Cohesion: 0.12
 Nodes (15): compilerOptions, declaration, emitDecoratorMetadata, experimentalDecorators, forceConsistentCasingInFileNames, noFallthroughCasesInSwitch, noImplicitAny, outDir (+7 more)
-
-### Community 48 - "bff-mobile/src/app/app.module.ts"
-Cohesion: 0.17
-Nodes (9): AppModule, ProductModule, allConfigs, configSchema, Env, getEnv, validateEnv, ExceptionInterceptor (+1 more)
 
 ### Community 49 - "compilerOptions"
 Cohesion: 0.12
@@ -480,8 +483,8 @@ Cohesion: 0.13
 Nodes (14): compilerOptions, forceConsistentCasingInFileNames, importHelpers, module, noFallthroughCasesInSwitch, noImplicitOverride, noImplicitReturns, noPropertyAccessFromIndexSignature (+6 more)
 
 ### Community 64 - "bff/src/app/modules/authorizer/controllers/authorizer.controller.ts"
-Cohesion: 0.27
-Nodes (9): ThrottleGroup(), Auth(), Public(), ResponseDto, ResponseSchema, sendTcpRequest(), @nestjs/swagger, nestjs-zod (+1 more)
+Cohesion: 0.07
+Nodes (11): AuthorizerController, UserController, ThrottleGroup(), Auth(), Public(), ResponseDto, ResponseSchema, RequestSchema (+3 more)
 
 ### Community 65 - "Steps"
 Cohesion: 0.14
@@ -491,9 +494,9 @@ Nodes (13): 1. Discover Available Generators, 2. Match Generator to User Request
 Cohesion: 0.15
 Nodes (12): compilerOptions, emitDecoratorMetadata, experimentalDecorators, module, moduleResolution, outDir, target, types (+4 more)
 
-### Community 67 - "product/src/app/modules/product/controllers/product.controller.ts"
-Cohesion: 0.24
-Nodes (3): RequestParams, TcpResponse, TcpSuccess()
+### Community 67 - "TcpSuccess"
+Cohesion: 0.22
+Nodes (3): InvoiceController, invoiceRequestMapping(), InvoiceService
 
 ### Community 68 - "compilerOptions"
 Cohesion: 0.15
@@ -502,6 +505,10 @@ Nodes (12): compilerOptions, emitDecoratorMetadata, experimentalDecorators, modu
 ### Community 69 - "compilerOptions"
 Cohesion: 0.15
 Nodes (12): compilerOptions, emitDecoratorMetadata, experimentalDecorators, module, moduleResolution, outDir, target, types (+4 more)
+
+### Community 70 - "bff/src/app/modules/invoice/controllers/invoice.controller.ts"
+Cohesion: 0.18
+Nodes (4): Permissions, UserData, PermissionGuard, CreateKeycloakUserTcpReq
 
 ### Community 71 - "compilerOptions"
 Cohesion: 0.15
@@ -571,9 +578,9 @@ Nodes (7): compilerOptions, esModuleInterop, extends, files, include, ../../tsco
 Cohesion: 0.25
 Nodes (7): compilerOptions, esModuleInterop, extends, files, include, ../../tsconfig.base.json, references
 
-### Community 88 - "authorizer.service.ts"
-Cohesion: 0.11
-Nodes (17): AUTHORIZER, LOGIN, VERIFY_USER_TOKEN, INVOICE, CREATE, GET_LIST, UPDATE, KEYCLOAK (+9 more)
+### Community 88 - "bff/src/app/modules/user/controllers/user.controller.ts"
+Cohesion: 0.09
+Nodes (11): AuthorizerController, UserController, createUserRequestMapping(), UserService, KEYCLOAK, CREATE_USER, TCP_REQUEST_MESSAGE, RequestParams (+3 more)
 
 ### Community 89 - "bff/tsconfig.json"
 Cohesion: 0.25
@@ -586,6 +593,10 @@ Nodes (7): compilerOptions, esModuleInterop, extends, files, include, ../../tsco
 ### Community 91 - "interfaces/project.json"
 Cohesion: 0.25
 Nodes (7): name, projectType, $schema, sourceRoot, tags, targets, lint
+
+### Community 92 - "lib/throttler.config.ts"
+Cohesion: 0.18
+Nodes (14): getEnv, groupOf(), reflector, ThrottleLimit, THROTTLER_CONFIG, ThrottlerConfig, ThrottlerEnv, ThrottlerProvider (+6 more)
 
 ### Community 93 - "user-access/tsconfig.json"
 Cohesion: 0.25
@@ -624,8 +635,8 @@ Cohesion: 0.25
 Nodes (7): name, projectType, $schema, sourceRoot, tags, targets, lint
 
 ### Community 102 - "user.repo.ts"
-Cohesion: 0.21
-Nodes (12): logger, MONGO_CLIENT, MONGO_DB, MongoEnv, COLLECTIONS, INVOICE, ROLE, USER (+4 more)
+Cohesion: 0.19
+Nodes (5): UserRepo, CreateUser, UpdateUser, User, mongodb
 
 ### Community 103 - "middlewares/project.json"
 Cohesion: 0.25
@@ -699,9 +710,9 @@ Nodes (4): jest@~30.5.2, @nx/jest@23.3.0, jest, @nx/jest
 Cohesion: 0.29
 Nodes (7): scripts, dev, dev-lite, lint, nx:reset, nx:run-many, prepare
 
-### Community 122 - "bff/src/app/app.module.ts"
-Cohesion: 0.17
-Nodes (14): AppModule, AuthorizerModule, InvoiceModule, ProductModule, UserModule, TCP_CONFIG, TcpConfig, TcpProvider() (+6 more)
+### Community 122 - "@nestjs/common"
+Cohesion: 0.11
+Nodes (13): ProductModule, allConfigs, AuthorizerModule, InvoiceModule, ProductModule, UserModule, allConfigs, GrpcProvider() (+5 more)
 
 ### Community 123 - "React Router 7 (Vite-Based)"
 Cohesion: 0.40
@@ -739,17 +750,13 @@ Nodes (11): TS_NODE_BASEURL, TS_NODE_PROJECT, options, executor, options, execut
 Cohesion: 0.50
 Nodes (4): React Router 7 — Keep ALL scripts, Redundant npm Scripts After Import, Standalone Vite App (`create-vite`), TanStack Start
 
-### Community 141 - "authorizer-response.interface.ts"
-Cohesion: 0.22
-Nodes (8): AuthorizedMetadataDto, authorizedMetadataSchema, AuthorizeResponseDto, authorizeResponseSchema, LoginTcpResponse, CreateRole, roleSchema, UpdateRole
+### Community 133 - "api/src/configuration/env.config.ts"
+Cohesion: 0.23
+Nodes (7): AppModule, InvoiceModule, allConfigs, configSchema, Env, getEnv, validateEnv
 
 ### Community 145 - "guards/project.json"
 Cohesion: 0.29
 Nodes (6): name, projectType, $schema, sourceRoot, tags, // targets
-
-### Community 146 - "api/src/app/modules/invoice/controllers/invoice.controller.ts"
-Cohesion: 0.17
-Nodes (6): InvoiceController, InvoiceModule, InvoiceService, TcpLoggingInterceptor, UpdateInvoiceRequestDto, UpdateInvoiceTcpRequest
 
 ### Community 147 - "compilerOptions"
 Cohesion: 0.06
@@ -767,25 +774,25 @@ Nodes (11): executor, passWithNoTests, dependsOn, executor, targets, lint, migra
 Cohesion: 0.50
 Nodes (3): Rules, Run Tests, Workflow
 
-### Community 154 - "bff/src/configuration/configuration.ts"
-Cohesion: 0.23
-Nodes (11): bootstrap(), allConfigs, createAppConfig(), createGrpcConfig(), getGrpcOptions(), GRPC_CONFIG, GRPC_PROTOS, GrpcProvider() (+3 more)
+### Community 154 - "TCP_SERVICES"
+Cohesion: 0.19
+Nodes (17): createAppConfig(), createGrpcConfig(), GRPC_CONFIG, GRPC_PROTOS, createTcpConfig(), TCP_CONFIG, TcpConfig, TcpProvider() (+9 more)
 
 ### Community 155 - "@nestjs/common"
-Cohesion: 0.30
-Nodes (14): bootstrap(), bootstrap(), bootstrap(), bootstrap(), bootstrap(), APP_CONFIG, AppConfig, AppEnv (+6 more)
+Cohesion: 0.27
+Nodes (15): bootstrap(), bootstrap(), bootstrap(), bootstrap(), bootstrap(), bootstrap(), APP_CONFIG, AppConfig (+7 more)
 
 ### Community 158 - "invoice.dto.ts"
-Cohesion: 0.09
-Nodes (20): INVOICE_STATUS, CREATED, PAID, SENT, ClientRequestDto, clientRequestSchema, clientResponseSchema, CreateInvoiceRequestDto (+12 more)
+Cohesion: 0.12
+Nodes (15): INVOICE_STATUS, CREATED, PAID, SENT, ClientRequestDto, clientRequestSchema, clientResponseSchema, CreateInvoiceRequestDto (+7 more)
 
 ### Community 159 - "authorizer/src/app/modules/authorizer/authorizer.module.ts"
-Cohesion: 0.10
-Nodes (15): AppModule, AuthorizerModule, KeycloakModule, allConfigs, configSchema, Env, getEnv, validateEnv (+7 more)
-
-### Community 167 - "tcp-logging.interceptor.ts"
 Cohesion: 0.22
-Nodes (8): MetadataKeys, PROCESS_ID, START_TIME, USER_DATA, LoggerMiddleware, stringifyForLog(), getProcessId(), express
+Nodes (5): AppModule, AuthorizerModule, KeycloakModule, allConfigs, validateEnv
+
+### Community 167 - "INVOICE"
+Cohesion: 0.50
+Nodes (4): INVOICE, CREATE, GET_LIST, UPDATE
 
 ### Community 168 - "redis"
 Cohesion: 0.29
@@ -795,17 +802,25 @@ Nodes (7): container_name, image, networks, ports, restart, volumes, redis
 Cohesion: 0.29
 Nodes (7): container_name, depends_on, image, networks, ports, volumes, redis-insight
 
-### Community 171 - "user-access/src/app/modules/user/controllers/user.controller.ts"
-Cohesion: 0.12
-Nodes (5): createUserRequestMapping(), UserService, RequestSchema, TCPRequestDto, TcpClient
+### Community 171 - "USER"
+Cohesion: 0.50
+Nodes (4): USER, CREATE, GET_ALL, GET_BY_USER_ID
 
-### Community 172 - "UserRepo"
-Cohesion: 0.20
-Nodes (6): UserRepo, UserTcpResponse, CreateUser, UpdateUser, User, userSchema
+### Community 172 - "Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP"
+Cohesion: 0.50
+Nodes (3): UserTcpResponse, TODO, Đồng bộ kiểu `createdAt` / `updatedAt` qua gRPC/TCP
 
 ### Community 175 - "copy-workspace-modules"
 Cohesion: 0.20
 Nodes (10): cache, dependsOn, executor, options, outputs, buildTarget, runBuildTargetDependencies, options (+2 more)
+
+### Community 177 - "AUTHORIZER"
+Cohesion: 0.67
+Nodes (3): AUTHORIZER, LOGIN, VERIFY_USER_TOKEN
+
+### Community 178 - "PRODUCT"
+Cohesion: 0.67
+Nodes (3): PRODUCT, CREATE, GET_LIST
 
 ### Community 185 - "product/project.json"
 Cohesion: 0.33
@@ -815,29 +830,33 @@ Nodes (5): name, projectType, $schema, sourceRoot, tags
 Cohesion: 0.33
 Nodes (6): cache, dependsOn, executor, inputs, outputs, prune-lockfile
 
-### Community 226 - "InvoiceRepo"
-Cohesion: 0.15
-Nodes (5): invoiceRequestMapping(), InvoiceRepo, CreateInvoice, Invoice, UpdateInvoice
+### Community 199 - "authorizer-grpc.controller.ts"
+Cohesion: 0.33
+Nodes (3): AuthorizerGrpcController, VerifyUserTokenRequest, VerifyUserTokenResponse
+
+### Community 226 - "invoice.repo.ts"
+Cohesion: 0.14
+Nodes (12): InvoiceRepo, baseSchema, newDocument(), touch(), Client, clientSchema, CreateInvoice, Invoice (+4 more)
 
 ## Knowledge Gaps
-- **120 isolated node(s):** `INVOICE`, `ROLE`, `USER`, `./tsconfig.json`, `AUTHORIZER_SERVICE` (+115 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1505 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **78 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **121 isolated node(s):** `INVOICE`, `ROLE`, `USER`, `./tsconfig.json`, `../../.oxlintrc.json` (+116 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1511 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **62 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@nestjs/common` connect `@nestjs/common` to `product/src/app/modules/product/product.module.ts`, `lib/throttler.config.ts`, `api/src/app/modules/invoice/controllers/invoice.controller.ts`, `base.config.ts`, `role.repo.ts`, `user.guard.ts`, `dependencies`, `bff/src/app/modules/invoice/controllers/invoice.controller.ts`, `bff/src/configuration/configuration.ts`, `authorizer/src/app/modules/authorizer/authorizer.module.ts`, `PERMISSION`, `authorizer-grpc.controller.ts`, `tcp-logging.interceptor.ts`, `package.json`, `user-access/src/app/modules/user/controllers/user.controller.ts`, `bff-mobile/src/app/app.module.ts`, `bff/src/app/modules/authorizer/controllers/authorizer.controller.ts`, `product/src/app/modules/product/controllers/product.controller.ts`, `ProductController`, `authorizer.service.ts`, `user.repo.ts`, `bff/src/app/app.module.ts`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+- **Why does `@nestjs/common` connect `@nestjs/common` to `api/src/configuration/env.config.ts`, `product/src/app/modules/product/product.module.ts`, `InvoiceController`, `api/src/app/modules/invoice/controllers/invoice.controller.ts`, `mongo.config.ts`, `package.json`, `role.repo.ts`, `dependencies`, `product/src/app/app.module.ts`, `TCP_SERVICES`, `@nestjs/common`, `user-access/src/app/app.module.ts`, `authorizer.service.ts`, `authorizer/src/app/modules/authorizer/authorizer.module.ts`, `user-access/index.ts`, `bff/src/app/modules/authorizer/controllers/authorizer.controller.ts`, `bff/src/app/modules/invoice/controllers/invoice.controller.ts`, `authorizer-grpc.controller.ts`, `bff/src/app/modules/user/controllers/user.controller.ts`, `lib/throttler.config.ts`, `invoice.repo.ts`, `user.repo.ts`, `@nestjs/common`?**
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **What connects `INVOICE`, `ROLE`, `USER` to the rest of the system?**
-  _120 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _121 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `targets` be split into smaller, more focused modules?**
   _Cohesion score 0.04994192799070848 - nodes in this community are weakly interconnected._
-- **Why does `zod` connect `zod` to `bff/src/app/modules/authorizer/controllers/authorizer.controller.ts`, `product/src/app/modules/product/product.module.ts`, `user.repo.ts`, `package.json`, `lib/throttler.config.ts`, `user-access/src/app/modules/user/controllers/user.controller.ts`, `UserRepo`, `authorizer-response.interface.ts`, `bff-mobile/src/app/app.module.ts`, `base.config.ts`, `dependencies`, `authorizer.dto.ts`, `invoice.dto.ts`, `authorizer/src/app/modules/authorizer/authorizer.module.ts`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `zod` connect `zod` to `bff/src/app/modules/authorizer/controllers/authorizer.controller.ts`, `invoice.repo.ts`, `PERMISSION`, `api/src/configuration/env.config.ts`, `user.repo.ts`, `bff/src/configuration/env.config.ts`, `package.json`, `mongo.config.ts`, `base.config.ts`, `dependencies`, `@nestjs/common`, `lib/throttler.config.ts`, `user-access/src/app/app.module.ts`, `invoice.dto.ts`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Should `targets` be split into smaller, more focused modules?**
   _Cohesion score 0.05121951219512195 - nodes in this community are weakly interconnected._
-- **Why does `PERMISSION` connect `PERMISSION` to `bff/src/app/modules/invoice/controllers/invoice.controller.ts`, `authorizer-response.interface.ts`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `ProcessId` connect `InvoiceController` to `bff/src/app/modules/authorizer/controllers/authorizer.controller.ts`, `ProductController`, `bff/src/app/modules/invoice/controllers/invoice.controller.ts`, `ProductController`, `@nestjs/common`, `bff/src/app/modules/user/controllers/user.controller.ts`?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Should `targets` be split into smaller, more focused modules?**
   _Cohesion score 0.05121951219512195 - nodes in this community are weakly interconnected._
