@@ -1,3 +1,5 @@
+import { THROTTLER_GROUP } from '@common/constants/enum/throttler-group.enum'
+import { ThrottleGroup } from '@common/configuration/throttler.config'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { ProcessId } from '@common/decorators/process-id.decorator'
@@ -10,6 +12,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
 
 @ApiTags('Product')
+@ThrottleGroup(THROTTLER_GROUP.PRODUCT)
 @Controller('product')
 export class ProductController {
   constructor(@Inject(TCP_SERVICES.PRODUCT_SERVICE) private readonly productClient: TcpClient) {}

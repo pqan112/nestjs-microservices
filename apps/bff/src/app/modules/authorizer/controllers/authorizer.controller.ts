@@ -1,3 +1,5 @@
+import { THROTTLER_GROUP } from '@common/constants/enum/throttler-group.enum'
+import { ThrottleGroup } from '@common/configuration/throttler.config'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { Public } from '@common/decorators/authorizer.decorator'
@@ -11,6 +13,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { ZodResponse } from 'nestjs-zod'
 
 @ApiTags('Authorizer')
+@ThrottleGroup(THROTTLER_GROUP.AUTHORIZER)
 @Controller('authorizer')
 export class AuthorizerController {
   constructor(

@@ -1,3 +1,5 @@
+import { THROTTLER_GROUP } from '@common/constants/enum/throttler-group.enum'
+import { ThrottleGroup } from '@common/configuration/throttler.config'
 import { TCP_REQUEST_MESSAGE } from '@common/constants/enum/tcp-request-message.enum'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { ProcessId } from '@common/decorators/process-id.decorator'
@@ -29,6 +31,7 @@ import { Permissions } from '@common/decorators/permission.decorator'
 import { PERMISSION } from '@common/constants/enum/role.enum'
 
 @ApiTags('Invoice')
+@ThrottleGroup(THROTTLER_GROUP.INVOICE)
 @Controller('invoice')
 export class InvoiceController {
   private readonly logger = new Logger(InvoiceController.name)

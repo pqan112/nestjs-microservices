@@ -3,9 +3,22 @@ import { baseEnvSchema, defineEnv } from '@common/configuration/base.config'
 import { redisEnvSchema } from '@common/configuration/redis.config'
 import { throttlerEnvSchema } from '@common/configuration/throttler.config'
 
+// Giới hạn riêng của từng module; bỏ trống thì dùng THROTTLER_TTL_MS / THROTTLER_LIMIT.
+const optionalPositiveInt = z.coerce.number().int().positive().optional()
+
 const configSchema = baseEnvSchema
   .extend(redisEnvSchema.shape)
   .extend(throttlerEnvSchema.shape)
+  .extend({
+    AUTHORIZER_THROTTLER_TTL_MS: optionalPositiveInt,
+    AUTHORIZER_THROTTLER_LIMIT: optionalPositiveInt,
+    INVOICE_THROTTLER_TTL_MS: optionalPositiveInt,
+    INVOICE_THROTTLER_LIMIT: optionalPositiveInt,
+    PRODUCT_THROTTLER_TTL_MS: optionalPositiveInt,
+    PRODUCT_THROTTLER_LIMIT: optionalPositiveInt,
+    USER_THROTTLER_TTL_MS: optionalPositiveInt,
+    USER_THROTTLER_LIMIT: optionalPositiveInt,
+  })
   .extend({
     BFF_PORT: z.coerce.number().default(8080),
     // Các service mà bff gọi qua TCP
