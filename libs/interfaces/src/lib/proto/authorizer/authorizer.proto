@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package authorizer;
+
+// Placeholder contract: replace with real RPCs.
+service AuthorizerService {
+  rpc Ping (PingRequest) returns (PingResponse);
+}
+
+message PingRequest {}
+
+message PingResponse {
+  string message = 1;
+}

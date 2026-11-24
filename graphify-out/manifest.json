@@ -186,9 +186,9 @@
     "semantic_hash": ""
   },
   "apps/authorizer/src/main.ts": {
-    "mtime": 1795441171.3828917,
-    "seen": 1795444947.9082427,
-    "ast_hash": "928fff3519d45fbae66a3a96f7eb0683",
+    "mtime": 1795513900.6030703,
+    "seen": 1795513988.17523,
+    "ast_hash": "f1783a40e4f06fdd456415e1578c2deb",
     "semantic_hash": ""
   },
   "apps/authorizer/tsconfig.app.json": {
@@ -210,9 +210,9 @@
     "semantic_hash": ""
   },
   "apps/authorizer/webpack.config.js": {
-    "mtime": 1794934176.9119718,
-    "seen": 1794934441.018605,
-    "ast_hash": "e05022987e8c9ce81483e9eac13fbbb5",
+    "mtime": 1795509837.9140675,
+    "seen": 1795511461.0307744,
+    "ast_hash": "bc52e659cf9fd9d662d31cf4fba2fe75",
     "semantic_hash": ""
   },
   "apps/bff/.oxlintrc.json": {
@@ -876,9 +876,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1795449889.8923817,
-    "seen": 1795449913.4124694,
-    "ast_hash": "de1e000bb9b1a7074f56c506474cc18d",
+    "mtime": 1795509394.3831532,
+    "seen": 1795511461.0313637,
+    "ast_hash": "0546395c4d8c55c4bda96f89f7ac09ca",
     "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
@@ -1038,9 +1038,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795444949.3695705,
-    "seen": 1795444954.6433148,
-    "ast_hash": "4a3c2478f0cb4e9a9ce5dcb809c83b5c",
+    "mtime": 1795480361.247035,
+    "seen": 1795511461.0314224,
+    "ast_hash": "f0efd129388ebb3982deade3e59fc91c",
     "semantic_hash": ""
   },
   "README.md": {
@@ -1542,15 +1542,15 @@
     "semantic_hash": ""
   },
   "apps/authorizer/src/configuration/configuration.ts": {
-    "mtime": 1795440940.8030198,
-    "seen": 1795440993.5027223,
-    "ast_hash": "0d8e3c61a03ffa485272eeafd2b2d86c",
+    "mtime": 1795509375.370883,
+    "seen": 1795511461.0307493,
+    "ast_hash": "8164b1d6129f3cfe38246de946af569a",
     "semantic_hash": ""
   },
   "apps/authorizer/src/configuration/env.config.ts": {
-    "mtime": 1795440940.804042,
-    "seen": 1795440993.5027292,
-    "ast_hash": "e52a605f855613e033ed423c00b4d427",
+    "mtime": 1795509375.3608744,
+    "seen": 1795511461.0307536,
+    "ast_hash": "f37d94bb76a41028261115ec606e3bff",
     "semantic_hash": ""
   },
   "apps/authorizer/src/configuration/keycloak/keycloak.config.ts": {
@@ -1619,10 +1619,22 @@
     "ast_hash": "5e3b613167174b22d2515e0d83a1bb0b",
     "semantic_hash": ""
   },
+  "libs/configuration/src/lib/grpc.config.ts": {
+    "mtime": 1795513696.8373513,
+    "seen": 1795513988.1753914,
+    "ast_hash": "0e51f30c180a40620d1e2d1382556fb8",
+    "semantic_hash": ""
+  },
+  "libs/constants/src/lib/enum/grpc-service.enum.ts": {
+    "mtime": 1795509374.1032784,
+    "seen": 1795511461.031123,
+    "ast_hash": "94ea9616885465fc81f0d2d8d034b57f",
+    "semantic_hash": ""
+  },
   "pnpm-lock.yaml": {
-    "mtime": 1795451273.72279,
-    "seen": 1795451376.450447,
-    "ast_hash": "a9894ee9e8f39ba7c20e700b28000f69",
+    "mtime": 1795513900.396846,
+    "seen": 1795513988.175957,
+    "ast_hash": "5d0b04f936ee7feee232faef29a320f3",
     "semantic_hash": ""
   }
 }

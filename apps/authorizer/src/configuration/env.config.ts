@@ -9,6 +9,9 @@ const configSchema = baseEnvSchema.extend({
   // Service này gọi user-access qua TCP
   TCP_USER_ACCESS_SERVICE_HOST: z.string().default('localhost'),
   TCP_USER_ACCESS_SERVICE_PORT: z.coerce.number(),
+  // Service này lắng nghe gRPC
+  GRPC_AUTHORIZER_SERVICE_HOST: z.string().default('localhost'),
+  GRPC_AUTHORIZER_SERVICE_PORT: z.coerce.number().default(5100),
   KEYCLOAK_HOST: z.string().min(1),
   KEYCLOAK_REALM: z.string().min(1),
   KEYCLOAK_CLIENT_ID: z.string().min(1),
