@@ -1,5 +1,5 @@
-const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
-const { join } = require('path');
+const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin')
+const { join } = require('path')
 
 module.exports = {
   output: {
@@ -15,11 +15,18 @@ module.exports = {
       compiler: 'tsc',
       main: './src/main.ts',
       tsConfig: './tsconfig.app.json',
-      assets: ['./src/assets'],
+      assets: [
+        './src/assets',
+        {
+          glob: '**/*',
+          input: 'libs/interfaces/src/lib/proto/authorizer',
+          output: './proto',
+        },
+      ],
       optimization: false,
       outputHashing: 'none',
       generatePackageJson: true,
       sourceMap: true,
     }),
   ],
-};
+}

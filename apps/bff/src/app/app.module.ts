@@ -17,6 +17,8 @@ import { UserGuard } from '@common/guards/user.guard'
 import { ClientsModule } from '@nestjs/microservices'
 import { RedisProvider } from '@common/configuration/redis.config'
 import { ThrottlerProvider } from '@common/configuration/throttler.config'
+import { GrpcProvider } from '@common/configuration/grpc.config'
+import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 import { TcpProvider } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { PermissionGuard } from '@common/guards/permission.guard'
@@ -29,7 +31,10 @@ import { PermissionGuard } from '@common/guards/permission.guard'
     ProductModule,
     UserModule,
     // UserGuard requires TCP connection to Authorizer service
-    ClientsModule.registerAsync([TcpProvider(TCP_SERVICES.AUTHORIZER_SERVICE)]),
+    ClientsModule.registerAsync([
+      TcpProvider(TCP_SERVICES.AUTHORIZER_SERVICE),
+      GrpcProvider(GRPC_SERVICES.AUTHORIZER_SERVICE),
+    ]),
     RedisProvider,
     ThrottlerProvider,
   ],

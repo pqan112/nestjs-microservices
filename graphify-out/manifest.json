@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "apps/bff/src/app/app.module.ts": {
-    "mtime": 1795450881.6499999,
-    "seen": 1795451376.4489563,
-    "ast_hash": "ba63369f371713cb4c43341b70fd758d",
+    "mtime": 1795514171.10187,
+    "seen": 1795528011.3401616,
+    "ast_hash": "108a85946e786008af30cbf4b6d3454e",
     "semantic_hash": ""
   },
   "apps/bff/src/app/modules/invoice/controllers/invoice.controller.ts": {
@@ -276,15 +276,15 @@
     "semantic_hash": ""
   },
   "apps/bff/src/configuration/configuration.ts": {
-    "mtime": 1795449929.4930768,
-    "seen": 1795451376.4490206,
-    "ast_hash": "070861ee00ccc6c491fec4b9b036c953",
+    "mtime": 1795514171.0898707,
+    "seen": 1795528011.3401825,
+    "ast_hash": "9ff19ded4a6c9b3638a6aa8926137475",
     "semantic_hash": ""
   },
   "apps/bff/src/configuration/env.config.ts": {
-    "mtime": 1795478595.7077725,
-    "seen": 1795478612.6460848,
-    "ast_hash": "c7d8cb340bc7c40d0e9c03c34aaaac0a",
+    "mtime": 1795514171.0808723,
+    "seen": 1795528011.3401847,
+    "ast_hash": "233665654790e12756ef1ff81695d4dc",
     "semantic_hash": ""
   },
   "apps/bff/src/main.ts": {
@@ -312,9 +312,9 @@
     "semantic_hash": ""
   },
   "apps/bff/webpack.config.js": {
-    "mtime": 1792416475.1102183,
-    "seen": 1794903789.2818406,
-    "ast_hash": "ca79987bef15b3018f551c6e681c1bb0",
+    "mtime": 1795527960.9915824,
+    "seen": 1795528011.3401995,
+    "ast_hash": "208fbd264eb191ef5cbf11c582947bbc",
     "semantic_hash": ""
   },
   "apps/product/.oxlintrc.json": {
@@ -1620,9 +1620,9 @@
     "semantic_hash": ""
   },
   "libs/configuration/src/lib/grpc.config.ts": {
-    "mtime": 1795513696.8373513,
-    "seen": 1795513988.1753914,
-    "ast_hash": "0e51f30c180a40620d1e2d1382556fb8",
+    "mtime": 1795514345.5060287,
+    "seen": 1795528011.3402896,
+    "ast_hash": "f3f3c855a9a3ad727c45a88188dba9fc",
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/grpc-service.enum.ts": {

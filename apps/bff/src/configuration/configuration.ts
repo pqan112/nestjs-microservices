@@ -1,6 +1,8 @@
 import { createAppConfig } from '@common/configuration/app.config'
 import { createTcpConfig } from '@common/configuration/tcp.config'
 import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
+import { createGrpcConfig } from '@common/configuration/grpc.config'
+import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 import { getEnv } from './env.config'
 import redisConfig from './redis/redis.config'
 import throttlerConfig from './throttler/throttler.config'
@@ -13,6 +15,7 @@ export const allConfigs = [
     TCP_SERVICES.USER_ACCESS_SERVICE,
     TCP_SERVICES.AUTHORIZER_SERVICE,
   ]),
+  createGrpcConfig(getEnv, [GRPC_SERVICES.AUTHORIZER_SERVICE]),
   redisConfig,
   throttlerConfig,
 ]

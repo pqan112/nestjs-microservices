@@ -1,5 +1,5 @@
-import { ConfigService, registerAs } from '@nestjs/config'
-import { GrpcOptions, Transport } from '@nestjs/microservices'
+import { ConfigModule, ConfigService, registerAs } from '@nestjs/config'
+import { ClientsProviderAsyncOptions, GrpcOptions, Transport } from '@nestjs/microservices'
 import { join } from 'path'
 import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 import { Logger } from '@nestjs/common'
@@ -51,5 +51,16 @@ export function getGrpcOptions(config: ConfigService, service: GRPC_SERVICES): G
   return {
     transport: Transport.GRPC,
     options: config.getOrThrow<GrpcOptions['options']>(`${GRPC_CONFIG}.${service}`),
+  }
+}
+
+// Đăng ký gRPC client;  @Inject(GRPC_SERVICES.X) ở nơi dùng.
+// (gRPC server không cần name vì connectMicroservice không dùng token.)
+export function GrpcProvider(serviceName: GRPC_SERVICES): ClientsProviderAsyncOptions {
+  return {
+    name: serviceName,
+    imports: [ConfigModule],
+    inject: [ConfigService],
+    useFactory: (config: ConfigService) => getGrpcOptions(config, serviceName),
   }
 }
