@@ -9,7 +9,7 @@ import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import axios, { AxiosInstance, isAxiosError } from 'axios'
 import { KEYCLOAK_CONFIG, KeycloakConfig } from '../../../../configuration/keycloak/keycloak.config'
 import {
-  CreateKeyCloakUserRequest,
+  CreateKeycloakUserRequest,
   ExchangeClientTokenResponse,
   ExchangeUserTokenResponse,
 } from '@common/interfaces/common'
@@ -54,7 +54,7 @@ export class KeycloakHttpService {
     return data
   }
 
-  async createUser(data: CreateKeyCloakUserRequest): Promise<string> {
+  async createUser(data: CreateKeycloakUserRequest): Promise<string> {
     const { email, firstName, lastName, password } = data
 
     const { access_token: accessToken } = await this.exchangeClientToken()

@@ -1,10 +1,8 @@
 import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
-import { TCP_SERVICES } from '@common/constants/enum/tcp-service.enum'
 import { LoginRequestDto, LoginResponseDto } from '@common/interfaces/gateway/authorizer'
-import { UserAccessService } from '@common/interfaces/grpc/user-access'
-import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
-import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
+import { UserAccessService } from '@common/interfaces/grpc/user'
+import { AuthorizeResponseWire } from '@common/interfaces/tcp/authorizer'
 import { Inject, Injectable, Logger, OnModuleInit, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { ClientGrpc } from '@nestjs/microservices'
@@ -52,7 +50,7 @@ export class AuthorizerService implements OnModuleInit {
     }
   }
 
-  async verifyUserToken(token: string, processId: string): Promise<AuthorizeResponseDto> {
+  async verifyUserToken(token: string, processId: string): Promise<AuthorizeResponseWire> {
     const decoded = jwt.decode(token, { complete: true }) as Jwt
     if (!decoded || !decoded.header || !decoded.header.kid) {
       throw new UnauthorizedException(ERROR_CODE.AUTH_INVALID_TOKEN_STRUCTURE)

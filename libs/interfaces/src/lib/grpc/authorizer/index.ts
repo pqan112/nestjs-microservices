@@ -1,4 +1,4 @@
-import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer/authorizer-response.interface'
+import { AuthorizeResponseWire } from '@common/interfaces/tcp/authorizer/authorizer-response.interface'
 import { Observable } from 'rxjs'
 
 export type VerifyUserTokenRequest = {
@@ -8,7 +8,7 @@ export type VerifyUserTokenRequest = {
 
 export type VerifyUserTokenResponse = {
   code: string
-  data?: AuthorizeResponseDto
+  data?: AuthorizeResponseWire
   error: string
 }
 

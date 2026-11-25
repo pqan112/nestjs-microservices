@@ -18,8 +18,6 @@ export const redisEnvSchema = z.object({
     .default(30 * 60000),
 })
 
-export type RedisEnv = z.infer<typeof redisEnvSchema>
-
 export interface RedisConfig {
   host: string
   port: number

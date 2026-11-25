@@ -3,7 +3,7 @@ import { Reflector } from '@nestjs/core'
 import { Permissions } from '@common/decorators/permission.decorator'
 import { PERMISSION } from '@common/constants/enum/role.enum'
 import { MetadataKeys } from '@common/constants/common.constant'
-import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
+import { AuthorizeResponseWire } from '@common/interfaces/tcp/authorizer'
 
 @Injectable()
 export class PermissionGuard implements CanActivate {
@@ -17,7 +17,7 @@ export class PermissionGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest()
-    const userData = request[MetadataKeys.USER_DATA] as AuthorizeResponseDto
+    const userData = request[MetadataKeys.USER_DATA] as AuthorizeResponseWire
     const userPermissions = userData.metadata.permissions as PERMISSION[]
 
     const isValid = requiredPermissions.every((permission) => userPermissions.includes(permission))

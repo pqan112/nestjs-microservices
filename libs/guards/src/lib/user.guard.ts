@@ -3,7 +3,7 @@ import { MetadataKeys } from '@common/constants/common.constant'
 import { ERROR_CODE } from '@common/constants/enum/error-code.enum'
 import { GRPC_SERVICES } from '@common/constants/enum/grpc-service.enum'
 import { AuthorizerService } from '@common/interfaces/grpc/authorizer'
-import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer/authorizer-response.interface'
+import { AuthorizeResponseWire } from '@common/interfaces/tcp/authorizer/authorizer-response.interface'
 import { getAccessToken, setUserData } from '@common/utils/request.util'
 import { CACHE_MANAGER } from '@nestjs/cache-manager'
 import {
@@ -54,7 +54,7 @@ export class UserGuard implements CanActivate, OnModuleInit {
       const cacheKey = this.generateCacheKey(token)
       const processId = req[MetadataKeys.PROCESS_ID]
 
-      const cachedData = await this.cacheManager.get<AuthorizeResponseDto>(cacheKey)
+      const cachedData = await this.cacheManager.get<AuthorizeResponseWire>(cacheKey)
       if (cachedData) {
         setUserData(req, cachedData)
         return true

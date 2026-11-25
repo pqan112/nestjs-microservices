@@ -17,7 +17,7 @@ export const typeOrmEnvSchema = z.object({
   TYPEORM_POOL_IDLE_TIMEOUT_MS: z.coerce.number().int().positive().default(30000),
 })
 
-export type TypeOrmEnv = z.infer<typeof typeOrmEnvSchema>
+type TypeOrmEnv = z.infer<typeof typeOrmEnvSchema>
 
 export const TypeOrmProvider = TypeOrmModule.forRootAsync({
   inject: [ConfigService],
@@ -35,8 +35,7 @@ export const TypeOrmProvider = TypeOrmModule.forRootAsync({
       idleTimeoutMillis: config.get('TYPEORM_POOL_IDLE_TIMEOUT_MS', { infer: true }),
     },
     autoLoadEntities: true,
-    // TODO: tạm bật để test, đổi lại false khi đã có migration
-    synchronize: true,
+    synchronize: false,
     logging:
       config.get('NODE_ENV', { infer: true }) === 'development'
         ? ['error', 'warn', 'query']

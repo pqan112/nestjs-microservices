@@ -7,13 +7,13 @@ A production-ready NestJS REST API starter powered by Nx - built for teams who w
 ### Dev server (hot reload)
 
 ```sh
-npx nx run api:serve
+npx nx run invoice:serve
 ```
 
 ### Build for production
 
 ```sh
-npx nx run api:build
+npx nx run invoice:build
 ```
 
 ### Run all builds
@@ -45,7 +45,7 @@ npx nx graph
 Every build, test, and lint result is cached locally (and remotely via Nx Cloud). Re-running unchanged tasks is instant.
 
 ```sh
-npx nx run api:build   # second run: < 100 ms from cache
+npx nx run invoice:build   # second run: < 100 ms from cache
 ```
 
 ### Affected Commands
@@ -68,12 +68,12 @@ npx nx g @nx/nest:app my-service
 npx nx g @nx/js:lib packages/my-lib --bundler=tsc
 
 # NestJS resource (CRUD module, controller, service, DTOs)
-npx nx g @nx/nest:resource --project=api --name=users
+npx nx g @nx/nest:resource --project=invoice --name=users
 ```
 
 ### Module Boundaries
 
-Enforce architectural rules at lint time. A `scope:api` library can never accidentally import from another app - only from `scope:shared` libs. Configure the rules in `.oxlintrc.json`.
+Enforce architectural rules at lint time. A `scope:invoice` library can never accidentally import from another app - only from `scope:shared` libs. Configure the rules in `.oxlintrc.json`.
 
 ---
 

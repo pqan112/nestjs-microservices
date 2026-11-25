@@ -7,7 +7,7 @@ export type ExchangeClientTokenResponse = {
   scope: string
 }
 
-export type CreateKeyCloakUserRequest = {
+export type CreateKeycloakUserRequest = {
   firstName: string
   lastName: string
   password: string

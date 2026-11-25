@@ -1,10 +1,10 @@
 import { createParamDecorator, ExecutionContext, UnauthorizedException } from '@nestjs/common'
 import { MetadataKeys } from '@common/constants/common.constant'
-import { AuthorizeResponseDto } from '@common/interfaces/tcp/authorizer'
+import { AuthorizeResponseWire } from '@common/interfaces/tcp/authorizer'
 
 export const UserData = createParamDecorator((data: unknown, ctx: ExecutionContext) => {
   const request = ctx.switchToHttp().getRequest()
-  const userData = request[MetadataKeys.USER_DATA] as AuthorizeResponseDto
+  const userData = request[MetadataKeys.USER_DATA] as AuthorizeResponseWire
 
   if (!userData) {
     throw new UnauthorizedException('User data not found')

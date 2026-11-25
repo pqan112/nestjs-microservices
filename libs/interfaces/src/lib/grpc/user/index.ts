@@ -1,7 +1,6 @@
-import { WithId } from 'mongodb'
 import { Observable } from 'rxjs'
-import { Role } from '@common/schemas/role.schema'
-import { User } from '@common/schemas/user.schema'
+import { UserTcpResponse } from '../../tcp/user'
+import { Serialized } from '../../common/serialized.type'
 import { GrpcResponse } from '../common/grpc-response.interface'
 
 export interface UserById {
@@ -9,7 +8,7 @@ export interface UserById {
   processId: string
 }
 
-export type GrpcUserResponse = WithId<Omit<User, 'roles'> & { roles: WithId<Role>[] }>
+export type GrpcUserResponse = Serialized<UserTcpResponse>
 
 export interface UserAccessService {
   getByUserId(data: UserById): Observable<GrpcResponse<GrpcUserResponse>>

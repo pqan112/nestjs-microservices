@@ -129,8 +129,8 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:api",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:api"]
+                "sourceTag": "scope:invoice",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:invoice"]
               },
               {
                 "sourceTag": "scope:shared",

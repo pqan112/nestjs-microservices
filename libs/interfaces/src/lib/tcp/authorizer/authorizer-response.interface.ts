@@ -5,6 +5,7 @@ import { JwtPayload } from 'jsonwebtoken'
 import { createZodDto } from 'nestjs-zod'
 import z from 'zod'
 import { LoginResponseDto } from '../../gateway/authorizer'
+import { Serialized } from '../../common/serialized.type'
 
 export type LoginTcpResponse = LoginResponseDto
 
@@ -26,3 +27,6 @@ export const authorizeResponseSchema = z.object({
 
 export class AuthorizedMetadataDto extends createZodDto(authorizedMetadataSchema) {}
 export class AuthorizeResponseDto extends createZodDto(authorizeResponseSchema) {}
+
+// Dạng thật trên đường truyền gRPC/cache (ngày là string); các guard/decorator dùng type này.
+export type AuthorizeResponseWire = Serialized<AuthorizeResponseDto>

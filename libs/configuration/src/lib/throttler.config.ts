@@ -18,8 +18,6 @@ export const throttlerEnvSchema = z.object({
   THROTTLER_LIMIT: z.coerce.number().int().positive().default(1000),
 })
 
-export type ThrottlerEnv = z.infer<typeof throttlerEnvSchema>
-
 export interface ThrottleLimit {
   ttl: number
   limit: number

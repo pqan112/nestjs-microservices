@@ -19,7 +19,7 @@
 - **Package Manager:** pnpm
 - **Backend:** NestJS, TypeScript
 - **Validation:** Zod, nestjs-zod
-- **Database:** MongoDB (native `mongodb` driver) for invoices in `apps/api`; PostgreSQL via TypeORM for products in `apps/product`
+- **Database:** MongoDB (native `mongodb` driver) for invoices in `apps/invoice`; PostgreSQL via TypeORM for products in `apps/product`
 
 ## Development Guidelines
 
@@ -52,7 +52,7 @@ This project uses a knowledge graph in `graphify-out/` with god nodes, community
 
 ### 1. Rules
 
-- For codebase questions, if `graphify-out/graph.json` exists, run `graphify query "<question>"` before any grep, search, or source-file read. Apply this rule to every subagent exploring code.
+- For codebase questions, if `graphify-out/graph.json` exists, use `graphify query "<question>"` first and rely on its results whenever sufficient. Only use grep, search, or source-file reads when Graphify cannot answer the question or lacks the required details. Apply this rule to every subagent exploring code.
 - Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. Prefer their scoped results over broad graph or raw-source output.
 - If `graphify-out/wiki/index.md` exists, use it for broad navigation.
 - Read raw source only when the graph or an earlier read identifies the relevant lines.

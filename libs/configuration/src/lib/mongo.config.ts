@@ -15,8 +15,6 @@ export const mongoEnvSchema = z.object({
   MONGODB_SOCKET_TIMEOUT_MS: z.coerce.number().int().positive().default(360000),
 })
 
-export type MongoEnv = z.infer<typeof mongoEnvSchema>
-
 const logger = new Logger('MongoDB')
 
 @Module({

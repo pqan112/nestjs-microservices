@@ -20,7 +20,7 @@
         "targetName": "test"
       },
       "exclude": [
-        "apps/api-e2e/**/*",
+        "apps/invoice-e2e/**/*",
         "apps/bff-e2e/**/*",
         "apps/bff-e2e/**/*",
         "apps/user-access-e2e/**/*"
