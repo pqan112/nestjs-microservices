@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   ".claude/settings.json": {
-    "mtime": 1795174426.4554565,
-    "seen": 1795174479.9458423,
-    "ast_hash": "1a794e68837c8638a9bb4153b1f5d2bf",
+    "mtime": 1795622019.9963229,
+    "seen": 1795622127.5563395,
+    "ast_hash": "6da9ebef02cec8e0f7a6b3980a70ce9d",
     "semantic_hash": ""
   },
   ".github/skills/code-simplifier/.skillfish.json": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   ".vscode/launch.json": {
-    "mtime": 1795612659.6469307,
-    "seen": 1795612681.882861,
-    "ast_hash": "069686bacf4511a46cfc2ca507ec5873",
+    "mtime": 1795622021.814742,
+    "seen": 1795622127.5563898,
+    "ast_hash": "c98e51ff70abcfb44f706def2859b1ed",
     "semantic_hash": ""
   },
   "apps/authorizer/.oxlintrc.json": {
@@ -450,8 +450,8 @@
     "semantic_hash": ""
   },
   "libs/configuration/src/lib/typeorm.config.ts": {
-    "mtime": 1795617396.9033906,
-    "seen": 1795617402.5217872,
+    "mtime": 1795621517.4120116,
+    "seen": 1795622127.557339,
     "ast_hash": "a9355ba168c46ee178f528aecf656275",
     "semantic_hash": ""
   },
@@ -522,9 +522,9 @@
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/tcp-service.enum.ts": {
-    "mtime": 1794934177.067218,
-    "seen": 1794934441.0189784,
-    "ast_hash": "4b567f20d052f749801168e3af6ba380",
+    "mtime": 1795620010.8518023,
+    "seen": 1795620030.0632846,
+    "ast_hash": "377508dc3fbc9b6e8772196159a9f37f",
     "semantic_hash": ""
   },
   "libs/constants/tsconfig.json": {
@@ -780,9 +780,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1795612663.4333396,
-    "seen": 1795612681.883315,
-    "ast_hash": "43c26f939765a3e327c156cb71442992",
+    "mtime": 1795621484.7104383,
+    "seen": 1795622127.5582283,
+    "ast_hash": "114f08883d4880cf6fef157c0e0dd151",
     "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
@@ -942,9 +942,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795612880.5624778,
-    "seen": 1795613380.2016737,
-    "ast_hash": "f507e37cb7f8c689fee972460e95972c",
+    "mtime": 1795622021.8608024,
+    "seen": 1795622127.558481,
+    "ast_hash": "b6c5ef047dbdf43f44965bd0096e64cf",
     "semantic_hash": ""
   },
   "README.md": {
@@ -1667,10 +1667,100 @@
     "ast_hash": "f02a29a608c205e5e0d84710f1f3f7c2",
     "semantic_hash": ""
   },
+  "apps/pdf-generator/project.json": {
+    "mtime": 1795619897.313138,
+    "seen": 1795619906.5183926,
+    "ast_hash": "2ae21ddb5919a3d5d0e35a4f21eaf6b3",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/jest.config.cts": {
+    "mtime": 1795619908.3176904,
+    "seen": 1795619916.8818529,
+    "ast_hash": "88d2b13efe7138a1fd8040558bd25069",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/tsconfig.json": {
+    "mtime": 1795619918.798482,
+    "seen": 1795619927.651468,
+    "ast_hash": "0338c11fbe27fd5e8183239cbb07bf07",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/tsconfig.app.json": {
+    "mtime": 1795619929.5283203,
+    "seen": 1795619937.7911794,
+    "ast_hash": "a08d85e0b0ca0831b7e08496e80eee92",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/tsconfig.spec.json": {
+    "mtime": 1795619939.565014,
+    "seen": 1795619948.482183,
+    "ast_hash": "d8617150e9510f652166755525a12b55",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/webpack.config.js": {
+    "mtime": 1795621422.908476,
+    "seen": 1795621430.9015317,
+    "ast_hash": "ea306c99571f93bb7b1b3967a9775c21",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/configuration/env.config.ts": {
+    "mtime": 1795619966.6290326,
+    "seen": 1795619977.4666579,
+    "ast_hash": "860587b4f7400a5bb7845eac2d92343d",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/configuration/configuration.ts": {
+    "mtime": 1795619978.534321,
+    "seen": 1795619987.1801066,
+    "ast_hash": "61ce7c8aebe31d899c0a855e84d22cca",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/app.module.ts": {
+    "mtime": 1795621415.5272727,
+    "seen": 1795621422.4342191,
+    "ast_hash": "85cb9ec1059085d9cd8e2f1db35f1334",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/main.ts": {
+    "mtime": 1795619999.4003234,
+    "seen": 1795620009.4751475,
+    "ast_hash": "617e96637fc9fd2b61b5f4efddb6d55e",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/templates/invoice.template.ejs": {
+    "mtime": 1795621344.9363112,
+    "seen": 1795621358.231053,
+    "ast_hash": "6db7c1f482269b4579986be9e0493dd0",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/modules/pdf/services/pdf.service.ts": {
+    "mtime": 1795621359.283507,
+    "seen": 1795621372.7826273,
+    "ast_hash": "fedda9b90fdef6102750c2bb8b46f20f",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/modules/pdf/controllers/pdf.controller.ts": {
+    "mtime": 1795621373.9730706,
+    "seen": 1795621392.4910135,
+    "ast_hash": "afd521e4ba40e9a3bfc53a9a1a1b6b35",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/modules/pdf/pdf.module.ts": {
+    "mtime": 1795621393.570443,
+    "seen": 1795621402.8168406,
+    "ast_hash": "68bde37c6d37567ca0420d29c82bc858",
+    "semantic_hash": ""
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1795622019.714234,
+    "seen": 1795622127.5582778,
+    "ast_hash": "8952e4afcee7fb12f6bb79a3f5650669",
+    "semantic_hash": ""
+  },
   "pnpm-lock.yaml": {
-    "mtime": 1795513900.396846,
-    "seen": 1795513988.175957,
-    "ast_hash": "5d0b04f936ee7feee232faef29a320f3",
+    "mtime": 1795622023.8742707,
+    "seen": 1795622127.5587556,
+    "ast_hash": "8df5320ff0c48f6c8691ef199120214c",
     "semantic_hash": ""
   }
 }

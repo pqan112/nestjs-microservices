@@ -46,6 +46,9 @@ importers:
       cache-manager:
         specifier: ^7.2.9
         version: 7.2.9
+      ejs:
+        specifier: ^7.0.2
+        version: 7.0.2
       express:
         specifier: ^5.3.0
         version: 5.3.0(supports-color@8.1.1)
@@ -134,6 +137,9 @@ importers:
       '@swc/helpers':
         specifier: ~0.5.23
         version: 0.5.23
+      '@types/ejs':
+        specifier: ^3.1.5
+        version: 3.1.5
       '@types/express':
         specifier: ^5.0.6
         version: 5.0.6
@@ -3319,6 +3325,12 @@ packages:
         integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==,
       }
 
+  '@types/ejs@3.1.5':
+    resolution:
+      {
+        integrity: sha512-nv+GSx77ZtXiJzwKdsASqi+YQ5Z7vwHsTP0JY2SiQgjGckkBRKZnk8nIM+7oUZ1VCtuTz0+By4qVR7fqzp/Dfg==,
+      }
+
   '@types/esquery@1.5.4':
     resolution:
       {
@@ -5202,6 +5214,14 @@ packages:
     resolution:
       {
         integrity: sha512-COqBPFMxuPTPspXl2DkVYaDS3HtrD1GpzOGkNTJ1IYkifq/r9h8SVEFrjA3D9/VJGOEoMQcrlhpntcSUrM8k6A==,
+      }
+    engines: { node: '>=0.12.18' }
+    hasBin: true
+
+  ejs@7.0.2:
+    resolution:
+      {
+        integrity: sha512-LcDSEP6Oclb9sTiSyG0MpG0RuKvLDRxCOOt+2sIk+kdk1rMkFU8SRnT0qaNt5zvU0LOV1YXXOvIoZL/sKwabvw==,
       }
     engines: { node: '>=0.12.18' }
     hasBin: true
@@ -12517,6 +12537,8 @@ snapshots:
     dependencies:
       '@types/node': 26.6.5
 
+  '@types/ejs@3.1.5': {}
+
   '@types/esquery@1.5.4':
     dependencies:
       '@types/estree': 1.0.9
@@ -13626,6 +13648,8 @@ snapshots:
   ee-first@1.1.1: {}
 
   ejs@5.0.1: {}
+
+  ejs@7.0.2: {}
 
   electron-to-chromium@1.5.459: {}
 

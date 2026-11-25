@@ -48,14 +48,12 @@
 
 ## graphify
 
-This project uses a knowledge graph in `graphify-out/` with god nodes, community structure, and cross-file relationships.
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
 
-### 1. Rules
+Rules:
 
-- For codebase questions, if `graphify-out/graph.json` exists, use `graphify query "<question>"` first and rely on its results whenever sufficient. Only use grep, search, or source-file reads when Graphify cannot answer the question or lacks the required details. Apply this rule to every subagent exploring code.
-- Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. Prefer their scoped results over broad graph or raw-source output.
-- If `graphify-out/wiki/index.md` exists, use it for broad navigation.
-- Read raw source only when the graph or an earlier read identifies the relevant lines.
-- Read `graphify-out/GRAPH_REPORT.md` only for broad architecture review or when query/path/explain results are insufficient.
+- When graphify-out/graph.json exists, run `graphify query "<question>"` before your first grep, search or source-file read for a codebase question, and put this rule in every subagent prompt that explores code. Read raw files only for lines the graph or an earlier read already located. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. When the answer is under a Markdown heading, `graphify section "<heading>"` prints that section's text, so the .md need not be opened. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
-- `graphify-out/graph.json` is rewritten on every build, so large diffs in PRs are expected. Do not flag them as churn or suggest skipping graph rebuilds or hooks.
+- A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.

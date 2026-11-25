@@ -1,22 +1,5 @@
 {
-  "extraKnownMarketplaces": {
-    "nx-claude-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "nrwl/nx-ai-agents-config"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "nx@nx-claude-plugins": true
-  },
-  "sandbox": {
-    "network": {
-      "allowedDomains": ["www.google-analytics.com"]
-    }
-  },
   "permissions": {
-    "defaultMode": "bypassPermissions",
     "deny": [
       "Bash(rm *)",
       "Bash(rmdir *)",
@@ -44,6 +27,59 @@
       "Bash(git branch --delete *)",
       "Bash(git push * --delete *)",
       "Bash(git push * :*)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:/Users/Windows/.local/bin/graphify.EXE hook-guard search",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:/Users/Windows/.local/bin/graphify.EXE hook-guard read",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:/Users/Windows/.local/bin/graphify.EXE update .",
+            "timeout": 120
+          }
+        ]
+      }
     ]
+  },
+  "enabledPlugins": {
+    "nx@nx-claude-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "nx-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "nrwl/nx-ai-agents-config"
+      }
+    }
+  },
+  "sandbox": {
+    "network": {
+      "allowedDomains": ["www.google-analytics.com"]
+    }
   }
 }
