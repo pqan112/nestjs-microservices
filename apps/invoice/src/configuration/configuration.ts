@@ -5,5 +5,5 @@ import { getEnv } from './env.config'
 
 export const allConfigs = [
   createAppConfig(getEnv, (env) => env.INVOICE_PORT),
-  createTcpConfig(getEnv, [TCP_SERVICES.INVOICE_SERVICE]),
+  createTcpConfig(getEnv, [TCP_SERVICES.INVOICE_SERVICE, TCP_SERVICES.PDF_GENERATOR_SERVICE]),
 ]

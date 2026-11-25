@@ -7,6 +7,9 @@ const configSchema = baseEnvSchema.extend(mongoEnvSchema.shape).extend({
   // Service này lắng nghe TCP
   TCP_INVOICE_SERVICE_HOST: z.string().default('localhost'),
   TCP_INVOICE_SERVICE_PORT: z.coerce.number(),
+  // Service này gọi pdf-generator qua TCP
+  TCP_PDF_GENERATOR_SERVICE_HOST: z.string().default('localhost'),
+  TCP_PDF_GENERATOR_SERVICE_PORT: z.coerce.number(),
 })
 
 export type Env = z.infer<typeof configSchema>

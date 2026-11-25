@@ -11,7 +11,7 @@ import {
 import { ResponseDto } from '@common/interfaces/gateway/response.dto'
 import { sendTcpRequest } from '@common/interfaces/tcp/common/send-tcp-request'
 import { TcpClient } from '@common/interfaces/tcp/common/tcp-client.interface'
-import { UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
+import { SendInvoiceTcpRequest, UpdateInvoiceTcpRequest } from '@common/interfaces/tcp/invoice'
 import {
   Body,
   Controller,
@@ -82,6 +82,23 @@ export class InvoiceController {
       TCP_REQUEST_MESSAGE.INVOICE.UPDATE,
       processId,
       { id, ...body }
+    )
+  }
+
+  @Post(':id/send')
+  @ZodResponse({ type: ResponseDto<string> })
+  @ApiOperation({ summary: 'Send invoice by id' })
+  @Permissions([PERMISSION.INVOICE_SEND])
+  send(
+    @Param('id') id: string,
+    @ProcessId() processId: string,
+    @UserData() userData: AuthorizedMetadataDto
+  ) {
+    return sendTcpRequest<string, SendInvoiceTcpRequest>(
+      this.invoiceClient,
+      TCP_REQUEST_MESSAGE.INVOICE.SEND,
+      processId,
+      { invoiceId: id, userId: userData.userId }
     )
   }
 }

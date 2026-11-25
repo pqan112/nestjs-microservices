@@ -4,6 +4,8 @@ allowBuilds:
   nx: false
   unrs-resolver: false
   '@parcel/watcher': false
+  protobufjs: false
+  puppeteer: true
 
 packages:
   - 'apps/*'

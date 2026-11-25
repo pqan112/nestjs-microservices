@@ -144,9 +144,9 @@
     "semantic_hash": ""
   },
   "apps/bff/src/app/modules/invoice/controllers/invoice.controller.ts": {
-    "mtime": 1795479202.5437846,
-    "seen": 1795479222.1675713,
-    "ast_hash": "2d2aa2caac07cf90ff73abf3f56a7474",
+    "mtime": 1795622408.8370273,
+    "seen": 1795622428.675723,
+    "ast_hash": "7a11740ef80bff7e6aca4c1164ba62ba",
     "semantic_hash": ""
   },
   "apps/bff/src/app/modules/invoice/invoice.module.ts": {
@@ -486,9 +486,9 @@
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/error-code.enum.ts": {
-    "mtime": 1795348275.3084493,
-    "seen": 1795348280.0510879,
-    "ast_hash": "3846e1ea68d34a366d147895423291a1",
+    "mtime": 1795622318.3217783,
+    "seen": 1795622342.380003,
+    "ast_hash": "dd114089fcd01aeb9a6e45d89bc7c92b",
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/http-message.enum.ts": {
@@ -516,9 +516,9 @@
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/tcp-request-message.enum.ts": {
-    "mtime": 1795262352.9893818,
-    "seen": 1795335414.9147363,
-    "ast_hash": "1b88c35cfac57fdcca19b58062378665",
+    "mtime": 1795622298.1709132,
+    "seen": 1795622316.8420808,
+    "ast_hash": "e0c23db88c440874922f396d8357d9c0",
     "semantic_hash": ""
   },
   "libs/constants/src/lib/enum/tcp-service.enum.ts": {
@@ -780,15 +780,15 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1795621484.7104383,
-    "seen": 1795622127.5582283,
-    "ast_hash": "114f08883d4880cf6fef157c0e0dd151",
+    "mtime": 1795622832.6171515,
+    "seen": 1795623002.3067372,
+    "ast_hash": "3cccabd8d2f6c3dbc68263146db26487",
     "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
-    "mtime": 1793031130.984237,
-    "seen": 1794903789.2821927,
-    "ast_hash": "09c224c07f3f1d7973e3551c5200a620",
+    "mtime": 1795624638.4033363,
+    "seen": 1795624839.8249717,
+    "ast_hash": "8ca4cecad17b0fe59655075f26cc4421",
     "semantic_hash": ""
   },
   "skills-lock.json": {
@@ -1362,9 +1362,9 @@
     "semantic_hash": ""
   },
   "libs/interfaces/src/lib/tcp/invoice/invoice-request.interface.ts": {
-    "mtime": 1795167382.1222558,
-    "seen": 1795196227.9757462,
-    "ast_hash": "aa1f207c59d99287eaabdc293241e4a2",
+    "mtime": 1795622344.4428337,
+    "seen": 1795622371.2281175,
+    "ast_hash": "25c71e46796ab0b9579fde19d1362f17",
     "semantic_hash": ""
   },
   "libs/interfaces/src/lib/tcp/product/index.ts": {
@@ -1584,15 +1584,15 @@
     "semantic_hash": ""
   },
   "apps/invoice/src/app/modules/invoice/controllers/invoice.controller.ts": {
-    "mtime": 1795531826.281939,
-    "seen": 1795612681.8829806,
-    "ast_hash": "a831b17a701e5134db5fe811bb2bf05c",
+    "mtime": 1795622537.0464725,
+    "seen": 1795622559.7647896,
+    "ast_hash": "b6988c11d56139174852c627f12814cb",
     "semantic_hash": ""
   },
   "apps/invoice/src/app/modules/invoice/invoice.module.ts": {
-    "mtime": 1792837508.744301,
-    "seen": 1795612681.8829818,
-    "ast_hash": "c320e5a83ce72a6ddbc09d1d85677701",
+    "mtime": 1795624711.3358881,
+    "seen": 1795624839.8234692,
+    "ast_hash": "acd7a5bac9aab33c293dd12fa3b54f57",
     "semantic_hash": ""
   },
   "apps/invoice/src/app/modules/invoice/mappers/index.ts": {
@@ -1608,21 +1608,21 @@
     "semantic_hash": ""
   },
   "apps/invoice/src/app/modules/invoice/services/invoice.service.ts": {
-    "mtime": 1795340422.7838767,
-    "seen": 1795612681.8829873,
-    "ast_hash": "3a1cab09ba297c9765ae5019a78c1f4a",
+    "mtime": 1795622612.4357078,
+    "seen": 1795622626.3442807,
+    "ast_hash": "862c6b3eeb3b9c092d0cbb20bba27a96",
     "semantic_hash": ""
   },
   "apps/invoice/src/configuration/configuration.ts": {
-    "mtime": 1795435245.323474,
-    "seen": 1795612681.8829887,
-    "ast_hash": "87aae9d4f82fcb5cd94f2603d915f367",
+    "mtime": 1795622453.636911,
+    "seen": 1795622468.736269,
+    "ast_hash": "cc6474f605f11f1edddead5f52597c48",
     "semantic_hash": ""
   },
   "apps/invoice/src/configuration/env.config.ts": {
-    "mtime": 1795435245.2766676,
-    "seen": 1795612681.8829906,
-    "ast_hash": "96a5708b230c65872bb9b1cedce0422a",
+    "mtime": 1795622430.5150807,
+    "seen": 1795622451.895481,
+    "ast_hash": "5459a9cce95cce55ea1864591e31ea6d",
     "semantic_hash": ""
   },
   "apps/invoice/src/main.ts": {
@@ -1716,9 +1716,9 @@
     "semantic_hash": ""
   },
   "apps/pdf-generator/src/app/app.module.ts": {
-    "mtime": 1795621415.5272727,
-    "seen": 1795621422.4342191,
-    "ast_hash": "85cb9ec1059085d9cd8e2f1db35f1334",
+    "mtime": 1795623141.708779,
+    "seen": 1795624839.8235781,
+    "ast_hash": "c9420fd4f49653cfadbd62f45a1fa49a",
     "semantic_hash": ""
   },
   "apps/pdf-generator/src/main.ts": {
@@ -1728,27 +1728,21 @@
     "semantic_hash": ""
   },
   "apps/pdf-generator/src/app/templates/invoice.template.ejs": {
-    "mtime": 1795621344.9363112,
-    "seen": 1795621358.231053,
-    "ast_hash": "6db7c1f482269b4579986be9e0493dd0",
+    "mtime": 1795622795.7225857,
+    "seen": 1795622802.9697998,
+    "ast_hash": "52e73d01c4b7cb336aa036ba9167ef12",
     "semantic_hash": ""
   },
   "apps/pdf-generator/src/app/modules/pdf/services/pdf.service.ts": {
-    "mtime": 1795621359.283507,
-    "seen": 1795621372.7826273,
-    "ast_hash": "fedda9b90fdef6102750c2bb8b46f20f",
-    "semantic_hash": ""
-  },
-  "apps/pdf-generator/src/app/modules/pdf/controllers/pdf.controller.ts": {
-    "mtime": 1795621373.9730706,
-    "seen": 1795621392.4910135,
-    "ast_hash": "afd521e4ba40e9a3bfc53a9a1a1b6b35",
+    "mtime": 1795622992.9949334,
+    "seen": 1795623002.306396,
+    "ast_hash": "a75198607280104b6c58e8da9af926fd",
     "semantic_hash": ""
   },
   "apps/pdf-generator/src/app/modules/pdf/pdf.module.ts": {
-    "mtime": 1795621393.570443,
-    "seen": 1795621402.8168406,
-    "ast_hash": "68bde37c6d37567ca0420d29c82bc858",
+    "mtime": 1795622655.4494703,
+    "seen": 1795622669.003234,
+    "ast_hash": "1f7ab8153b228665fc7da6f9dcd7c3e9",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
@@ -1757,10 +1751,28 @@
     "ast_hash": "8952e4afcee7fb12f6bb79a3f5650669",
     "semantic_hash": ""
   },
+  "apps/pdf-generator/src/app/modules/invoice/invoice.module.ts": {
+    "mtime": 1795622685.6039088,
+    "seen": 1795622698.9336028,
+    "ast_hash": "8795e3e16e420b2a542660dc7e7b1566",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/modules/invoice/controllers/invoice-pdf.controller.ts": {
+    "mtime": 1795622700.270902,
+    "seen": 1795622714.0108223,
+    "ast_hash": "81eac7aefb266135ac2b7f7cdf6e5c1f",
+    "semantic_hash": ""
+  },
+  "apps/pdf-generator/src/app/modules/invoice/services/invoice-pdf.service.ts": {
+    "mtime": 1795622715.2288399,
+    "seen": 1795622728.5551953,
+    "ast_hash": "bc5cf6ac564976d886d0b967d72240f0",
+    "semantic_hash": ""
+  },
   "pnpm-lock.yaml": {
-    "mtime": 1795622023.8742707,
-    "seen": 1795622127.5587556,
-    "ast_hash": "8df5320ff0c48f6c8691ef199120214c",
+    "mtime": 1795624638.3863344,
+    "seen": 1795624839.8253582,
+    "ast_hash": "f7c80ba0b88274ec4b231cdcd7c866d9",
     "semantic_hash": ""
   }
 }
